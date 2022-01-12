@@ -12,6 +12,13 @@ const express = require("express");
 // import models so we can interact with the database
 const User = require("./models/user");
 
+const UserAvatar = require("./models/useravatar");
+const UserProfile = require("./models/userprofile");
+const UserAchievement = require("./models/userachievement");
+
+const PairActivity = require("./models/pairactivity");
+const PairAvatar = require("./models/pairavatar");
+
 // import authentication library
 const auth = require("./auth");
 
@@ -48,5 +55,40 @@ router.all("*", (req, res) => {
   res.status(404).send({ msg: "API route not found" });
 });
 
+router.get("/useravatar", (req, res) => {
+  UserAvatar.find({ googleID: req.query.googleID }).then((avatarList) => {
+    res.send(avatarList);
+  });
+});
+
+router.get("/userprofile", (req, res) => {
+  UserProfile.find({ googleID: req.query.googleID }).then((userProfile) => {
+    res.send(userProfile);
+  });
+});
+
+router.get("/userachievement", (req, res) => {
+  UserAchievement.find({ googleID: req.query.googleID }).then((userAchievement) => {
+    res.send(userAchievement);
+  });
+});
+
+router.get("/pairavatar", (req, res) => {
+  PairAvatar.find({
+    userGoogleID: req.query.userGoogleID,
+    otherGoogleID: req.query.otherGoogleID,
+  }).then((pairAvatar) => {
+    res.send(pairAvatar);
+  });
+});
+
+router.get("/pairactivity", (req, res) => {
+  PairActivity.find({
+    userGoogleID: req.query.userGoogleID,
+    otherGoogleID: req.query.otherGoogleID,
+  }).then((pairActivity) => {
+    res.send(pairActivity);
+  });
+});
 
 module.exports = router;
