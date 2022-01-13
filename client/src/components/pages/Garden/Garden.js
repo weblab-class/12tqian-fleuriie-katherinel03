@@ -1,7 +1,13 @@
 import React, { Component } from "react";
+import { socket } from "../../../client-socket";
 import GoogleLogin, { GoogleLogout } from "react-google-login";
 
+// import { drawCanvas } from "../../canvasManager";
+
 import "../../../utilities.css";
+
+// import "../../input";
+// import "./Game.css";
 
 //TODO: REPLACE WITH YOUR OWN CLIENT_ID
 const GOOGLE_CLIENT_ID = "121479668229-t5j82jrbi9oejh7c8avada226s75bopn.apps.googleusercontent.com";
@@ -46,10 +52,40 @@ const Garden = ({ userId, handleLogin, handleLogout }) => {
       </ul>
       <h2>How to go from this skeleton to our actual app</h2>
       <a href="http://weblab.to/get-started">Check out this getting started guide</a>
-      <HealthBar health="78" />
-      <Avatar avatarName="Avatar" />
+      <HealthBar health="58" />
+      <Avatar avatarName="Avatar" width="100" />
     </div>
   );
 };
 
 export default Garden;
+
+
+// const Game = () => {
+//   const [winner, setWinner] = useState(null);
+
+//   useEffect(() => {
+//     socket.on("update", (update) => {
+//       processUpdate(update);
+//     });
+//   }, []);
+
+//   const processUpdate = (update) => {
+//     /** TODO Step 0 process updates */
+//   };
+
+//   let winnerModal = null;
+//   if (winner) {
+//     winnerModal = <div className="Game-winner">the winner is {winner} yay cool cool</div>;
+//   }
+//   return (
+//     <>
+//       <div className="Game-body">
+//         <canvas id="game-canvas" width="800" height="800" />
+//         {winnerModal}
+//       </div>
+//     </>
+//   );
+// };
+
+// export default Game;

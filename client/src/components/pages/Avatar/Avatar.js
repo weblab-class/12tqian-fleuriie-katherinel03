@@ -1,14 +1,21 @@
 import React, { useState, useEffect } from "react";
 
+import avatar from "./Avatars/Avatar.png";
+
+
+
 const Avatar = (props) => {
-	console.log(props.avatarName);
-	const avatarLocation = './Avatars/' + props.avatarName + '.png';
-	console.log(avatarLocation);
-	const image = require(avatarLocation);
+	let image;
+	switch (props.avatarName) {
+		case "Avatar":
+			image = <img src={avatar} width={props.width}/>;
+			break;
+		default:
+			image = <img src={avatar} width={props.width}/>;
+	}
 	return (
-		<div>
-			<img src={require('./Avatars/Avatar.png').default} />
-			{/* <img src={avatarLocation} /> */}
+		<div> 
+			{image}
 		</div>
 	);
 };
