@@ -7,6 +7,10 @@ import "./Skeleton.css";
 //TODO: REPLACE WITH YOUR OWN CLIENT_ID
 const GOOGLE_CLIENT_ID = "121479668229-t5j82jrbi9oejh7c8avada226s75bopn.apps.googleusercontent.com";
 
+// testing code 
+import HealthBar from "./Representation/HealthBar";
+// end testing code
+
 const Skeleton = ({ userId, handleLogin, handleLogout }) => {
   return (
     <>
@@ -41,6 +45,7 @@ const Skeleton = ({ userId, handleLogin, handleLogout }) => {
       </ul>
       <h2>How to go from this skeleton to our actual app</h2>
       <a href="http://weblab.to/get-started">Check out this getting started guide</a>
+      <HealthBar health="78" />
     </>
   );
 };

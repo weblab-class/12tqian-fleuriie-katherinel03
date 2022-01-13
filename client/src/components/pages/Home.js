@@ -5,13 +5,13 @@ import "../../utilities.css";
 import "./Home.css";
 
 const Home = () => {
-    return (
-        <div>
-            <Link to="/" className="RegisterButton">
-                start planting!
-            </Link>
-        </div>
-    )
+  return (
+    <div>
+      <Link to="/" className="RegisterButton">
+        start planting!
+      </Link>
+    </div>
+  )
 };
 
 export default Home;
