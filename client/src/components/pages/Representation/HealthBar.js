@@ -14,21 +14,21 @@ const HealthBar = (props) => {
 	}, []);
 
 	const getHealthBarWidth = () => {
-		return health / 100 * HEALTH_BAR_WIDTH * (0.818);	
+		return health / 100 * HEALTH_BAR_WIDTH * (0.818);
 	};
 
 	const getHealthBarColor = () => {
 		const hue = (health / 100 * 120).toString(10);
-    return ["hsl(",hue,", 100%, 50%)"].join("");
+		return ["hsl(", hue, ", 100%, 50%)"].join("");
 	};
 
 	return (
 		<div>
 			<img src={healthBarImage} style={
-					{
-						width: HEALTH_BAR_WIDTH,
-					}	
+				{
+					width: HEALTH_BAR_WIDTH,
 				}
+			}
 			/>
 			<div className="healthBarBackground"
 				style={{
