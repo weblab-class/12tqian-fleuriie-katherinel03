@@ -1,15 +1,20 @@
 import React, { Component } from "react";
 import GoogleLogin, { GoogleLogout } from "react-google-login";
 
-import "../../utilities.css";
-import "./Skeleton.css";
+import "../../../utilities.css";
 
 //TODO: REPLACE WITH YOUR OWN CLIENT_ID
 const GOOGLE_CLIENT_ID = "121479668229-t5j82jrbi9oejh7c8avada226s75bopn.apps.googleusercontent.com";
 
-const Skeleton = ({ userId, handleLogin, handleLogout }) => {
+// testing code 
+import Avatar from "../Avatar/Avatar.js";
+
+import HealthBar from "./Representation/HealthBar";
+// end testing code
+
+const Garden = ({ userId, handleLogin, handleLogout }) => {
   return (
-    <>
+    <div>
       {userId ? (
         <GoogleLogout
           clientId={GOOGLE_CLIENT_ID}
@@ -41,8 +46,10 @@ const Skeleton = ({ userId, handleLogin, handleLogout }) => {
       </ul>
       <h2>How to go from this skeleton to our actual app</h2>
       <a href="http://weblab.to/get-started">Check out this getting started guide</a>
-    </>
+      <HealthBar health="78" />
+      <Avatar avatarName="Avatar" />
+    </div>
   );
 };
 
-export default Skeleton;
+export default Garden;
