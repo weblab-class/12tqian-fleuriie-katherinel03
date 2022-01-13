@@ -3,7 +3,6 @@ import React, { useState, useEffect } from "react";
 import avatar from "./Avatars/Avatar.png";
 
 
-
 const Avatar = (props) => {
 	let image;
 	switch (props.avatarName) {
