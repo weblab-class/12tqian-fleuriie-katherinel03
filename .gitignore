@@ -4,3 +4,4 @@ client/dist/bundle.js.LICENSE.txt
 node_modules/
 *.bak
 *Zone.Identifier
+client/.env
