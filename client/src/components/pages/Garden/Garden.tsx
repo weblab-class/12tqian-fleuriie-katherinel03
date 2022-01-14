@@ -45,7 +45,15 @@ const responsive = {
 const Garden = (props: Props) => {
 	return (
 		<div>
-			<AliceCarousel mouseTracking items={items} keyboardNavigation={true} infinite={true} controlsStrategy="alternate" responsive={responsive} />
+			<AliceCarousel
+				mouseTracking items={items}
+				keyboardNavigation={true}
+				infinite={true}
+				controlsStrategy="alternate"
+				responsive={responsive}
+				disableDotsControls={true}
+				animationDuration={140}
+			/>
 		</div>
 	);
 };

@@ -14,7 +14,12 @@ const Representation = (props: Props) => {
   return (
     <div>
       <HealthBar health={58} />
-			<RepresentationAvatar avatarName="Representation" width={100} />
+      <RepresentationAvatar avatarName="Representation" width={100} />
+      <div style={{ textAlign: "center" }}>
+        <span>
+          Plant
+        </span>
+      </div>
     </div>
   );
 };
