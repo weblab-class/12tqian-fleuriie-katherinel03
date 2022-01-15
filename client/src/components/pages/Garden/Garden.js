@@ -68,7 +68,6 @@ const Garden = (props) => {
 	}, []);
 	return (
 		<div>
-			<PairInteractionPopup userGoogleID="user1" otherGoogleID="user2" />
 			<AliceCarousel
 				mouseTracking items={carouselItems}
 				keyboardNavigation={true}

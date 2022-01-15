@@ -2,6 +2,11 @@ import React, { useEffect, useState, Component } from "react";
 
 import { get, post } from "../../../utilities.js";
 import Avatar from "../Avatar/Avatar.js";
+import NewActivityPopup from "./Representation/NewActivityPopup.js";
+
+// Import React Table
+import ReactTable from "react-table-6";  
+import "react-table-6/react-table.css" 
 
 const PairInteractionPopup = (props) => {
 	const [userAvatar, setUserAvatar] = useState(undefined);
@@ -26,7 +31,9 @@ const PairInteractionPopup = (props) => {
 		});
 	}, []);
 	console.log(activities);
-	console.log("MONKA");
+	console.log(props.userGoogleID);
+	console.log(props.otherGoogleID);
+	console.log("I WANT FOOD");
 	const activityObjects = activities.map((activity, index) => {
 		return (
 			<div>
@@ -35,7 +42,7 @@ const PairInteractionPopup = (props) => {
 					asdfasdf
 				</span>
 				<div key={index}>
-					idk man i just want to be done
+					{activity.activityTime + " | " + activity.activityName}
 				</div>
 			</div>
 		);
@@ -48,12 +55,38 @@ const PairInteractionPopup = (props) => {
 					{userAvatar}
 				</div>
 				<div>
-					<span>{props.userGoogleID + " & " + props.otherGoogleID}</span>
+					<h1>{props.userGoogleID + " & " + props.otherGoogleID}</h1>
 					{/* to do add something that would add a new activity */}
+					<NewActivityPopup userGoogleID={props.userGoogleID} otherGoogleID={props.otherGoogleID} />
+					<br />
 					<div>
-						asdfhasdifhadspf
+						<ReactTable
+							data={activities}
+							columns={[
+								{
+									Header: "Activities <3",
+									columns: [
+										{
+											Header: "Activity Time",
+											id: "activitytime",
+											accessor: d => d.activityTime
+										},
+										{
+											Header: "Activity Name",
+											id: "activityName",
+											accessor: d => d.activityName
+										}
+									]
+								},
+							]}
+							defaultPageSize={20}
+							style={{
+								height: "400px" // This will force the table body to overflow and scroll, since there is not enough room
+							}}
+							className="-striped -highlight"
+						/>
+						<br />
 					</div>
-					{activityObjects}
 				</div>
 				<div>
 					{otherAvatar}
