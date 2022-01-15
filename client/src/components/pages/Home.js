@@ -40,13 +40,11 @@ const Home = ({ userId, handleLogin, handleLogout }) => {
 				/>
         		)}
 			</div>
-		<div>
-			{userId ** (
-			<Link to={'/profile/${props.userId}'}>
+			{userId && (
+			<Link to={`/profile/${userId}`} className="Home-profileLink">
 				Profile
 			</Link>
 			)}
-		</div>
 		</div>
 		
 	)

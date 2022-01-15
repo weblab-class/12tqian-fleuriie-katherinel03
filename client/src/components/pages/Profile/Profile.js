@@ -11,7 +11,8 @@ import {get, post} from "../../../utilities.js";
 const Profile  = (props) => {
     const [user, setUser] = useState();
     useEffect(() => {
-        get("/api/user", { googleID: props.googleID }).then((user) => {
+        document.title = "Profile Page";
+        get(`/api/user`, { googleID: props.userID }).then((user) => {
             setUser(user.name);
         })
     }, []);
