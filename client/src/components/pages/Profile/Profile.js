@@ -9,37 +9,48 @@ import "./Profile.css";
 import { get, post } from "../../../utilities.js";
 
 const Profile = (props) => {
-    const [user, setUser] = useState();
-    useEffect(() => {
-        document.title = "Profile Page";
-        get(`/api/user`, { googleID: props.userID }).then((user) => {
-            setUser(user.name);
-        })
-    }, []);
-    const [avatar, setAvatar] = useState(undefined);
-    useEffect(() => {
-		get("/api/userprofile", {
-			googleID: props.userGoogleID,
-		}).then((profile) => {
-			setAvatar(<Avatar avatarName={profile.currentAvatar} width={100} />);
-		});
-	}, []);
-    // getting user data!
+  const [user, setUser] = useState(undefined);
+  useEffect(() => {
+    get("/api/whoami").then((user) => {
+      if (user._id) {
+        // they are registed in the database, and currently logged in.
+        setUser(user);
+      }
+    });
+  }, [])
 
-    // i want to die! :)
-    if (!user) {
-        return (<div> Log in before you can view your profile! </div>)
+  // useEffect(() => {
+  //   document.title = "Profile Page";
+  //   get(`/api/user`, { googleID: user.googleID }).then((user) => {
+  //     setUser(user.name);
+  //   })
+  // }, []);
+  const [avatar, setAvatar] = useState(undefined);
+  useEffect(() => {
+    if (user) {
+      get("/api/userprofile", {
+        googleID: user.googleID,
+      }).then((profile) => {
+        setAvatar(<Avatar avatarName={profile.currentAvatar} width={100} />);
+      });
     }
-    return (
-        <div className="Profile-container">
-            <div className="Avatar-container">
-                {avatar}
-            </div>
-            <h1 className="Profile-username">{user.name}</h1>
-            <hr />
-            <EditProfile />
-        </div>
-    );
+  }, [user]);
+  // // getting user data!
+
+  // // i want to die! :)
+  if (!user) {
+    return (<div> Log in before you can view your profile! </div>)
+  }
+  return (
+    <div className="Profile-container">
+      <div className="Avatar-container">
+        {avatar}
+      </div>
+      <h1 className="Profile-username">{user.name}</h1>
+      <hr />
+      <EditProfile />
+    // </div>
+  );
 };
 
 export default Profile;
