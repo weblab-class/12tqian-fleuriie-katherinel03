@@ -43,10 +43,24 @@ const Garden = (props) => {
   post("/api/pairactivity", {
     userGoogleID: "user1",
     otherGoogleID: "user2",
-    activityName: "activity",
+    activityName: "league",
     activityTime: new Date(),
   }).then((activity) => {
     console.log(activity);
+  });
+  post("/api/pairactivity", {
+    userGoogleID: "user1",
+    otherGoogleID: "user2",
+    activityName: "died",
+    activityTime: new Date(),
+  }).then((activity) => {
+    console.log(activity);
+  });
+  get("/api/pairactivity", {
+    userGoogleID: "user1",
+    otherGoogleID: "user2"
+  }).then((data) => {
+    console.log(data);
   });
 	return (
 		<div>

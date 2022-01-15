@@ -50,10 +50,6 @@ router.post("/initsocket", (req, res) => {
 // |------------------------------|
 
 // anything else falls to this "not found" case
-router.all("*", (req, res) => {
-  console.log(`API route not found: ${req.method} ${req.url}`);
-  res.status(404).send({ msg: "API route not found" });
-});
 
 router.get("/useravatar", (req, res) => {
   UserAvatar.find({ googleID: req.query.googleID }).then((avatarList) => {
@@ -90,5 +86,21 @@ router.get("/pairactivity", (req, res) => {
     res.send(pairActivity);
   });
 });
+
+router.post("/pairactivity", auth.ensureLoggedIn, (req, res) => {
+  const newPairActivity = new PairActivity({
+    userGoogleID: req.body.userGoogleID,
+    otherGoogleID: req.body.otherGoogleID,
+    activityName: req.body.activityName,
+    activityTime: req.body.activityTime,
+  });
+  newPairActivity.save().then(data => res.send(data));
+});
+
+router.all("*", (req, res) => {
+  console.log(`API route not found: ${req.method} ${req.url}`);
+  res.status(404).send({ msg: "API route not found" });
+});
+
 
 module.exports = router;
