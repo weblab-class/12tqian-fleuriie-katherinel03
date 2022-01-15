@@ -8,10 +8,9 @@ import AliceCarousel from 'react-alice-carousel';
 import 'react-alice-carousel/lib/alice-carousel.css';
 import "./Garden.css";
 
-// testing code 
-
 import Representation from "./Representation/Representation.js";
 
+import NewActivityPopup from "./Representation/NewActivityPopup";
 
 const handleDragStart = (e) => e.preventDefault();
 
@@ -66,6 +65,7 @@ const Garden = (props) => {
 	}, []);
 	return (
 		<div>
+			<NewActivityPopup userGoogleID={"user1"} otherGoogleID={"user2"}/>
 			<AliceCarousel
 				mouseTracking items={carouselItems}
 				keyboardNavigation={true}
