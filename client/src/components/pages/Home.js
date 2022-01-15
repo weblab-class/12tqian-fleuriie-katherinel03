@@ -33,7 +33,9 @@ const Home = ({ userId, handleLogin, handleLogout }) => {
               buttonText="start planting!"
               onSuccess={handleLogin}
               onFailure={(err) => console.log(err)}
-        		/>
+			  cookiePolicy={'single_host_origin'}
+			  isSignedIn={true}
+				/>
         		)}
 			</div>
 		</div>
