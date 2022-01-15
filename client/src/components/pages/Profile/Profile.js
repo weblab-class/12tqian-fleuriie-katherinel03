@@ -17,10 +17,7 @@ const Profile  = (props) => {
         name: "",
         googleID: "",
     })
-    get("/api/useravatar", {
-        googleID: "",
-        avatarNames: [""],
-    })
+
     get("/api/userprofile", {
         googleID: "",
         currentAvatar: "",
@@ -31,11 +28,11 @@ const Profile  = (props) => {
         achievementName: "",
     })
 
-    // 
+    // i want to die! :)
 
     return (
         <div>
-            help
+            <Avatar />
         </div>
     )
     /* kat's old code

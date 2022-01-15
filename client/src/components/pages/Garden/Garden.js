@@ -1,8 +1,8 @@
-import React, { Component } from "react";
+import React, { Component, useEffect } from "react";
 
 import "../../../utilities.css";
 
-import {get, post} from "../../../utilities.js";
+import { get, post } from "../../../utilities.js";
 
 import AliceCarousel from 'react-alice-carousel';
 import 'react-alice-carousel/lib/alice-carousel.css';
@@ -15,23 +15,7 @@ import Representation from "./Representation/Representation.js";
 
 const handleDragStart = (e) => e.preventDefault();
 
-const items = [
-	<span onDragStart={handleDragStart} role="presentation" className="carouselRepresentation">
-		<Representation />
-	</span>,
-	<span onDragStart={handleDragStart} role="presentation" className="carouselRepresentation">
-		<Representation />
-	</span>,
-	<span onDragStart={handleDragStart} role="presentation" className="carouselRepresentation">
-		<Representation />
-	</span>,
-	<span onDragStart={handleDragStart} role="presentation" className="carouselRepresentation">
-		<Representation />
-	</span>,
-	<span onDragStart={handleDragStart} role="presentation" className="carouselRepresentation">
-		<Representation />
-	</span>,
-];
+const carouselItems = [];
 
 const responsive = {
 	0: { items: 1 },
@@ -40,32 +24,50 @@ const responsive = {
 };
 
 const Garden = (props) => {
-  post("/api/pairactivity", {
-    userGoogleID: "user1",
-    otherGoogleID: "user2",
-    activityName: "league",
-    activityTime: new Date(),
-  }).then((activity) => {
-    console.log(activity);
-  });
-  post("/api/pairactivity", {
-    userGoogleID: "user1",
-    otherGoogleID: "user2",
-    activityName: "died",
-    activityTime: new Date(),
-  }).then((activity) => {
-    console.log(activity);
-  });
-  get("/api/pairactivity", {
-    userGoogleID: "user1",
-    otherGoogleID: "user2"
-  }).then((data) => {
-    console.log(data);
-  });
+	post("/api/pairactivity", {
+		userGoogleID: "user1",
+		otherGoogleID: "user2",
+		activityName: "league",
+		activityTime: new Date(),
+	});
+	post("/api/pairactivity", {
+		userGoogleID: "user1",
+		otherGoogleID: "user2",
+		activityName: "died",
+		activityTime: new Date(),
+	});
+	get("/api/pairactivity", {
+		userGoogleID: "user1",
+		otherGoogleID: "user2"
+	}).then((data) => {
+		console.log(data);
+	});
+	post("/api/pairavatar", {
+		userGoogleID: "user1",
+		otherGoogleID: "user2",
+		representationName: "Representation",
+		totalExperience: 0,
+		goalFrequency: 100,
+	}).then((activity) => {
+		console.log(activity);
+	});
+	useEffect(() => {
+		get("/api/pairavatar", {
+			userGoogleID: "user1",
+		}).then((pairAvatars) => {
+			for (const avatar of pairAvatars) {
+				carouselItems.push(
+					<span onDragStart={handleDragStart} role="presentation" className="carouselRepresentation">
+						<Representation userGoogleID={avatar.userGoogleID} otherGoogleID={avatar.otherGoogleID} />
+					</span>
+				);
+			}
+		});
+	}, []);
 	return (
 		<div>
 			<AliceCarousel
-				mouseTracking items={items}
+				mouseTracking items={carouselItems}
 				keyboardNavigation={true}
 				infinite={true}
 				controlsStrategy="alternate"

@@ -4,4 +4,5 @@
 
 .shop {
     height: 20%;
+    overflow-y: scroll;
 }

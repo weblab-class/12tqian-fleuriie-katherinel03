@@ -69,12 +69,20 @@ router.get("/userachievement", (req, res) => {
   });
 });
 
-router.get("/pairavatar", (req, res) => {
-  PairAvatar.find({
+router.get("/pairavatarone", (req, res) => {
+  PairAvatar.findOne({
     userGoogleID: req.query.userGoogleID,
     otherGoogleID: req.query.otherGoogleID,
   }).then((pairAvatar) => {
     res.send(pairAvatar);
+  });
+});
+
+router.get("/pairavatar", (req, res) => {
+  PairAvatar.find({
+    userGoogleID: req.query.userGoogleID,
+  }).then((data) => {
+    res.send(data);
   });
 });
 
@@ -95,6 +103,17 @@ router.post("/pairactivity", auth.ensureLoggedIn, (req, res) => {
     activityTime: req.body.activityTime,
   });
   newPairActivity.save().then(data => res.send(data));
+});
+
+router.post("/pairavatar", auth.ensureLoggedIn, (req, res) => {
+  const newPairAvatar = new PairAvatar({
+    userGoogleID: req.body.userGoogleID,
+    otherGoogleID: req.body.otherGoogleID,
+    representationName: req.body.representationName,
+    totalExperience: req.body.totalExperience,
+    goalFrequency: req.body.goalFrequency,
+  });
+  newPairAvatar.save().then(data => res.send(data));
 });
 
 router.all("*", (req, res) => {
