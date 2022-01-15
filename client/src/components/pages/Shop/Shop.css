@@ -1,0 +1,8 @@
+.photo {
+    width: 100px;
+}
+
+.shop {
+    height: 20%;
+    overflow-y: scroll;
+}

@@ -5,7 +5,7 @@ import Garden from "./pages/Garden/Garden.js";
 import NavBar from "./modules/NavBar.js";
 import Home from "./pages/Home.js";
 import Profile from "./pages/Profile/Profile.js";
-import Shop from "./pages/Shop.js";
+import Shop from "./pages/Shop/Shop.js";
 
 import "../utilities.css";
 import "./App.css";
