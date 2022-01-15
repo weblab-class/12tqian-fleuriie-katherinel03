@@ -11,8 +11,8 @@ const Avatar = (props) => {
 
     useEffect(() => {
         get("/api/userprofile", { googleID: props.googleID }.then((user) => {
-            setAvatar(userprofile.currentAvatar);
-            
+            setAvatar(user.currentAvatar);
+
             // not sure if this should be user.currentAvatar or userprofile.currentAvatar so if it breaks this is probably what's wrong
 
         }))

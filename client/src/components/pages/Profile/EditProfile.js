@@ -8,7 +8,7 @@ import 'reactjs-popup/dist/index.css';
 import {get, post} from "../../../utilities.js";
 
 const EditProfile = (props) => {
-
+    
     return (
         <div>
             <Popup
