@@ -1,10 +1,10 @@
 import React, { useState, useEffect } from "react";
 import { Router } from "@reach/router";
 import NotFound from "./pages/NotFound.js";
-import Skeleton from "./pages/Skeleton.js";
 import Garden from "./pages/Garden/Garden.js"
 import NavBar from "./modules/NavBar.js";
 import Home from "./pages/Home.js";
+import Home from "./pages/Profile.js";
 
 import "../utilities.css";
 import "./App.css";
@@ -47,8 +47,8 @@ const App = () => {
       <NavBar />
       <div className="App-container">
         <Router>
-          <Skeleton path="/" handleLogin={handleLogin} handleLogout={handleLogout} userId={userId} />
-          <Home path="/home/" />
+          <Home path="/" handleLogin={handleLogin} handleLogout={handleLogout} userId={userId} />
+          <Profile path="/profile/" />
           <Garden path="/garden/" />
           <NotFound default />
         </Router>
