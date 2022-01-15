@@ -31,7 +31,7 @@ const Profile  = (props) => {
         achievementName: "",
     })
 
-    // 
+    // i want to die! :)
 
     return (
         <div>
