@@ -6,9 +6,9 @@ import OtherStats from "./OtherStats.js";
 
 import "../../../utilities.css";
 import "./Profile.css";
-import {get, post} from "../../../utilities.js";
+import { get, post } from "../../../utilities.js";
 
-const Profile  = (props) => {
+const Profile = (props) => {
     const [user, setUser] = useState();
     useEffect(() => {
         document.title = "Profile Page";
