@@ -14,8 +14,11 @@ const GOOGLE_CLIENT_ID = "714676168299-boi39i597g1mjus8btj5khnp6q8tic4k.apps.goo
 
 const Home = ({ userId, handleLogin, handleLogout }) => {
 	return (
-		<div className="homeBackground">
-			<h1 className="Introduction">welcome to websitename, a tool built to help you build and maintain relationships!</h1>
+		<div className="Home-background">
+			<div className="Home-plantIconContainer">
+        <div className="Home-plantIcon" />
+      </div>
+      <h1 className="Home-introduction">welcome to websitename, a tool built to help you build and maintain relationships!</h1>
 			<div>
 				{userId ? (
        				<GoogleLogout
