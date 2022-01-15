@@ -1,3 +1,15 @@
+.Shop-background {
+  border-style: solid;
+  border-width: 24px;
+  border-color: #acd4ad;
+  background-color: #acd4ad;
+  text-align: center;
+}
+
+.Collapsible {
+  font-family: Papyrus;
+}
+
 .photo {
     width: 100px;
 }
