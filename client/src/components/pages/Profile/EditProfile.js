@@ -18,31 +18,28 @@ const EditProfile = (props) => {
             >
                 {close => (
                 <div className="EditProfile-background">
-                    <button className="EditProfile-close" onClick={close}>
-                    &times;
-                    </button>
                     <div className="EditProfile-header"> Edit Profile </div>
                     <div className="EditProfile-content">
                     {' '}
-                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Atque, a nostrum.
-                    Dolorem, repellat quidem ut, minima sint vel eveniet quibusdam voluptates
-                    delectus doloremque, explicabo tempore dicta adipisci fugit amet dignissimos?
-                    <br />
-                    Lorem ipsum dolor sit amet, consectetur adipisicing elit. Consequatur sit
-                    commodi beatae optio voluptatum sed eius cumque, delectus saepe repudiandae
-                    explicabo nemo nam libero ad, doloribus, voluptas rem alias. Vitae?
+                    Which part of your profile would you like to edit?
                     </div>
                     <div className="EditProfile-actions">
                     <Popup
-                        trigger={<button className="EditProfile-button"> Trigger </button>}
+                        trigger={<button className="EditProfile-button"> Change Avatar </button>}
                         position="top center"
                         nested
                     >
                         <span>
-                        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Beatae
-                        magni omnis delectus nemo, maxime molestiae dolorem numquam
-                        mollitia, voluptate ea, accusamus excepturi deleniti ratione
-                        sapiente! Laudantium, aperiam doloribus. Odit, aut.
+                        make this thingy what happens when you want to change avatar :thumbsup:
+                        </span>
+                    </Popup>
+                    <Popup
+                        trigger={<button className="EditProfile-button"> Change Display Name </button>}
+                        position="center"
+                        nested
+                    >
+                        <span>
+                        make this thingy what happens when you want to change name :thumbsup:
                         </span>
                     </Popup>
                     <button

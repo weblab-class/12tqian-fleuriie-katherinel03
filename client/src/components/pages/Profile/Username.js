@@ -15,7 +15,7 @@ const Username = (props) => {
     }, []);
 
     return (
-        <div>
+        <div className="Username-display">
             { username }
         </div>
     );

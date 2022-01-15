@@ -26,7 +26,7 @@ const Profile  = (props) => {
     // i want to die! :)
 
     return (
-        <div>
+        <div className="Profile-container">
             help
             <EditProfile />
         </div>
