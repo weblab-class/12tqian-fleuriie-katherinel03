@@ -65,7 +65,7 @@ const Garden = (props) => {
 	}, []);
 	return (
 		<div>
-			<NewActivityPopup userGoogleID={"user1"} otherGoogleID={"user2"}/>
+			<NewActivityPopup userGoogleID={"user1"} otherGoogleID={"user2"} />
 			<AliceCarousel
 				mouseTracking items={carouselItems}
 				keyboardNavigation={true}
