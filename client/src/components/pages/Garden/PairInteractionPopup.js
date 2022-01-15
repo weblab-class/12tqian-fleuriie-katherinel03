@@ -18,29 +18,42 @@ const PairInteractionPopup = (props) => {
 		}).then((profile) => {
 			setOtherAvatar(<Avatar avatarName={profile.currentAvatar} width={100} />);
 		});
-		get("/api/pairactivities", {
+		get("/api/pairactivity", {
 			userGoogleID: props.userGoogleID,
 			otherGoogleID: props.otherGoogleID,
 		}).then((activityList) => {
 			setActivities(activityList);
 		});
 	}, []);
+	console.log(activities);
+	console.log("MONKA");
+	const activityObjects = activities.map((activity, index) => {
+		return (
+			<div>
 
+				<span>
+					asdfasdf
+				</span>
+				<div key={index}>
+					idk man i just want to be done
+				</div>
+			</div>
+		);
+	});
+	console.log(activityObjects);
 	return (
 		<div>
 			<div style={{ display: "grid", gridTemplateColumns: "repeat(3, 1fr)", gridGap: 20 }}>
 				<div>
-					Column 1
 					{userAvatar}
 				</div>
 				<div>
-					<span>{userGoogleID + " & " + otherGoogleID}</span> 
+					<span>{props.userGoogleID + " & " + props.otherGoogleID}</span>
 					{/* to do add something that would add a new activity */}
-					{activityList.map((activity, index) => {
-						<div>
-							idk man i just want to be done
-						</div>
-					})}
+					<div>
+						asdfhasdifhadspf
+					</div>
+					{activityObjects}
 				</div>
 				<div>
 					{otherAvatar}

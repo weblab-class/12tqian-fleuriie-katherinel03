@@ -73,7 +73,7 @@ const Representation = (props) => {
 					Plant
 				</span>
 			</div>
-			<RepresentationPopup />
+			<RepresentationPopup userGoogleID={props.userGoogleID} otherGoogleID={props.otherGoogleID}/>
 		</div>
 	);
 };

@@ -1,12 +1,12 @@
 import React, { useEffect, useState, Component } from "react";
 
 import Popup from 'reactjs-popup';
-import 'reactjs-popup/dist/index.css';
+import NewActivityPopup from "./Representation/NewActivityPopup";
 
-const RepresentationPopup = () => {
+const RepresentationPopup = (props) => {
 	return (
 		<Popup
-			trigger={<button className="button"> Open Modal </button>}
+			trigger={<button className="button"> Activity Details </button>}
 			modal
 			nested
 		>
@@ -17,14 +17,8 @@ const RepresentationPopup = () => {
 					</button>
 					<div className="header"> Modal Title </div>
 					<div className="content">
-						{' '}
-						Lorem ipsum dolor sit amet consectetur adipisicing elit. Atque, a nostrum.
-						Dolorem, repellat quidem ut, minima sint vel eveniet quibusdam voluptates
-						delectus doloremque, explicabo tempore dicta adipisci fugit amet dignissimos?
-						<br />
-						Lorem ipsum dolor sit amet, consectetur adipisicing elit. Consequatur sit
-						commodi beatae optio voluptatum sed eius cumque, delectus saepe repudiandae
-						explicabo nemo nam libero ad, doloribus, voluptas rem alias. Vitae?
+						naururrf
+						<NewActivityPopup userGoogleID={props.userGoogleID} otherGoogleID={props.otherGoogleID} />
 					</div>
 					<div className="actions">
 						<Popup

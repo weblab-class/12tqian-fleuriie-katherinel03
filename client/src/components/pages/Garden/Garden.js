@@ -10,7 +10,10 @@ import "./Garden.css";
 
 import Representation from "./Representation/Representation.js";
 
-import NewActivityPopup from "./Representation/NewActivityPopup";
+import RepresentationPopup from "./RepresentationPopup";
+
+import PairInteractionPopup from "./PairInteractionPopup";
+
 
 const handleDragStart = (e) => e.preventDefault();
 
@@ -65,7 +68,7 @@ const Garden = (props) => {
 	}, []);
 	return (
 		<div>
-			<NewActivityPopup userGoogleID={"user1"} otherGoogleID={"user2"} />
+			<PairInteractionPopup userGoogleID="user1" otherGoogleID="user2" />
 			<AliceCarousel
 				mouseTracking items={carouselItems}
 				keyboardNavigation={true}
