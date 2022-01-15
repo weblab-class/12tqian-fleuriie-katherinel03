@@ -26,7 +26,8 @@ const Home = ({ userId, handleLogin, handleLogout }) => {
                buttonText="Logout"
                onLogoutSuccess={handleLogout}
                onFailure={(err) => console.log(err)}
-    			/>
+    		   className="Home-googleButton"
+				/>
       			) : (
         			<GoogleLogin
               clientId={GOOGLE_CLIENT_ID}
@@ -35,9 +36,17 @@ const Home = ({ userId, handleLogin, handleLogout }) => {
               onFailure={(err) => console.log(err)}
 			  cookiePolicy={'single_host_origin'}
 			  isSignedIn={true}
+			  className="Home-googleButton"
 				/>
         		)}
 			</div>
+		<div>
+			{userId ** (
+			<Link to={'/profile/${props.userId}'}>
+				Profile
+			</Link>
+			)}
+		</div>
 		</div>
 		
 	)
