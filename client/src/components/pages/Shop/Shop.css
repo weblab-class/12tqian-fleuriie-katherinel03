@@ -1,0 +1,12 @@
+.photo {
+    width: 100px;
+}
+
+.shop {
+    height: 350px;
+}
+
+.shop2 {
+    height: 300px;
+    overflow-y: scroll;
+}
