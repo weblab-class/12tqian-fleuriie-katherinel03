@@ -17,12 +17,12 @@ const EditProfile = (props) => {
                 nested
             >
                 {close => (
-                <div className="modal">
-                    <button className="close" onClick={close}>
+                <div className="EditProfile-background">
+                    <button className="EditProfile-close" onClick={close}>
                     &times;
                     </button>
                     <div className="EditProfile-header"> Edit Profile </div>
-                    <div className="content">
+                    <div className="EditProfile-content">
                     {' '}
                     Lorem ipsum dolor sit amet consectetur adipisicing elit. Atque, a nostrum.
                     Dolorem, repellat quidem ut, minima sint vel eveniet quibusdam voluptates
@@ -32,9 +32,9 @@ const EditProfile = (props) => {
                     commodi beatae optio voluptatum sed eius cumque, delectus saepe repudiandae
                     explicabo nemo nam libero ad, doloribus, voluptas rem alias. Vitae?
                     </div>
-                    <div className="actions">
+                    <div className="EditProfile-actions">
                     <Popup
-                        trigger={<button className="button"> Trigger </button>}
+                        trigger={<button className="EditProfile-button"> Trigger </button>}
                         position="top center"
                         nested
                     >
@@ -46,19 +46,18 @@ const EditProfile = (props) => {
                         </span>
                     </Popup>
                     <button
-                        className="button"
+                        className="EditProfile-button"
                         onClick={() => {
-                        console.log('modal closed ');
+                        console.log('modal closed');
                         close();
                         }}
                     >
-                        close modal
+                        Return to Profile
                     </button>
                     </div>
                 </div>
                 )}
             </Popup>
-            );
         </div>
     );
 };
