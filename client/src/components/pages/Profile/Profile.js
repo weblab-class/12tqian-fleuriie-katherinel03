@@ -1,20 +1,29 @@
 import React, { useEffect, useState } from "react";
 import { Link } from "@reach/router";
-import Avatar from "./Avatar.js";
+import Avatar from "../Avatar/Avatar.js";
 import EditProfile from "./EditProfile.js";
 import OtherStats from "./OtherStats.js";
 
 import "../../../utilities.css";
 import "./Profile.css";
-import {get, post} from "../../../utilities.js";
+import { get, post } from "../../../utilities.js";
 
-const Profile  = (props) => {
+const Profile = (props) => {
     const [user, setUser] = useState();
     useEffect(() => {
-        get("/api/user", { googleID: props.googleID }).then((user) => {
+        document.title = "Profile Page";
+        get(`/api/user`, { googleID: props.userID }).then((user) => {
             setUser(user.name);
         })
     }, []);
+    const [avatar, setAvatar] = useState(undefined);
+    useEffect(() => {
+		get("/api/userprofile", {
+			googleID: props.userGoogleID,
+		}).then((profile) => {
+			setAvatar(<Avatar avatarName={profile.currentAvatar} width={100} />);
+		});
+	}, []);
     // getting user data!
 
     // i want to die! :)
@@ -24,7 +33,7 @@ const Profile  = (props) => {
     return (
         <div className="Profile-container">
             <div className="Avatar-container">
-                <Avatar />
+                {avatar}
             </div>
             <h1 className="Profile-username">{user.name}</h1>
             <hr />

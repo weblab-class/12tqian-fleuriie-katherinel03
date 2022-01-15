@@ -61,6 +61,9 @@ const NewActivityPopup = (props) => {
 		<div>
 
 			<form onSubmit={handleSubmit(onSubmit, onError)}>
+				<div>
+					Enter new activity pls
+				</div>
 				<Controller
 					control={control}
 					name="activityTime"

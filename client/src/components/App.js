@@ -34,7 +34,6 @@ const App = () => {
     const userToken = res.tokenObj.id_token;
     post("/api/login", { token: userToken }).then((user) => {
       setUserId(user._id);
-      // if no profile create profile + default avatar
       post("/api/initsocket", { socketid: socket.id });
     });
   };
@@ -46,7 +45,11 @@ const App = () => {
 
   return (
     <>
-      <NavBar />
+      <NavBar 
+        handleLogin = {handleLogin}
+        handleLogout = {handleLogout}
+        userId = {userId}
+      />
       <div className="App-container">
         <Router>
           <Home path="/" handleLogin={handleLogin} handleLogout={handleLogout} userId={userId} />

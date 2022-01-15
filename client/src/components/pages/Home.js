@@ -4,7 +4,7 @@ import GoogleLogin, {
 	GoogleLoginResponse,
 	GoogleLoginResponseOffline,
 	GoogleLogout,
-  } from "react-google-login";
+} from "react-google-login";
 
 import "../../utilities.css";
 import "./Home.css";
@@ -16,39 +16,37 @@ const Home = ({ userId, handleLogin, handleLogout }) => {
 	return (
 		<div className="Home-background">
 			<div className="Home-plantIconContainer">
-        <div className="Home-plantIcon" />
-      </div>
-      <h1 className="Home-introduction">welcome to websitename, a tool built to help you build and maintain relationships!</h1>
+				<div className="Home-plantIcon" />
+			</div>
+			<h1 className="Home-introduction">welcome to websitename, a tool built to help you build and maintain relationships!</h1>
 			<div>
 				{userId ? (
-       				<GoogleLogout
-               clientId={GOOGLE_CLIENT_ID}
-               buttonText="Logout"
-               onLogoutSuccess={handleLogout}
-               onFailure={(err) => console.log(err)}
-    		   className="Home-googleButton"
-				/>
-      			) : (
-        			<GoogleLogin
-              clientId={GOOGLE_CLIENT_ID}
-              buttonText="start planting!"
-              onSuccess={handleLogin}
-              onFailure={(err) => console.log(err)}
-			  cookiePolicy={'single_host_origin'}
-			  isSignedIn={true}
-			  className="Home-googleButton"
-				/>
-        		)}
+					<GoogleLogout
+						clientId={GOOGLE_CLIENT_ID}
+						buttonText="Logout"
+						onLogoutSuccess={handleLogout}
+						onFailure={(err) => console.log(err)}
+						className="Home-googleButton"
+					/>
+				) : (
+					<GoogleLogin
+						clientId={GOOGLE_CLIENT_ID}
+						buttonText="start planting!"
+						onSuccess={handleLogin}
+						onFailure={(err) => console.log(err)}
+						cookiePolicy={'single_host_origin'}
+						isSignedIn={true}
+						className="Home-googleButton"
+					/>
+				)}
 			</div>
-		<div>
-			{userId ** (
-			<Link to={'/profile/${props.userId}'}>
-				Profile
-			</Link>
+			{userId && (
+				<Link to={`/profile/`} className="Home-profileLink">
+					Profile
+				</Link>
 			)}
 		</div>
-		</div>
-		
+
 	)
 };
 
