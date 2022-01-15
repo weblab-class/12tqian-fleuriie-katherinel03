@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { Router } from "@reach/router";
 import NotFound from "./pages/NotFound.js";
-import Garden from "./pages/Garden/Garden.js"
+import Garden from "./pages/Garden/Garden.js";
 import NavBar from "./modules/NavBar.js";
 import Home from "./pages/Home.js";
 import Profile from "./pages/Profile/Profile.js";
