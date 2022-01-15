@@ -58,8 +58,7 @@ const Shop = () => {
                         </div>
                     </div>
                 </Collapsible>
-            </div>
-            <div className="shop">
+                <div className="space"></div>
                 <Collapsible trigger="Garden Customization">
                     <div className="shop2">
                         <div>

@@ -4,10 +4,16 @@
   border-color: #acd4ad;
   background-color: #acd4ad;
   text-align: center;
+  height: 700px;
+}
+
+.space {
+  height: 20px;
 }
 
 .Collapsible {
   font-family: Papyrus;
+  font-size: 24px;
 }
 
 .photo {
