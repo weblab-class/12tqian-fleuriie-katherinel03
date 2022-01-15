@@ -17,19 +17,19 @@ const Home = ({ userId, handleLogin, handleLogout }) => {
 		<div className="homeBackground">
 			<h1 className="Introduction">welcome to websitename, a tool built to help you build and maintain relationships!</h1>
 			<div>
-				{props.userId ? (
+				{userId ? (
        				<GoogleLogout
-          			clientId={GOOGLE_CLIENT_ID}
-          			buttonText="Logout"
-          			onLogoutSuccess={props.handleLogout}
-          			onFailure={() => console.log(`Failed to logout.`)}
+               clientId={GOOGLE_CLIENT_ID}
+               buttonText="Logout"
+               onLogoutSuccess={handleLogout}
+               onFailure={(err) => console.log(err)}
     			/>
       			) : (
         			<GoogleLogin
-          			clientId={GOOGLE_CLIENT_ID}
-					      buttonText="start planting!"
-					      onSuccess={props.handleLogin}
-					      onFailure={(err) => console.log(err)}
+              clientId={GOOGLE_CLIENT_ID}
+              buttonText="start planting!"
+              onSuccess={handleLogin}
+              onFailure={(err) => console.log(err)}
         		/>
         		)}
 			</div>
