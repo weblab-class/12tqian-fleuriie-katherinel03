@@ -5,6 +5,7 @@ import { get, post } from "../../../../utilities.js";
 
 import RepresentationAvatar from "./RepresentationAvatar.js";
 import HealthBar from "./HealthBar.js";
+import RepresentationPopup from "../RepresentationPopup";
 
 /**
  * two things
@@ -17,6 +18,7 @@ const MINUTES_IN_DAY = 1440;
 const Representation = (props) => {
 	const [healthBar, setHealthBar] = useState(undefined);
 	const [representationAvatar, setRepresentationAvatar] = useState(undefined);
+	const [representationPopup, setRepresentationPopup] = useState(undefined);
 
 	const getHealthBarPercentage = (goalFrequency, timeMilliseconds) => {
 		const goal = goalFrequency * MINUTES_IN_DAY;
@@ -61,16 +63,17 @@ const Representation = (props) => {
 				}
 			});
 		});
-  }, []);
+	}, []);
 	return (
 		<div>
 			{healthBar}
 			{representationAvatar}
 			<div style={{ textAlign: "center" }}>
 				<span>
-					
+					Plant
 				</span>
 			</div>
+			<RepresentationPopup />
 		</div>
 	);
 };
