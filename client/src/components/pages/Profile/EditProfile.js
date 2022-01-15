@@ -30,7 +30,7 @@ const EditProfile = (props) => {
                         nested
                     >
                         <span>
-                        make this thingy what happens when you want to change avatar :thumbsup:
+                        insert change avatar button here :thumbsup:
                         </span>
                     </Popup>
                     <Popup
@@ -39,7 +39,7 @@ const EditProfile = (props) => {
                         nested
                     >
                         <span>
-                        make this thingy what happens when you want to change name :thumbsup:
+                        insert change name button here :thumbsup:
                         </span>
                     </Popup>
                     <button

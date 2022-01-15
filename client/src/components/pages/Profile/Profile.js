@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { Link } from "@reach/router";
-import Avatar from "./Avatar.js";
+import Avatar from "../Avatar/Avatar.js";
 import EditProfile from "./EditProfile.js";
 import OtherStats from "./OtherStats.js";
 
@@ -16,6 +16,14 @@ const Profile = (props) => {
             setUser(user.name);
         })
     }, []);
+    const [avatar, setAvatar] = useState(undefined);
+    useEffect(() => {
+		get("/api/userprofile", {
+			googleID: props.userGoogleID,
+		}).then((profile) => {
+			setAvatar(<Avatar avatarName={profile.currentAvatar} width={100} />);
+		});
+	}, []);
     // getting user data!
 
     // i want to die! :)
@@ -25,7 +33,7 @@ const Profile = (props) => {
     return (
         <div className="Profile-container">
             <div className="Avatar-container">
-                <Avatar />
+                {avatar}
             </div>
             <h1 className="Profile-username">{user.name}</h1>
             <hr />
