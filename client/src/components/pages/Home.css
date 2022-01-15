@@ -1,11 +1,14 @@
 .Home-background {
+  border-style: solid;
+  border-width: 24px;
+  border-color: #acd4ad;
   background-color: #acd4ad;
-  border: none;
   text-align: center;
 }
 
 .Home-introduction {
   font-family: Papyrus;
+  color:  #008040;
 }
 
 .Home-plantIconContainer {
