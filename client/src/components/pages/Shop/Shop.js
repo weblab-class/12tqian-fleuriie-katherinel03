@@ -26,7 +26,7 @@ const Shop = () => {
             <div className="header"> Item Name </div>
             <div className="content">
                 {' '}
-                <img className="photo" src={shop} />
+                <img className="photo2" src={shop} class="center" />
             </div>
             <div className="actions">
                 <button> Buy </button>
