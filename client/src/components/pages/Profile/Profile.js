@@ -10,11 +10,18 @@ import "./Profile.css";
 import {get, post} from "../../../utilities.js";
 
 const Profile  = (props) => {
-
+    const [user, setUser] = useState();
+    useEffect(() => {
+        get("/api/user", { googleID: props.googleID }.then((user) => {
+            setUser(user.name);
+        }))
+    }, []);
     // getting user data!
 
     // i want to die! :)
-
+    if (!user) {
+        return <div> Log in before you can view your profile! </div>
+    }
     return (
         <div className="Profile-container">
             help
