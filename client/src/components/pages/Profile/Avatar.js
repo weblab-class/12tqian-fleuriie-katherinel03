@@ -8,9 +8,15 @@ const Avatar = (props) => {
     const [avatar, setAvatar] = useState([]);
 
     useEffect(() => {
-        get("/api/userprofile", { googleID: "", currentAvatar: "", currency: "" }.then((avatar) => {
-            setAvatar(avatar);
+        get("/api/userprofile", { googleID: props.googleID }.then((user) => {
+            setAvatar(user.currentAvatar);
         }))
     }, []);
-    
+    return (
+        <div>
+            
+        </div>
+    );
 }
+
+export default Avatar;
