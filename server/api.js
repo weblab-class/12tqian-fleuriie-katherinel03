@@ -51,6 +51,12 @@ router.post("/initsocket", (req, res) => {
 
 // anything else falls to this "not found" case
 
+router.get("/user", (req, res) => {
+  User.findById(req.query.googleID).then((user) => {
+    res.send(user);
+  });
+});
+
 router.get("/useravatar", (req, res) => {
   UserAvatar.find({ googleID: req.query.googleID }).then((avatarList) => {
     res.send(avatarList);
