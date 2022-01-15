@@ -5,6 +5,7 @@ import shop from "./shop.png";
 import "../../../utilities.css";
 import "./Shop.css";
 import Collapsible from 'react-collapsible';
+import Popup from 'reactjs-popup';
 
 const Shop = () => {
     return (
@@ -12,11 +13,40 @@ const Shop = () => {
             <div className="shop">
                 <Collapsible trigger="Avatar Customization">
                     <div className="shop2">
-                        <div>
-                            <img className="photo" src={shop} />;
-                            <img className="photo" src={shop} />;
-                        </div>
-                        <div>
+                    <Popup
+      trigger={<button className="button"> <img className="photo" src={shop} /> </button>}
+      modal
+      nested
+    >
+        {close => (
+            <div className="modal">
+                <button className="close" onClick={close}>
+                &times;
+                </button>
+            <div className="header"> Item Name </div>
+            <div className="content">
+                {' '}
+                <img className="photo" src={shop} />
+            </div>
+            <div className="actions">
+                <button> Buy </button>
+                <button
+                    className="button"
+                    onClick={() => {
+                    console.log('modal closed ');
+                    close();
+                    }}
+                >
+            Cancel
+                </button>
+            </div>
+        </div>
+        )}
+    </Popup>                        
+    <img className="photo" src={shop} />;
+
+
+    <div>
                             <img className="photo" src={shop} />;
                             <img className="photo" src={shop} />;
                         </div>
@@ -53,7 +83,14 @@ const Shop = () => {
                     </div>
                 </Collapsible>
             </div>
+
+
+
+
         </div>
+
+
+        
     );
 };
 
