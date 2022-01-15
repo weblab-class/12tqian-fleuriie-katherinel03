@@ -7,7 +7,7 @@ import GoogleLogin, {
 import "./Skeleton.css";
 import { RouteComponentProps } from "@reach/router";
 //TODO(weblab student): REPLACE WITH YOUR OWN CLIENT_ID
-const GOOGLE_CLIENT_ID = "121479668229-t5j82jrbi9oejh7c8avada226s75bopn.apps.googleusercontent.com";
+const GOOGLE_CLIENT_ID = "714676168299-boi39i597g1mjus8btj5khnp6q8tic4k.apps.googleusercontent.com";
 type Props = RouteComponentProps & {
   userId: String;
   handleLogin: (res: GoogleLoginResponse | GoogleLoginResponseOffline) => void;
@@ -19,14 +19,14 @@ const Skeleton = (props: Props) => {
       {props.userId ? (
         <GoogleLogout
           clientId={GOOGLE_CLIENT_ID}
-          buttonText="Logout"
+          buttonText="logout"
           onLogoutSuccess={props.handleLogout}
           onFailure={() => console.log(`Failed to logout.`)}
         />
       ) : (
         <GoogleLogin
           clientId={GOOGLE_CLIENT_ID}
-          buttonText="Login"
+          buttonText="start planting!"
           onSuccess={props.handleLogin}
           onFailure={(err) => console.log(err)}
         />
