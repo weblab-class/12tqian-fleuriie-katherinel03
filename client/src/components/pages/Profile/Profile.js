@@ -3,27 +3,35 @@ import { Link } from "@reach/router";
 
 import "../../utilities.css";
 import "./Profile.css";
-import { get } from "core-js/core/dict";
+import {get, post} from "../../utilities.js";
 
 const Profile  = (props) => {
     get("/api/user", {
-        name: ""
-        googleID: ""
+        name: "",
+        googleID: "",
     })
     get("/api/useravatar", {
-        googleID: ""
-        avatarNames: ""
+        googleID: "",
+        avatarNames: [""],
     })
     get("/api/userprofile", {
-        googleID: ""
-        currentAvatar: ""
-        currency: ""
+        googleID: "",
+        currentAvatar: "",
+        currency: "",
     })
     get("/api/userachievement", {
-        googleID: ""
-        achievementName: ""
+        googleID: "",
+        achievementName: "",
     })
-    /* const [avatar, setAvatar] = useState();
+
+    return (
+        <div>
+            help
+        </div>
+    )
+    /* kat's old code
+
+    const [avatar, setAvatar] = useState();
     const [username, setUsername] = useState();
     const [user, setUser] = useState();
 
@@ -49,7 +57,10 @@ const Profile  = (props) => {
 
 export default Profile;
 
-/* const Garden = (props) => {
+/* 
+code from garden to use as reference
+
+    const Garden = (props) => {
   post("/api/pairactivity", {
     userGoogleID: "user1",
     otherGoogleID: "user2",
