@@ -32,7 +32,8 @@ const Profile  = (props) => {
 
     return (
         <div>
-            <Avatar />
+            help
+            <EditProfile />
         </div>
     )
     /* kat's old code
