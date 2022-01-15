@@ -51,6 +51,7 @@ const App = () => {
           <Home path="/" handleLogin={handleLogin} handleLogout={handleLogout} userId={userId} />
           <Profile path="/profile/" />
           <Garden path="/garden/" />
+          <Shop path="/shop/" />
           <NotFound default />
         </Router>
       </div>
