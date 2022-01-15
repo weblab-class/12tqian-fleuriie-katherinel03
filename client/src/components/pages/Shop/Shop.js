@@ -11,30 +11,46 @@ const Shop = () => {
         <div className="Shop-background">
             <div className="shop">
                 <Collapsible trigger="Avatar Customization">
-                    <div>
-                        <img className="photo" src={shop} />;
-                        <img className="photo" src={shop} />;
+                    <div className="shop2">
+                        <div>
+                            <img className="photo" src={shop} />;
+                            <img className="photo" src={shop} />;
+                        </div>
+                        <div>
+                            <img className="photo" src={shop} />;
+                            <img className="photo" src={shop} />;
+                        </div>
+                        <div>
+                            <img className="photo" src={shop} />;
+                            <img className="photo" src={shop} />;
+                        </div>
+                        <div>
+                            <img className="photo" src={shop} />;
+                            <img className="photo" src={shop} />;
+                        </div>
                     </div>
-                    <div>
-                        <img className="photo" src={shop} />;
-                        <img className="photo" src={shop} />;
-                    </div>
-                    <div>
-                        <img className="photo" src={shop} />;
-                        <img className="photo" src={shop} />;
-                    </div>
-                    <div>
-                        <img className="photo" src={shop} />;
-                        <img className="photo" src={shop} />;
-                    </div>
-
                 </Collapsible>
             </div>
-            <div>
+            <div className="shop">
                 <Collapsible trigger="Garden Customization">
-                    <p>
-                        Shop Items
-                    </p>
+                    <div className="shop2">
+                        <div>
+                            <img className="photo" src={shop} />;
+                            <img className="photo" src={shop} />;
+                        </div>
+                        <div>
+                            <img className="photo" src={shop} />;
+                            <img className="photo" src={shop} />;
+                        </div>
+                        <div>
+                            <img className="photo" src={shop} />;
+                            <img className="photo" src={shop} />;
+                        </div>
+                        <div>
+                            <img className="photo" src={shop} />;
+                            <img className="photo" src={shop} />;
+                        </div>
+                    </div>
                 </Collapsible>
             </div>
         </div>
