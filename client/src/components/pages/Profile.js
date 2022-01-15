@@ -18,14 +18,14 @@ const Profile  = (props) => {
         return (<div> Loading! </div>);
     }
     return (
-        <>
+        <div className="profileBackground">
             <div className="Profile-avatarContainer">
                 <div className="Profile-avatar" />
             </div>
             <h1 className="Profile-username u-textCenter">
                 {user.username}
             </h1>
-        </>
+        </div>
     )
 }
 
