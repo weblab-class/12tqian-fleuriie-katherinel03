@@ -13,16 +13,6 @@ const Profile  = (props) => {
 
     // getting user data!
 
-    get("/api/userprofile", {
-        googleID: "",
-        currentAvatar: "",
-        currency: "",
-    })
-    get("/api/userachievement", {
-        googleID: "",
-        achievementName: "",
-    })
-
     // i want to die! :)
 
     return (
