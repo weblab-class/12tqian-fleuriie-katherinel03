@@ -18,7 +18,7 @@ const RepresentationPopup = (props) => {
 					</button>
 					<div className="header"> Pair Interaction </div>
 					<div className="content">
-						<PairInteractionPopup userGoogleID="user1" otherGoogleID="user2" />
+						<PairInteractionPopup userGoogleID={props.userGoogleID} otherGoogleID={props.otherGoogleID} />
 					</div>
 				</div>
 			)}

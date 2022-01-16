@@ -64,7 +64,7 @@ router.get("/useravatar", (req, res) => {
 });
 
 router.get("/userprofile", (req, res) => {
-  UserProfile.find({ googleID: req.query.googleID }).then((userProfile) => {
+  UserProfile.findOne({ googleID: req.query.googleID }).then((userProfile) => {
     res.send(userProfile);
   });
 });
@@ -102,10 +102,11 @@ router.get("/pairactivity", (req, res) => {
 });
 
 router.post("/userprofile", auth.ensureLoggedIn, (req, res) => {
-  const newUserPofile = UserProfile({
+  const newUserProfile = UserProfile({
     googleID: req.body.googleID,
     currentAvatar: req.body.currentAvatar,
     currency: req.body.currency,
+    userName: req.body.userName
   });
   newUserProfile.save().then(data => res.send(data));
 });
@@ -128,6 +129,7 @@ router.post("/pairavatar", auth.ensureLoggedIn, (req, res) => {
     representationName: req.body.representationName,
     totalExperience: req.body.totalExperience,
     goalFrequency: req.body.goalFrequency,
+    pairName: req.body.pairName,
   });
   socketManager.getIo().emit("newPairAvatar", newPairAvatar);
   newPairAvatar.save().then(data => res.send(data));

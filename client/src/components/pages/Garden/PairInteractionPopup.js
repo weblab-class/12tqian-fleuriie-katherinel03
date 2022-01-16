@@ -12,12 +12,17 @@ import "react-table-6/react-table.css"
 const PairInteractionPopup = (props) => {
 	const [userAvatar, setUserAvatar] = useState(undefined);
 	const [otherAvatar, setOtherAvatar] = useState(undefined);
+	const [representation, setRepresentation] = useState(undefined);
 	const [activities, setActivities] = useState([]);
+	const [userName, setUserName] = useState(undefined);
+	const [otherName, setOtherName] = useState(undefined);
 
 	useEffect(() => {
 		get("/api/userprofile", {
 			googleID: props.userGoogleID,
 		}).then((profile) => {
+			console.log(profile);
+			setUserName(profile.userName);
 			setUserAvatar(<Avatar avatarName={profile.currentAvatar} width={100} />);
 		});
 	}, []);
@@ -27,6 +32,16 @@ const PairInteractionPopup = (props) => {
 			googleID: props.otherGoogleID,
 		}).then((profile) => {
 			setOtherAvatar(<Avatar avatarName={profile.currentAvatar} width={100} />);
+		});
+	}, []);
+
+	useEffect(() => {
+		get("/api/pairavatarone", {
+			userGoogleID: props.userGoogleID,
+			otherGoogleID: props.otherGoogleID,
+		}).then((pairAvatar) => {
+			setRepresentation(pairAvatar.representationName);
+			setOtherName(pairAvatar.pairName);
 		});
 	}, []);
 
@@ -45,9 +60,9 @@ const PairInteractionPopup = (props) => {
 
 	useEffect(() => {
 		socket.on("newPairActivity", setPairActivities);
-    return () => {
-      socket.off("newPairActivity", setPairActivities);
-    };
+		return () => {
+			socket.off("newPairActivity", setPairActivities);
+		};
 	}, []);
 
 	return (
@@ -57,7 +72,7 @@ const PairInteractionPopup = (props) => {
 					{userAvatar}
 				</div>
 				<div>
-					<h1>{props.userGoogleID + " & " + props.otherGoogleID}</h1>
+					<h1>{userName + " & " + otherName}</h1>
 					{/* to do add something that would add a new activity */}
 					<NewActivityPopup userGoogleID={props.userGoogleID} otherGoogleID={props.otherGoogleID} />
 					<br />

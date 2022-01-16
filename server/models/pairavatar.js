@@ -6,6 +6,7 @@ const PairAvatarSchema = new mongoose.Schema({
 	representationName: String,
 	totalExperience: Number,
 	goalFrequency: Number,
+	pairName: String,
 });
 
 // compile model from schema

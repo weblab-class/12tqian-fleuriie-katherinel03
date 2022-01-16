@@ -35,6 +35,7 @@ const App = () => {
     post("/api/login", { token: userToken }).then((user) => {
       setUserId(user._id);
       post("/api/initsocket", { socketid: socket.id });
+      console.log(user);
     });
   };
 
@@ -45,10 +46,10 @@ const App = () => {
 
   return (
     <>
-      <NavBar 
-        handleLogin = {handleLogin}
-        handleLogout = {handleLogout}
-        userId = {userId}
+      <NavBar
+        handleLogin={handleLogin}
+        handleLogout={handleLogout}
+        userId={userId}
       />
       <div className="App-container">
         <Router>
