@@ -1,18 +1,16 @@
-import React, { Component, useEffect } from "react";
+import React, { Component, useEffect, useState } from "react";
 
 import "../../../utilities.css";
 
 import { get, post } from "../../../utilities.js";
+import { socket } from "../../../client-socket";
 
 import AliceCarousel from 'react-alice-carousel';
 import 'react-alice-carousel/lib/alice-carousel.css';
 import "./Garden.css";
 
 import Representation from "./Representation/Representation.js";
-
-import RepresentationPopup from "./RepresentationPopup";
-
-import PairInteractionPopup from "./PairInteractionPopup";
+import NewPairPopup from "./NewPairPopup";
 
 
 const handleDragStart = (e) => e.preventDefault();
@@ -26,59 +24,88 @@ const responsive = {
 };
 
 const Garden = (props) => {
-	post("/api/pairactivity", {
-		userGoogleID: "user1",
-		otherGoogleID: "user2",
-		activityName: "league",
-		activityTime: new Date(),
-	});
-	post("/api/pairactivity", {
-		userGoogleID: "user1",
-		otherGoogleID: "user2",
-		activityName: "died",
-		activityTime: new Date(),
-	});
-	get("/api/pairactivity", {
-		userGoogleID: "user1",
-		otherGoogleID: "user2"
-	}).then((data) => {
-		console.log(data);
-	});
-	post("/api/pairavatar", {
-		userGoogleID: "user1",
-		otherGoogleID: "user2",
-		representationName: "Representation",
-		totalExperience: 0,
-		goalFrequency: 100,
-	}).then((activity) => {
-		console.log(activity);
-	});
+	const [user, setUser] = useState(undefined);
+	const [pairAvatars, setPairAvatars] = useState([]);
+	const [carouselItems, setCarouselItems] = useState([]);
+
 	useEffect(() => {
-		get("/api/pairavatar", {
-			userGoogleID: "user1",
-		}).then((pairAvatars) => {
-			for (const avatar of pairAvatars) {
-				carouselItems.push(
-					<span onDragStart={handleDragStart} role="presentation" className="carouselRepresentation">
-						<Representation userGoogleID={avatar.userGoogleID} otherGoogleID={avatar.otherGoogleID} />
-					</span>
-				);
+		get("/api/whoami",).then((curUser) => {
+			if (curUser._id) {
+				setUser(curUser);
 			}
 		});
 	}, []);
-	return (
+
+	const resetCarousel = (avatarList) => {
+		const newCarouselItems = [];
+		for (const avatar of avatarList) {
+			newCarouselItems.push(
+				<span onDragStart={handleDragStart} role="presentation" className="carouselRepresentation">
+					<Representation userGoogleID={avatar.userGoogleID} otherGoogleID={avatar.otherGoogleID} />
+				</span>
+			);
+		}
+		setCarouselItems(newCarouselItems);
+	};
+
+	const loadPairAvatars = () => {
+		if (user) {
+			get("/api/pairavatar", {
+				userGoogleID: user.googleID,
+			}).then((avatarList) => {
+				setPairAvatars(avatarList);
+				return avatarList;
+			}).then((avatarList) => {
+				resetCarousel(avatarList);
+			});
+		}
+		console.log(user);
+		console.log(carouselItems);
+		console.log("CAROUSEL ITEMS");
+	};
+
+	useEffect(() => {
+		loadPairAvatars();
+	}, [user]);
+
+	useEffect(() => {
+		socket.on("newPairAvatar", loadPairAvatars);
+		return () => {
+			socket.off("newPairAvatar", loadPairAvatars);
+		};
+	}, [user]);
+
+	let carousel;
+	if (carouselItems.length === 0) {
+		carousel = 
 		<div>
-			<AliceCarousel
-				mouseTracking items={carouselItems}
-				keyboardNavigation={true}
-				infinite={true}
-				controlsStrategy="alternate"
-				responsive={responsive}
-				disableDotsControls={true}
-				animationDuration={140}
-			/>
+			no fronds go out and make some dummy
 		</div>
-	);
+	} else {
+		carousel = <AliceCarousel
+					mouseTracking items={carouselItems}
+					keyboardNavigation={true}
+					infinite={true}
+					controlsStrategy="alternate"
+					responsive={responsive}
+					disableDotsControls={true}
+					animationDuration={140}
+				/>;
+	}
+	if (!user) {
+		return (
+			<div>
+				Please login.
+			</div>
+		);
+	} else {
+		return (
+			<div>
+				<NewPairPopup userGoogleID={user.googleID} />
+				{carousel}
+			</div>
+		);
+	}
 };
 
 export default Garden;

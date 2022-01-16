@@ -101,6 +101,15 @@ router.get("/pairactivity", (req, res) => {
   });
 });
 
+router.post("/userprofile", auth.ensureLoggedIn, (req, res) => {
+  const newUserPofile = UserProfile({
+    googleID: req.body.googleID,
+    currentAvatar: req.body.currentAvatar,
+    currency: req.body.currency,
+  });
+  newUserProfile.save().then(data => res.send(data));
+});
+
 router.post("/pairactivity", auth.ensureLoggedIn, (req, res) => {
   const newPairActivity = new PairActivity({
     userGoogleID: req.body.userGoogleID,
@@ -108,6 +117,7 @@ router.post("/pairactivity", auth.ensureLoggedIn, (req, res) => {
     activityName: req.body.activityName,
     activityTime: req.body.activityTime,
   });
+  socketManager.getIo().emit("newPairActivity", newPairActivity);
   newPairActivity.save().then(data => res.send(data));
 });
 
@@ -119,6 +129,7 @@ router.post("/pairavatar", auth.ensureLoggedIn, (req, res) => {
     totalExperience: req.body.totalExperience,
     goalFrequency: req.body.goalFrequency,
   });
+  socketManager.getIo().emit("newPairAvatar", newPairAvatar);
   newPairAvatar.save().then(data => res.send(data));
 });
 

@@ -37,8 +37,6 @@ const NewActivityPopup = (props) => {
 	const onSubmit = (data, e) => {
 		const activityTime = new Date(data.activityTime);
 		const activityName = data.activityName;
-		console.log(activityTime);
-		console.log(data.activityName);
 		if (data.activityTime === undefined || data.activityName === undefined) {
 			onShowAlert("success");
 		} else {

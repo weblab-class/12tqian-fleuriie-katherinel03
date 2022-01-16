@@ -7,18 +7,12 @@ import RepresentationAvatar from "./RepresentationAvatar.js";
 import HealthBar from "./HealthBar.js";
 import RepresentationPopup from "../RepresentationPopup";
 
-/**
- * two things
- * userGoogleID
- * otherGoogleID
- */
-
 const MULT_FACTOR = 2;
 const MINUTES_IN_DAY = 1440;
+
 const Representation = (props) => {
 	const [healthBar, setHealthBar] = useState(undefined);
 	const [representationAvatar, setRepresentationAvatar] = useState(undefined);
-	const [representationPopup, setRepresentationPopup] = useState(undefined);
 
 	const getHealthBarPercentage = (goalFrequency, timeMilliseconds) => {
 		const goal = goalFrequency * MINUTES_IN_DAY;
@@ -45,11 +39,11 @@ const Representation = (props) => {
 				userGoogleID: props.userGoogleID,
 				otherGoogleID: props.otherGoogleID,
 			}).then((activities) => {
-				let timeElapsed;
+				let lastDate;
 				if (activities.length === 0) {
-					setHealthBarPercentage(0);
+					lastDate = new Date();
 				} else {
-					const lastDate = new Date(Math.max.apply(null, activities.map((e) => {
+					lastDate = new Date(Math.max.apply(null, activities.map((e) => {
 						const date = new Date(e.activityTime);
 						if (isNaN(date.getTime())) {
 							return null;
@@ -57,10 +51,10 @@ const Representation = (props) => {
 							return date;
 						}
 					})));
-					const timeElapsed = lastDate - (new Date());
-					const health = getHealthBarPercentage(data.goalFrequency, timeElapsed);
-					setHealthBar(<HealthBar health={health} />);
 				}
+				const timeElapsed = lastDate - (new Date());
+				const health = getHealthBarPercentage(data.goalFrequency, timeElapsed);
+				setHealthBar(<HealthBar health={health} />);
 			});
 		});
 	}, []);
@@ -73,8 +67,8 @@ const Representation = (props) => {
 					Plant
 				</span>
 			</div>
-			
-			<RepresentationPopup userGoogleID={props.userGoogleID} otherGoogleID={props.otherGoogleID}/>
+
+			<RepresentationPopup userGoogleID={props.userGoogleID} otherGoogleID={props.otherGoogleID} />
 		</div>
 	);
 };

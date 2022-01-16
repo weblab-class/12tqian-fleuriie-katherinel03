@@ -33,7 +33,7 @@ const HealthBar = (props) => {
 			<div className="healthBarBackground"
 				style={{
 					backgroundColor: getHealthBarColor(),
-					top: HEALTH_BAR_WIDTH * -0.21,
+					top: HEALTH_BAR_WIDTH * -0.18,
 					left: HEALTH_BAR_WIDTH * 0.16,
 					width: getHealthBarWidth(),
 					height: HEALTH_BAR_WIDTH * 0.14,
