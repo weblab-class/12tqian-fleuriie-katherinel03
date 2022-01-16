@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
-
 import "./EditProfile.css";
+import Avatar from "../Avatar/Avatar.js";
 
 import "../../../utilities.css";
 import Popup from 'reactjs-popup';
@@ -8,7 +8,29 @@ import 'reactjs-popup/dist/index.css';
 import {get, post} from "../../../utilities.js";
 
 const EditProfile = (props) => {
-    
+    const [user, setUser] = useState(undefined);
+    useEffect(() => {
+        get("/api/whoami").then((user) => {
+        if (user._id) {
+            // they are registed in the database, and currently logged in.
+            setUser(user);
+        }
+        });
+    }, [])
+
+    const [avatarList, setAvatarList] = useState([]);
+        useEffect(() => {
+            if (user) {
+                get("/api/useravatar", {
+                googleID: user.googleID,
+                }).then((profile) => {
+                setAvatarList(user.avatarNames);
+                });
+            }
+        }, []);
+
+// get list of all avatars owned by the user (?)
+
     return (
         <div>
             <Popup
@@ -30,7 +52,14 @@ const EditProfile = (props) => {
                         nested
                     >
                         <span>
-                        insert change avatar button here :thumbsup:
+                            <h3>Available Avatars</h3>
+                            {avatarList
+                                .map((user, i) => (
+                                <Avatar
+                                    key={i}
+                                    user={user}
+                                />
+                                ))}
                         </span>
                     </Popup>
                     <Popup
