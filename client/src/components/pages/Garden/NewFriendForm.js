@@ -48,13 +48,18 @@ const NewFriendForm = (props) => {
 				if (!user) {
 					onShowAlert("success"); // create new alert later
 				} else {
-					post("/api/pairavatar", {
+					post("/api/pairprofile", {
 						userGoogleID: props.userGoogleID,
 						otherGoogleID: otherID,
-						representationID: 0,
+						currentRepresentationID: 0,
 						totalExperience: 0,
 						goalFrequency: goalFrequency,
 						pairName: otherName,
+					});
+					post("/api/pairrepresentation", {
+						userGoogleID: props.userGoogleID,
+						otherGoogleID: otherGoogleID,
+						representationID: 0,
 					});
 				}
 			});
@@ -67,13 +72,18 @@ const NewFriendForm = (props) => {
 				currency: 0,
 				userName: otherName,
 			});
-			post("/api/pairavatar", {
+			post("/api/pairprofile", {
 				userGoogleID: props.userGoogleID,
 				otherGoogleID: otherGoogleID,
-				representationID: 0,
+				currentRepresentationID: 0,
 				totalExperience: 0,
 				goalFrequency: goalFrequency,
 				pairName: otherName,
+			});
+			post("/api/pairrepresentation", {
+				userGoogleID: props.userGoogleID,
+				otherGoogleID: otherGoogleID,
+				representationID: 0,
 			});
 		} else {
 			onShowAlert("success");

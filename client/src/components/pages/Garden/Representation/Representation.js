@@ -31,12 +31,12 @@ const Representation = (props) => {
 		return 0;
 	};
 	useEffect(() => {
-		get("/api/pairavatarone", {
+		get("/api/pairprofileone", {
 			userGoogleID: props.userGoogleID,
 			otherGoogleID: props.otherGoogleID,
-		}).then((data) => {
-			setOtherName(data.pairName);
-			setRepresentationAvatar(<RepresentationAvatar avatarID={data.representationID} width={100} />);
+		}).then((pairProfile) => {
+			setOtherName(pairProfile.pairName);
+			setRepresentationAvatar(<RepresentationAvatar representationID={pairProfile.currentRepresentationID} width={100} />);
 			get("/api/pairactivity", {
 				userGoogleID: props.userGoogleID,
 				otherGoogleID: props.otherGoogleID,
@@ -55,7 +55,7 @@ const Representation = (props) => {
 					})));
 				}
 				const timeElapsed = lastDate - (new Date());
-				const health = getHealthBarPercentage(data.goalFrequency, timeElapsed);
+				const health = getHealthBarPercentage(pairProfile.goalFrequency, timeElapsed);
 				setHealthBar(<HealthBar health={health} />);
 			});
 		});

@@ -17,7 +17,8 @@ const UserProfile = require("./models/userprofile");
 const UserAchievement = require("./models/userachievement");
 
 const PairActivity = require("./models/pairactivity");
-const PairAvatar = require("./models/pairavatar");
+const PairProfile = require("./models/pairprofile");
+const PairRepresentation = require("./models/pairrepresentation");
 
 // import authentication library
 const auth = require("./auth");
@@ -69,26 +70,36 @@ router.get("/userprofile", (req, res) => {
   });
 });
 
+router.get("/pairrepresentation", (req, res) => {
+  PairRepresentation.find({ 
+    userGoogleID: req.query.userGoogleID,
+    otherGoogleID: req.query.otherGoogleID,
+  }).then((pairRepresentation) => {
+    res.send(pairRepresentation);
+  });
+})
+
 router.get("/userachievement", (req, res) => {
   UserAchievement.find({ googleID: req.query.googleID }).then((userAchievement) => {
     res.send(userAchievement);
   });
 });
 
-router.get("/pairavatarone", (req, res) => {
-  PairAvatar.findOne({
+router.get("/pairprofile", (req, res) => {
+  PairProfile.find({
     userGoogleID: req.query.userGoogleID,
-    otherGoogleID: req.query.otherGoogleID,
-  }).then((pairAvatar) => {
-    res.send(pairAvatar);
+  }).then((pairProfiles) => {
+    res.send(pairProfiles);
   });
 });
 
-router.get("/pairavatar", (req, res) => {
-  PairAvatar.find({
+
+router.get("/pairprofileone", (req, res) => {
+  PairProfile.findOne({
     userGoogleID: req.query.userGoogleID,
-  }).then((data) => {
-    res.send(data);
+    otherGoogleID: req.query.otherGoogleID,
+  }).then((pairProfile) => {
+    res.send(pairProfile);
   });
 });
 
@@ -99,6 +110,15 @@ router.get("/pairactivity", (req, res) => {
   }).then((pairActivity) => {
     res.send(pairActivity);
   });
+});
+
+router.post("/pairrepresentation", auth.ensureLoggedIn, (req, res) => {
+  const newPairRepresentation = PairRepresentation({
+    userGoogleID: req.body.userGoogleID,
+    otherGoogleID: req.body.otherGoogleID,
+    representationID: req.body.representationID,
+  });
+  newPairRepresentation.save().then(data => res.send(data));
 });
 
 router.post("/userprofileupdate", auth.ensureLoggedIn, (req, res) => {
@@ -126,17 +146,17 @@ router.post("/pairactivity", auth.ensureLoggedIn, (req, res) => {
   newPairActivity.save().then(data => res.send(data));
 });
 
-router.post("/pairavatar", auth.ensureLoggedIn, (req, res) => {
-  const newPairAvatar = new PairAvatar({
+router.post("/pairprofile", auth.ensureLoggedIn, (req, res) => {
+  const newPairProfile = new PairProfile({
     userGoogleID: req.body.userGoogleID,
     otherGoogleID: req.body.otherGoogleID,
-    representationID: req.body.representationID,
+    currentRepresentationID: req.body.currentRepresentationID,
     totalExperience: req.body.totalExperience,
     goalFrequency: req.body.goalFrequency,
     pairName: req.body.pairName,
   });
-  socketManager.getIo().emit("newPairAvatar", newPairAvatar);
-  newPairAvatar.save().then(data => res.send(data));
+  socketManager.getIo().emit("newPairProfile", newPairProfile);
+  newPairProfile.save().then(data => res.send(data));
 });
 
 router.all("*", (req, res) => {

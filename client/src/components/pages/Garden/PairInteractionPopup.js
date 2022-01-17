@@ -37,13 +37,13 @@ const PairInteractionPopup = (props) => {
 	}, []);
 
 	useEffect(() => {
-		get("/api/pairavatarone", {
+		get("/api/pairprofileone", {
 			userGoogleID: props.userGoogleID,
 			otherGoogleID: props.otherGoogleID,
-		}).then((pairAvatar) => {
+		}).then((pairProfile) => {
 			setRepresentation(
-				<RepresentationAvatar avatarID={pairAvatar.representationID} />);
-			setOtherName(pairAvatar.pairName);
+				<RepresentationAvatar representationID={pairProfile.currentRepresentationID} />);
+			setOtherName(pairProfile.pairName);
 		});
 	}, []);
 

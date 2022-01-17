@@ -12,6 +12,8 @@ import "./Garden.css";
 import Representation from "./Representation/Representation.js";
 import NewPairPopup from "./NewPairPopup";
 
+import RepresentationChangePopup from "./RepresentationChangePopup";
+
 
 const handleDragStart = (e) => e.preventDefault();
 
@@ -25,7 +27,7 @@ const responsive = {
 
 const Garden = (props) => {
 	const [user, setUser] = useState(undefined);
-	const [pairAvatars, setPairAvatars] = useState([]);
+	const [pairProfiles, setPairProfiles] = useState([]);
 	const [carouselItems, setCarouselItems] = useState([]);
 
 	useEffect(() => {
@@ -36,58 +38,58 @@ const Garden = (props) => {
 		});
 	}, []);
 
-	const resetCarousel = (avatarList) => {
+	const resetCarousel = (profileList) => {
 		const newCarouselItems = [];
-		for (const avatar of avatarList) {
+		for (const profile of profileList) {
 			newCarouselItems.push(
 				<span onDragStart={handleDragStart} role="presentation" className="carouselRepresentation">
-					<Representation userGoogleID={avatar.userGoogleID} otherGoogleID={avatar.otherGoogleID} />
+					<Representation userGoogleID={profile.userGoogleID} otherGoogleID={profile.otherGoogleID} />
 				</span>
 			);
 		}
 		setCarouselItems(newCarouselItems);
 	};
 
-	const loadPairAvatars = () => {
+	const loadPairProfiles = () => {
 		if (user) {
-			get("/api/pairavatar", {
+			get("/api/pairprofile", {
 				userGoogleID: user.googleID,
-			}).then((avatarList) => {
-				setPairAvatars(avatarList);
-				return avatarList;
-			}).then((avatarList) => {
-				resetCarousel(avatarList);
+			}).then((profileList) => {
+				setPairProfiles(profileList);
+				return profileList;
+			}).then((profileList) => {
+				resetCarousel(profileList);
 			});
 		}
 	};
 
 	useEffect(() => {
-		loadPairAvatars();
+		loadPairProfiles();
 	}, [user]);
 
 	useEffect(() => {
-		socket.on("newPairAvatar", loadPairAvatars);
+		socket.on("newPairProfile", loadPairProfiles);
 		return () => {
-			socket.off("newPairAvatar", loadPairAvatars);
+			socket.off("newPairProfile", loadPairProfiles);
 		};
 	}, [user]);
 
 	let carousel;
 	if (carouselItems.length === 0) {
-		carousel = 
-		<div>
-			no fronds go out and make some dummy
-		</div>
+		carousel =
+			<div>
+				no fronds go out and make some dummy
+			</div>
 	} else {
 		carousel = <AliceCarousel
-					mouseTracking items={carouselItems}
-					keyboardNavigation={true}
-					infinite={true}
-					controlsStrategy="alternate"
-					responsive={responsive}
-					disableDotsControls={true}
-					animationDuration={140}
-				/>;
+			mouseTracking items={carouselItems}
+			keyboardNavigation={true}
+			infinite={true}
+			controlsStrategy="alternate"
+			responsive={responsive}
+			disableDotsControls={true}
+			animationDuration={140}
+		/>;
 	}
 	if (!user) {
 		return (
@@ -98,6 +100,7 @@ const Garden = (props) => {
 	} else {
 		return (
 			<div>
+				<RepresentationChangePopup userGoogleID={user.googleID} />
 				<NewPairPopup userGoogleID={user.googleID} />
 				{carousel}
 			</div>
