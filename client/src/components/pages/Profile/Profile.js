@@ -39,11 +39,11 @@ const Profile = (props) => {
 
   // // i want to die! :)
   if (!user) {
-    return (<div> Log in before you can view your profile! </div>)
+    return (<div className="Profile-notLoggedIn"> Log in before you can view your profile! </div>)
   }
   return (
     <div className="Profile-container">
-      <div className="Avatar-container">
+      <div className="Profile-avatarContainer">
         {avatar}
       </div>
       <h1 className="Profile-username">{user.name}</h1>

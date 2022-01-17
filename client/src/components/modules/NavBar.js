@@ -9,7 +9,7 @@ import "./NavBar.css";
  const NavBar = () => {
     return (
       <nav className="NavBar-container">
-        <div className="NavBar-title u-inlineBlock">Imagine Having Friends</div>
+        <div className="NavBar-title u-inlineBlock">flowerfriends</div>
         <div className="NavBar-linkContainer u-inlineBlock">
           <Link to="/" className="NavBar-link">
             Home

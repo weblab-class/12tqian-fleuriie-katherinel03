@@ -7,6 +7,7 @@
 }
 
 .Home-introduction {
+  padding: 50px;
   font-family: Papyrus;
   color:  #008040;
 }
@@ -24,4 +25,16 @@
   display: block;
   background-size: cover;
   background-image: url("../constants/RepresentationAvatarImages/Representation.png");
+}
+
+.Home-profileLink {
+  font-family: Papyrus;
+  color: #acd4ad;
+  font-size: 24px;
+}
+
+.profileButton {
+  margin-top: 20px;
+  padding: 20px;
+  background-color:  #008040;
 }
