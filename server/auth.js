@@ -30,12 +30,10 @@ function getOrCreateUser(user) {
     });
     const newUserProfile = new UserProfile({
       googleID: user.sub,
-      currentAvatar: "Representation",
+      currentAvatarID: 0,
       currency: 0,
       userName: user.name,
     });
-    console.log(newUserProfile);
-    console.log("HUH");
     newUserProfile.save();
     return newUser.save();
   });

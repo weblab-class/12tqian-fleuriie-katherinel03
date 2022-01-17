@@ -23,5 +23,5 @@
   border-radius: 100%;
   display: block;
   background-size: cover;
-  background-image: url("./Garden/Representation/RepresentationAvatarImages/Representation.png");
+  background-image: url("../constants/RepresentationAvatarImages/Representation.png");
 }

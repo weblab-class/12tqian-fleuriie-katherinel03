@@ -3,6 +3,7 @@ import React, { useEffect, useState, Component } from "react";
 import { get, post } from "../../../utilities.js";
 import Avatar from "../Avatar/Avatar.js";
 import NewActivityPopup from "./Representation/NewActivityPopup.js";
+import RepresentationAvatar from "./Representation/RepresentationAvatar.js";
 import { socket } from "../../../client-socket"
 
 // Import React Table
@@ -23,7 +24,7 @@ const PairInteractionPopup = (props) => {
 		}).then((profile) => {
 			console.log(profile);
 			setUserName(profile.userName);
-			setUserAvatar(<Avatar avatarName={profile.currentAvatar} width={100} />);
+			setUserAvatar(<Avatar avatarID={profile.currentAvatarID} width={100} />);
 		});
 	}, []);
 
@@ -31,7 +32,7 @@ const PairInteractionPopup = (props) => {
 		get("/api/userprofile", {
 			googleID: props.otherGoogleID,
 		}).then((profile) => {
-			setOtherAvatar(<Avatar avatarName={profile.currentAvatar} width={100} />);
+			setOtherAvatar(<Avatar avatarID={profile.currentAvatarID} width={100} />);
 		});
 	}, []);
 
@@ -40,7 +41,8 @@ const PairInteractionPopup = (props) => {
 			userGoogleID: props.userGoogleID,
 			otherGoogleID: props.otherGoogleID,
 		}).then((pairAvatar) => {
-			setRepresentation(pairAvatar.representationName);
+			setRepresentation(
+				<RepresentationAvatar avatarID={pairAvatar.representationID} />);
 			setOtherName(pairAvatar.pairName);
 		});
 	}, []);
@@ -73,6 +75,7 @@ const PairInteractionPopup = (props) => {
 				</div>
 				<div>
 					<h1>{userName + " & " + otherName}</h1>
+					{representation}
 					{/* to do add something that would add a new activity */}
 					<NewActivityPopup userGoogleID={props.userGoogleID} otherGoogleID={props.otherGoogleID} />
 					<br />

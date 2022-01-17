@@ -1,19 +1,15 @@
 import React, { useState, useEffect } from "react";
 
-import avatar from "./Avatars/Avatar.png";
-
+import { avatarList } from "../../constants/constants";
 
 const Avatar = (props) => {
-	let image;
-	switch (props.avatarName) {
-		case "Avatar":
-			image = <img src={avatar} width={props.width}/>;
-			break;
-		default:
-			image = <img src={avatar} width={props.width}/>;
-	}
+	const image = <img src={avatarList[props.avatarID].image} width={props.width} />;
+	console.log(props);
+	console.log(avatarList[props.avatarID]);
+	console.log("EHHH");
+	console.log(avatarList);
 	return (
-		<div> 
+		<div>
 			{image}
 		</div>
 	);

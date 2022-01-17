@@ -51,7 +51,7 @@ const NewFriendForm = (props) => {
 					post("/api/pairavatar", {
 						userGoogleID: props.userGoogleID,
 						otherGoogleID: otherID,
-						representationName: "Representation",
+						representationID: 0,
 						totalExperience: 0,
 						goalFrequency: goalFrequency,
 						pairName: otherName,
@@ -63,14 +63,14 @@ const NewFriendForm = (props) => {
 			const otherGoogleID = props.userGoogleID + "__GAP__" + otherName;
 			post("/api/userprofile", {
 				googleID: otherGoogleID,
-				currentAvatar: "Representation",
+				currentAvatarID: 0,
 				currency: 0,
 				userName: otherName,
 			});
 			post("/api/pairavatar", {
 				userGoogleID: props.userGoogleID,
 				otherGoogleID: otherGoogleID,
-				representationName: "Representation",
+				representationID: 0,
 				totalExperience: 0,
 				goalFrequency: goalFrequency,
 				pairName: otherName,

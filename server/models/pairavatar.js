@@ -3,7 +3,7 @@ const mongoose = require("mongoose");
 const PairAvatarSchema = new mongoose.Schema({
   userGoogleID: String,
 	otherGoogleID: String,
-	representationName: String,
+	representationID: Number,
 	totalExperience: Number,
 	goalFrequency: Number,
 	pairName: String,

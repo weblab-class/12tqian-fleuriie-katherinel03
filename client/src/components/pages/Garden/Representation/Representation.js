@@ -13,6 +13,7 @@ const MINUTES_IN_DAY = 1440;
 const Representation = (props) => {
 	const [healthBar, setHealthBar] = useState(undefined);
 	const [representationAvatar, setRepresentationAvatar] = useState(undefined);
+	const [otherName, setOtherName] = useState(undefined);
 
 	const getHealthBarPercentage = (goalFrequency, timeMilliseconds) => {
 		const goal = goalFrequency * MINUTES_IN_DAY;
@@ -34,7 +35,8 @@ const Representation = (props) => {
 			userGoogleID: props.userGoogleID,
 			otherGoogleID: props.otherGoogleID,
 		}).then((data) => {
-			setRepresentationAvatar(<RepresentationAvatar avatarName={data.representationName} width={100} />);
+			setOtherName(data.pairName);
+			setRepresentationAvatar(<RepresentationAvatar avatarID={data.representationID} width={100} />);
 			get("/api/pairactivity", {
 				userGoogleID: props.userGoogleID,
 				otherGoogleID: props.otherGoogleID,
@@ -64,7 +66,7 @@ const Representation = (props) => {
 			{representationAvatar}
 			<div style={{ textAlign: "center" }}>
 				<span>
-					Plant
+					{otherName}
 				</span>
 			</div>
 

@@ -101,10 +101,14 @@ router.get("/pairactivity", (req, res) => {
   });
 });
 
+router.post("/userprofileupdate", auth.ensureLoggedIn, (req, res) => {
+  UserProfile.findOneAndUpdate(req.body.userProfile, req.body.update).then(data => res.send(data));
+});
+
 router.post("/userprofile", auth.ensureLoggedIn, (req, res) => {
   const newUserProfile = UserProfile({
     googleID: req.body.googleID,
-    currentAvatar: req.body.currentAvatar,
+    currentAvatarID: req.body.currentAvatarID,
     currency: req.body.currency,
     userName: req.body.userName
   });
@@ -126,7 +130,7 @@ router.post("/pairavatar", auth.ensureLoggedIn, (req, res) => {
   const newPairAvatar = new PairAvatar({
     userGoogleID: req.body.userGoogleID,
     otherGoogleID: req.body.otherGoogleID,
-    representationName: req.body.representationName,
+    representationID: req.body.representationID,
     totalExperience: req.body.totalExperience,
     goalFrequency: req.body.goalFrequency,
     pairName: req.body.pairName,

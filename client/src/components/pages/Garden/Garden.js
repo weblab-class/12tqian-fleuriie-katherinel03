@@ -59,9 +59,6 @@ const Garden = (props) => {
 				resetCarousel(avatarList);
 			});
 		}
-		console.log(user);
-		console.log(carouselItems);
-		console.log("CAROUSEL ITEMS");
 	};
 
 	useEffect(() => {

@@ -61,3 +61,16 @@ export function post(endpoint, params = {}) {
       throw `POST request to ${endpoint} failed with error:\n${error}`;
     });
 }
+
+export function remove(endpoint, params = {}) {
+  return fetch(endpoint, {
+    method: "post",
+    headers: { "Content-type": "application/json" },
+    body: JSON.stringify(params),
+  })
+    .then(convertToJSON) // convert result to JSON object
+    .catch((error) => {
+      // give a useful error message
+      throw `POST request to ${endpoint} failed with error:\n${error}`;
+    });
+}

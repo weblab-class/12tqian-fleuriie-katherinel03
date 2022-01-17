@@ -2,7 +2,7 @@ const mongoose = require("mongoose");
 
 const UserProfileSchema = new mongoose.Schema({
   googleID: String,
-	currentAvatar: String,
+	currentAvatarID: Number,
 	currency: Number,
 	userName: String,
 });
