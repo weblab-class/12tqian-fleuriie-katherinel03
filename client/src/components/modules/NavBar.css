@@ -1,8 +1,8 @@
 .NavBar-container {
   padding: var(--s) var(--m);
-  background-color: #acd4ad;
+  color: #acd4ad;
   font-family: Papyrus;
-  color: #008040;
+  background-color: #008040;
 }
 
 .NavBar-title {
