@@ -70,6 +70,7 @@ const RepresentationChangePopup = (props) => {
 			{
 				pairProfile: {
 					userGoogleID: props.userGoogleID,
+					otherGoogleID: props.otherGoogleID,
 				},
 				update: {
 					currentRepresentationID: itemID,
@@ -85,7 +86,6 @@ const RepresentationChangePopup = (props) => {
 	};
 
 	const setItemList = () => {
-		console.log("EXECUTING");
 		const itemList = [];
 		for (const representation of representationList) {
 			const bought = 0;
