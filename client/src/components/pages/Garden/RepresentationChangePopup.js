@@ -4,16 +4,18 @@ import { representationList } from "../../constants/constants";
 
 import RepresentationAvatar from "./Representation/RepresentationAvatar";
 
-import ItemBought from "./ItemBought";
-import ItemCanAfford from "./ItemCanAfford";
-import ItemCannotAfford from "./ItemCannotAfford";
+import Item from "./Item";
 
 import { get, post } from "../../../utilities";
 
+import { socket } from "../../../client-socket";
+
 const RepresentationChangePopup = (props) => {
+	const [timesBought, setTimesBought] = useState(0);
 	const [currency, setCurrency] = useState(0);
 	const [representations, setRepresentations] = useState([]);
-
+	const [currentRepresentationID, setCurrentRepresentationID] = useState(0);
+	const [displayItems, setDisplayItems] = useState([]);
 	useEffect(() => {
 		get("/api/pairrepresentation", {
 			userGoogleID: props.userGoogleID,
@@ -21,7 +23,7 @@ const RepresentationChangePopup = (props) => {
 		}).then((list) => {
 			setRepresentations(list);
 		});
-	}, []);
+	}, [timesBought]);
 
 	useEffect(() => {
 		get("/api/userprofile", {
@@ -31,65 +33,147 @@ const RepresentationChangePopup = (props) => {
 		});
 	}, []);
 
+	useEffect(() => {
+		get("/api/pairprofileone", {
+			userGoogleID: props.userGoogleID,
+			otherGoogleID: props.otherGoogleID,
+		}).then((profile) => {
+			setCurrentRepresentationID(profile.currentRepresentationID);
+		});
+	}, []);
+
 	const handleBuy = (itemID) => {
 		const item = representationList[itemID];
-		setCurrency(currency - item.cost);
 		post("/api/userprofileupdate",
 			{
-				googleID: props.userGoogleID,
-			},
-			{
-				currency: currency,
-			},
-		);
+				userProfile: {
+					googleID: props.userGoogleID,
+				},
+				update: {
+					currency: currency - item.cost,
+				},
+			}
+		).then(() => {
+			post("/api/pairrepresentation", {
+				userGoogleID: props.userGoogleID,
+				otherGoogleID: props.otherGoogleID,
+				representationID: itemID,
+			}).then(() => {
+				setCurrency(currency - item.cost);
+				setTimesBought(timesBought + 1);
+			});
+		});
 	};
 
-	const handleTry = (itemID) => {
-		post("/api/userprofileupdate",
+	const handleTry = (itemID) => { // try on something new
+		post("/api/pairprofileupdate",
 			{
-				googleID: props.userGoogleID,
-			},
-			{
-				currentRepresentationID: itemID,
-			},
-		);
+				pairProfile: {
+					userGoogleID: props.userGoogleID,
+				},
+				update: {
+					currentRepresentationID: itemID,
+				},
+			}
+		).then((updatedProfile) => {
+			setCurrentRepresentationID(itemID);
+		});
 	};
 
-	const boughtRepresentations = [];
-	const affordRepresentations = [];
-	const otherRepresentations = [];
+	const handleReject = (itemID) => {
 
-	for (const representation of representationList) {
-		const bought = 0;
-		for (const purchased of representations) {
-			if (purchased.representationID === representation.representationID) {
-				bought = 1;
-				break;
+	};
+
+	const setItemList = () => {
+		console.log("EXECUTING");
+		const itemList = [];
+		for (const representation of representationList) {
+			const bought = 0;
+			for (const purchased of representations) {
+				if (purchased.representationID === representation.representationID) {
+					bought = 1;
+					break;
+				}
+			}
+			if (bought === 1) { // purchased
+				if (representation.representationID === currentRepresentationID) {
+					itemList.push(
+						<Item
+							image={<RepresentationAvatar
+								representationID={representation.representationID}
+								width={100}
+							/>}
+							type="active"
+							callback={handleTry}
+							key={representation.representationID}
+							itemID={representation.representationID}
+						/>
+					);
+				} else {
+					itemList.push(
+						<Item
+							image={<RepresentationAvatar
+								representationID={representation.representationID}
+								width={100}
+							/>}
+							type="bought"
+							callback={handleTry}
+							key={representation.representationID}
+							itemID={representation.representationID}
+						/>
+					);
+				}
+			} else {
+				if (representation.cost <= currency) { // afford
+					itemList.push(
+						<Item
+							image={<RepresentationAvatar
+								representationID={representation.representationID}
+								width={100}
+							/>}
+							type="afford"
+							callback={handleBuy}
+							key={representation.representationID}
+							itemID={representation.representationID}
+						/>
+					);
+				} else { // other
+					itemList.push(
+						<Item
+							image={<RepresentationAvatar
+								representationID={representation.representationID}
+								width={100}
+							/>}
+							type="cannotAfford"
+							callback={handleReject}
+							key={representation.representationID}
+							itemID={representation.representationID}
+						/>
+					);
+				}
 			}
 		}
-		if (bought === 1) { // purchased
-			boughtRepresentations.push(
-				<ItemBought
-					image={<RepresentationAvatar
-						representationID={representation.representationID}
-						width={100}
-					/>}
-					callback={handleTry}
-				/>
-			);
-		} else {
-			if (representation.cost <= currency) { // afford
+		setDisplayItems(itemList);
+	};
 
-			} else { // other
+	useEffect(() => {
+		socket.on("newPairRepresentationUpdate", setItemList);
+		return () => {
+			socket.off("newPairRepresentationUpdate", setItemList);
+		};
+	}, []);
 
-			}
-		}
-	}
-	console.log(boughtRepresentations);
-	console.log("AFT");
+	useEffect(() => {
+		setItemList();
+	}, [timesBought, currency, currentRepresentationID, representations]);
+
+	useEffect(() => {
+
+	}, []);
+
 	return (
 		<div>
-			{boughtRepresentations}
+			{displayItems}
 		</div>
 	);
 };

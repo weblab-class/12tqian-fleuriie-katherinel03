@@ -22,7 +22,6 @@ const PairInteractionPopup = (props) => {
 		get("/api/userprofile", {
 			googleID: props.userGoogleID,
 		}).then((profile) => {
-			console.log(profile);
 			setUserName(profile.userName);
 			setUserAvatar(<Avatar avatarID={profile.currentAvatarID} width={100} />);
 		});
@@ -36,16 +35,20 @@ const PairInteractionPopup = (props) => {
 		});
 	}, []);
 
-	useEffect(() => {
+	const resetRepresentation = () => {
 		get("/api/pairprofileone", {
 			userGoogleID: props.userGoogleID,
 			otherGoogleID: props.otherGoogleID,
 		}).then((pairProfile) => {
 			setRepresentation(
-				<RepresentationAvatar representationID={pairProfile.currentRepresentationID} />
+				<RepresentationAvatar representationID={pairProfile.currentRepresentationID}  width={100}/>
 			);
 			setOtherName(pairProfile.pairName);
 		});
+	};
+
+	useEffect(() => {
+		resetRepresentation();
 	}, []);
 
 	const setPairActivities = (data) => {
@@ -57,8 +60,19 @@ const PairInteractionPopup = (props) => {
 		});
 	};
 
+	const newPairProfileUpdate = (data) => {
+		resetRepresentation();
+	};
+
 	useEffect(() => {
 		setPairActivities({});
+	}, []);
+
+	useEffect(() => {
+		socket.on("newPairProfileUpdate", newPairProfileUpdate);
+		return () => {
+			socket.off("newPairProfileUpdate", newPairProfileUpdate);
+		};
 	}, []);
 
 	useEffect(() => {
