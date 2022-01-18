@@ -18,7 +18,7 @@ const Home = ({ userId, handleLogin, handleLogout }) => {
 			<div className="Home-plantIconContainer">
 				<div className="Home-plantIcon" />
 			</div>
-			<h1 className="Home-introduction">welcome to Imagine Having Friends, a tool built to help you build and maintain relationships!</h1>
+			<h1 className="Home-introduction">welcome to flowerfriends, a tool built to help you build and maintain relationships!</h1>
 			<div>
 				{userId ? (
 					<GoogleLogout
