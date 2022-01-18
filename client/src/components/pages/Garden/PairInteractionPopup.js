@@ -42,7 +42,8 @@ const PairInteractionPopup = (props) => {
 			otherGoogleID: props.otherGoogleID,
 		}).then((pairProfile) => {
 			setRepresentation(
-				<RepresentationAvatar representationID={pairProfile.currentRepresentationID} />);
+				<RepresentationAvatar representationID={pairProfile.currentRepresentationID} />
+			);
 			setOtherName(pairProfile.pairName);
 		});
 	}, []);

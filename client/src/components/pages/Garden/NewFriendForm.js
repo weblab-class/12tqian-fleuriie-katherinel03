@@ -58,7 +58,7 @@ const NewFriendForm = (props) => {
 					});
 					post("/api/pairrepresentation", {
 						userGoogleID: props.userGoogleID,
-						otherGoogleID: otherGoogleID,
+						otherGoogleID: otherID,
 						representationID: 0,
 					});
 				}
