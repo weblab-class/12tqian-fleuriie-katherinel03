@@ -28,15 +28,15 @@ const Representation = (props) => {
 				return (1 - timeElapsed / gap) * 100;
 			}
 		}
-		return 0;
 	};
+
 	useEffect(() => {
 		get("/api/pairprofileone", {
 			userGoogleID: props.userGoogleID,
 			otherGoogleID: props.otherGoogleID,
 		}).then((pairProfile) => {
-			setOtherName(pairProfile.pairName);
 			setRepresentationAvatar(<RepresentationAvatar representationID={pairProfile.currentRepresentationID} width={100} />);
+			setOtherName(pairProfile.pairName);
 			get("/api/pairactivity", {
 				userGoogleID: props.userGoogleID,
 				otherGoogleID: props.otherGoogleID,
@@ -60,6 +60,8 @@ const Representation = (props) => {
 			});
 		});
 	}, []);
+	console.log("OTHERNAME");
+	console.log(otherName);
 	return (
 		<div>
 			{healthBar}

@@ -147,6 +147,7 @@ router.post("/pairactivity", auth.ensureLoggedIn, (req, res) => {
 });
 
 router.post("/pairprofile", auth.ensureLoggedIn, (req, res) => {
+  console.log("EMIT");
   const newPairProfile = new PairProfile({
     userGoogleID: req.body.userGoogleID,
     otherGoogleID: req.body.otherGoogleID,
@@ -156,7 +157,10 @@ router.post("/pairprofile", auth.ensureLoggedIn, (req, res) => {
     pairName: req.body.pairName,
   });
   socketManager.getIo().emit("newPairProfile", newPairProfile);
-  newPairProfile.save().then(data => res.send(data));
+  newPairProfile.save().then(data => {
+    res.send(data)
+    console.log("AFTER");
+});
 });
 
 router.all("*", (req, res) => {
