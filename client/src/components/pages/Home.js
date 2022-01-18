@@ -10,7 +10,7 @@ import "../../utilities.css";
 import "./Home.css";
 import { RouteComponentProps } from "@reach/router";
 
-const GOOGLE_CLIENT_ID = "714676168299-boi39i597g1mjus8btj5khnp6q8tic4k.apps.googleusercontent.com";
+const GOOGLE_CLIENT_ID = "714676168299-nil4moo5m1o2q1v79lq9rnloep1jn5uh.apps.googleusercontent.com";
 
 const Home = ({ userId, handleLogin, handleLogout }) => {
 	return (
