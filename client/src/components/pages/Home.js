@@ -10,7 +10,7 @@ import "../../utilities.css";
 import "./Home.css";
 import { RouteComponentProps } from "@reach/router";
 
-const GOOGLE_CLIENT_ID = "714676168299-boi39i597g1mjus8btj5khnp6q8tic4k.apps.googleusercontent.com";
+const GOOGLE_CLIENT_ID = "714676168299-nil4moo5m1o2q1v79lq9rnloep1jn5uh.apps.googleusercontent.com";
 
 const Home = ({ userId, handleLogin, handleLogout }) => {
 	return (
@@ -18,7 +18,7 @@ const Home = ({ userId, handleLogin, handleLogout }) => {
 			<div className="Home-plantIconContainer">
 				<div className="Home-plantIcon" />
 			</div>
-			<h1 className="Home-introduction">welcome to Imagine Having Friends, a tool built to help you build and maintain relationships!</h1>
+			<h1 className="Home-introduction">welcome to flowerfriends, a tool built to help you build and maintain relationships!</h1>
 			<div>
 				{userId ? (
 					<GoogleLogout
