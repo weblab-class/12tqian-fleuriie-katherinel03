@@ -9,6 +9,9 @@ import { socket } from "../../../client-socket"
 // Import React Table
 import ReactTable from "react-table-6";
 import "react-table-6/react-table.css"
+import Collapsible from 'react-collapsible';
+
+import RepresentationChangePopup from "./RepresentationChangePopup.js";
 
 const PairInteractionPopup = (props) => {
 	const [userAvatar, setUserAvatar] = useState(undefined);
@@ -41,7 +44,7 @@ const PairInteractionPopup = (props) => {
 			otherGoogleID: props.otherGoogleID,
 		}).then((pairProfile) => {
 			setRepresentation(
-				<RepresentationAvatar representationID={pairProfile.currentRepresentationID}  width={100}/>
+				<RepresentationAvatar representationID={pairProfile.currentRepresentationID} width={100} />
 			);
 			setOtherName(pairProfile.pairName);
 		});
@@ -91,6 +94,9 @@ const PairInteractionPopup = (props) => {
 				<div>
 					<h1>{userName + " & " + otherName}</h1>
 					{representation}
+					<Collapsible trigger="Change Avatar">
+						<RepresentationChangePopup userGoogleID={props.userGoogleID} otherGoogleID={props.otherGoogleID} />
+					</Collapsible>
 					{/* to do add something that would add a new activity */}
 					<NewActivityPopup userGoogleID={props.userGoogleID} otherGoogleID={props.otherGoogleID} />
 					<br />

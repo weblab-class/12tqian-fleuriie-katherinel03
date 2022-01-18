@@ -1,9 +1,10 @@
 import React, { useEffect, useState, Component } from "react";
 
+import Collapsible from 'react-collapsible';
+
 import Popup from 'reactjs-popup';
-import NewActivityPopup from "./Representation/NewActivityPopup";
 import PairInteractionPopup from "./PairInteractionPopup";
-import RepresentationChangePopup from "./RepresentationChangePopup";
+import "./RepresentationPopup.css";
 
 const RepresentationPopup = (props) => {
 	return (
@@ -19,7 +20,6 @@ const RepresentationPopup = (props) => {
 					</button>
 					<div className="header"> Pair Interaction </div>
 					<div className="content">
-						<RepresentationChangePopup userGoogleID={props.userGoogleID} otherGoogleID={props.otherGoogleID} />
 						<PairInteractionPopup userGoogleID={props.userGoogleID} otherGoogleID={props.otherGoogleID} />
 					</div>
 				</div>

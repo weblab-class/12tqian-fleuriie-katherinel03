@@ -35,7 +35,7 @@ const Item = (props) => {
 			</div>
 		);
 	} else if (props.type === "cannotAfford") {
-		button = <button>Need more money</button>;
+		button = (<button>Need more money</button>);
 		displayImage = (
 			<div className="cannotAfford">
 				{props.image}
@@ -45,10 +45,10 @@ const Item = (props) => {
 		console.log("Incorrect item typing passed");
 	}
 	return (
-		<div>
+		<span>
 			{props.image}
-			{button};
-		</div>
+			{button}
+		</span>
 	);
 };
 
