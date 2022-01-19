@@ -58,9 +58,10 @@ router.get("/user", (req, res) => {
   });
 });
 
+
 router.get("/useravatar", (req, res) => {
-  UserAvatar.find({ googleID: req.query.googleID }).then((avatarList) => {
-    res.send(avatarList);
+  UserAvatar.find({ googleID: req.query.googleID }).then((avatar) => {
+    res.send(avatar);
   });
 });
 
@@ -112,6 +113,17 @@ router.get("/pairactivity", (req, res) => {
   });
 });
 
+router.post("/useravatar", auth.ensureLoggedIn, (req, res) => {
+  const newUserAvatar = UserAvatar({
+    googleID: req.body.googleID,
+    avatarID: req.body.avatarID,
+  });
+  newAvatar.save().then(data => {
+    res.send(data);
+    socketManager.getIo().emit("newUserAvatarUpdate", {});
+  })
+});
+
 router.post("/pairrepresentation", auth.ensureLoggedIn, (req, res) => {
   const newPairRepresentation = PairRepresentation({
     userGoogleID: req.body.userGoogleID,
@@ -121,6 +133,13 @@ router.post("/pairrepresentation", auth.ensureLoggedIn, (req, res) => {
   newPairRepresentation.save().then(data => {
     res.send(data);
     socketManager.getIo().emit("newPairRepresentationUpdate", {});
+  });
+});
+
+router.post("/userprofileupdate", auth.ensureLoggedIn, (req, res) => {
+  UserProfile.findOneAndUpdate(req.body.userProfile, req.body.update).then(data => {
+    res.send(data);
+    socketManager.getIo().emit("newUserProfileUpdate", {});
   });
 });
 

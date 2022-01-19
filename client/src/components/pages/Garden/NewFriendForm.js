@@ -73,6 +73,10 @@ const NewFriendForm = (props) => {
 				currency: 0,
 				userName: otherName,
 			});
+			post("/api/useravatar", {
+				googleID: otherGoogleID,
+				avatarID: 0,
+			});
 			post("/api/pairprofile", {
 				userGoogleID: props.userGoogleID,
 				otherGoogleID: otherGoogleID,

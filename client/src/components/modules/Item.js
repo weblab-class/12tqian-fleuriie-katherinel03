@@ -46,7 +46,8 @@ const Item = (props) => {
 	}
 	return (
 		<span>
-			{props.image}
+			{displayImage}
+			{props.cost}
 			{button}
 		</span>
 	);

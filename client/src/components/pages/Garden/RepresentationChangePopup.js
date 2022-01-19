@@ -108,6 +108,7 @@ const RepresentationChangePopup = (props) => {
 							callback: handleTry,
 							key: representation.representationID,
 							itemID: representation.representationID,
+							cost: representation.cost,
 						}
 					);
 				} else {
@@ -121,6 +122,7 @@ const RepresentationChangePopup = (props) => {
 							callback: handleTry,
 							key: representation.representationID,
 							itemID: representation.representationID,
+							cost: representation.cost,
 						}
 					);
 				}
@@ -136,6 +138,7 @@ const RepresentationChangePopup = (props) => {
 							callback: handleBuy,
 							key: representation.representationID,
 							itemID: representation.representationID,
+							cost: representation.cost,
 						}
 					);
 				} else { // other
@@ -149,6 +152,7 @@ const RepresentationChangePopup = (props) => {
 							callback: handleReject,
 							key: representation.representationID,
 							itemID: representation.representationID,
+							cost: representation.cost,
 						}
 					);
 				}
@@ -159,8 +163,6 @@ const RepresentationChangePopup = (props) => {
 				itemList={itemList}
 			/>
 		);
-		console.log(itemList);
-		console.log("AFTER");
 	};
 
 	useEffect(() => {
