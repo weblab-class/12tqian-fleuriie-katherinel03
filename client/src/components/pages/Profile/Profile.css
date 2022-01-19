@@ -1,11 +1,12 @@
 .Profile-avatarContainer {
-  background-color: #acd4ad;
 }
 
 .Profile-container {
-  background-color: #acd4ad; /* pastel green */
   border: none;
   text-align: center;
+  background-image: url("./ProfileBackground.jpg");
+  background-position: center;
+  background-size: cover;
 }
 
 .Profile-notLoggedIn {
