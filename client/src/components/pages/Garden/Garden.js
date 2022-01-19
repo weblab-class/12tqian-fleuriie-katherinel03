@@ -101,7 +101,7 @@ const Garden = (props) => {
 			const settings = {
 				className: "center",
 				infinite: false,
-				// infinite: true,
+				// infinited: true,
 				centerPadding: "60px",
 				slidesToShow: 5,
 				swipeToSlide: true,

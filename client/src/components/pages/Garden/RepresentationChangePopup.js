@@ -1,21 +1,22 @@
-import React, { useEffect, useState } from "react";
+import React, { useState, useEffect } from "react";
+import ShopCatalog from "../../modules/ShopCatalog";
 
+import RepresentationAvatar from "../Garden/Representation/RepresentationAvatar";
 import { representationList } from "../../constants/constants";
-
-import RepresentationAvatar from "./Representation/RepresentationAvatar";
-
-import Item from "./Item";
-
 import { get, post } from "../../../utilities";
-
 import { socket } from "../../../client-socket";
+
+// passes in a list of props
+// 
 
 const RepresentationChangePopup = (props) => {
 	const [timesBought, setTimesBought] = useState(0);
 	const [currency, setCurrency] = useState(0);
 	const [representations, setRepresentations] = useState([]);
 	const [currentRepresentationID, setCurrentRepresentationID] = useState(0);
+	const [shopCatalog, setShopCatalog] = useState(undefined);
 	const [displayItems, setDisplayItems] = useState([]);
+
 	useEffect(() => {
 		get("/api/pairrepresentation", {
 			userGoogleID: props.userGoogleID,
@@ -98,62 +99,68 @@ const RepresentationChangePopup = (props) => {
 			if (bought === 1) { // purchased
 				if (representation.representationID === currentRepresentationID) {
 					itemList.push(
-						<Item
-							image={<RepresentationAvatar
+						{
+							image: <RepresentationAvatar
 								representationID={representation.representationID}
 								width={100}
-							/>}
-							type="active"
-							callback={handleTry}
-							key={representation.representationID}
-							itemID={representation.representationID}
-						/>
+							/>,
+							type: "active",
+							callback: handleTry,
+							key: representation.representationID,
+							itemID: representation.representationID,
+						}
 					);
 				} else {
 					itemList.push(
-						<Item
-							image={<RepresentationAvatar
+						{
+							image: <RepresentationAvatar
 								representationID={representation.representationID}
 								width={100}
-							/>}
-							type="bought"
-							callback={handleTry}
-							key={representation.representationID}
-							itemID={representation.representationID}
-						/>
+							/>,
+							type: "bought",
+							callback: handleTry,
+							key: representation.representationID,
+							itemID: representation.representationID,
+						}
 					);
 				}
 			} else {
 				if (representation.cost <= currency) { // afford
 					itemList.push(
-						<Item
-							image={<RepresentationAvatar
+						{
+							image: <RepresentationAvatar
 								representationID={representation.representationID}
 								width={100}
-							/>}
-							type="afford"
-							callback={handleBuy}
-							key={representation.representationID}
-							itemID={representation.representationID}
-						/>
+							/>,
+							type: "afford",
+							callback: handleBuy,
+							key: representation.representationID,
+							itemID: representation.representationID,
+						}
 					);
 				} else { // other
 					itemList.push(
-						<Item
-							image={<RepresentationAvatar
+						{
+							image: <RepresentationAvatar
 								representationID={representation.representationID}
 								width={100}
-							/>}
-							type="cannotAfford"
-							callback={handleReject}
-							key={representation.representationID}
-							itemID={representation.representationID}
-						/>
+							/>,
+							type: "cannotAfford",
+							callback: handleReject,
+							key: representation.representationID,
+							itemID: representation.representationID,
+						}
 					);
 				}
 			}
 		}
-		setDisplayItems(itemList);
+		setShopCatalog(
+			<ShopCatalog 
+				itemList={itemList}
+			/>
+		);
+		console.log(itemList);
+		console.log("AFTER");
 	};
 
 	useEffect(() => {
@@ -167,15 +174,12 @@ const RepresentationChangePopup = (props) => {
 		setItemList();
 	}, [timesBought, currency, currentRepresentationID, representations]);
 
-	useEffect(() => {
-
-	}, []);
-
 	return (
 		<div>
-			{displayItems}
+			{shopCatalog}
 		</div>
 	);
+
 };
 
 export default RepresentationChangePopup;

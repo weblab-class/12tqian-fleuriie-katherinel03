@@ -24,6 +24,8 @@ const App = () => {
     get("/api/whoami").then((user) => {
       if (user._id) {
         // they are registed in the database, and currently logged in.
+        console.log(user);
+        console.log("THIS IS ME");
         setUserId(user._id);
       }
     });
@@ -33,6 +35,8 @@ const App = () => {
     console.log(`Logged in as ${res.profileObj.name}`);
     const userToken = res.tokenObj.id_token;
     post("/api/login", { token: userToken }).then((user) => {
+      console.log(user);
+      console.log("THIS IS ALSO ME");
       this.setUserId(user._id);
       post("/api/initsocket", { socketid: socket.id });
       console.log(user);
