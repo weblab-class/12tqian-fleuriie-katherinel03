@@ -71,7 +71,7 @@ router.get("/userprofile", (req, res) => {
 });
 
 router.get("/pairrepresentation", (req, res) => {
-  PairRepresentation.find({ 
+  PairRepresentation.find({
     userGoogleID: req.query.userGoogleID,
     otherGoogleID: req.query.otherGoogleID,
   }).then((pairRepresentation) => {
@@ -118,7 +118,17 @@ router.post("/pairrepresentation", auth.ensureLoggedIn, (req, res) => {
     otherGoogleID: req.body.otherGoogleID,
     representationID: req.body.representationID,
   });
-  newPairRepresentation.save().then(data => res.send(data));
+  newPairRepresentation.save().then(data => {
+    res.send(data);
+    socketManager.getIo().emit("newPairRepresentationUpdate", {});
+  });
+});
+
+router.post("/pairprofileupdate", auth.ensureLoggedIn, (req, res) => {
+  PairProfile.findOneAndUpdate(req.body.pairProfile, req.body.update).then(data => {
+    res.send(data);
+    socketManager.getIo().emit("newPairProfileUpdate", {});
+  });
 });
 
 router.post("/userprofileupdate", auth.ensureLoggedIn, (req, res) => {
@@ -142,12 +152,13 @@ router.post("/pairactivity", auth.ensureLoggedIn, (req, res) => {
     activityName: req.body.activityName,
     activityTime: req.body.activityTime,
   });
-  socketManager.getIo().emit("newPairActivity", newPairActivity);
-  newPairActivity.save().then(data => res.send(data));
+  newPairActivity.save().then(data => {
+    res.send(data)
+    socketManager.getIo().emit("newPairActivity", newPairActivity);
+  });
 });
 
 router.post("/pairprofile", auth.ensureLoggedIn, (req, res) => {
-  console.log("EMIT");
   const newPairProfile = new PairProfile({
     userGoogleID: req.body.userGoogleID,
     otherGoogleID: req.body.otherGoogleID,
@@ -156,11 +167,10 @@ router.post("/pairprofile", auth.ensureLoggedIn, (req, res) => {
     goalFrequency: req.body.goalFrequency,
     pairName: req.body.pairName,
   });
-  socketManager.getIo().emit("newPairProfile", newPairProfile);
   newPairProfile.save().then(data => {
     res.send(data)
-    console.log("AFTER");
-});
+    socketManager.getIo().emit("newPairProfile", newPairProfile);
+  });
 });
 
 router.all("*", (req, res) => {

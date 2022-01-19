@@ -6,6 +6,7 @@ import { get, post } from "../../../../utilities.js";
 import RepresentationAvatar from "./RepresentationAvatar.js";
 import HealthBar from "./HealthBar.js";
 import RepresentationPopup from "../RepresentationPopup";
+import { socket } from "../../../../client-socket";
 
 const MULT_FACTOR = 2;
 const MINUTES_IN_DAY = 1440;
@@ -30,7 +31,8 @@ const Representation = (props) => {
 		}
 	};
 
-	useEffect(() => {
+	const setRepresentation = () => {
+
 		get("/api/pairprofileone", {
 			userGoogleID: props.userGoogleID,
 			otherGoogleID: props.otherGoogleID,
@@ -59,9 +61,21 @@ const Representation = (props) => {
 				setHealthBar(<HealthBar health={health} />);
 			});
 		});
+	};
+
+	useEffect(() => {
+		setRepresentation();
 	}, []);
-	console.log("OTHERNAME");
-	console.log(otherName);
+
+	
+
+	useEffect(() => {
+		socket.on("newPairProfileUpdate", setRepresentation);
+		return () => {
+			socket.off("newPairProfileUpdate", setRepresentation);
+		};
+	}, []);
+
 	return (
 		<div>
 			{healthBar}
@@ -71,7 +85,6 @@ const Representation = (props) => {
 					{otherName}
 				</span>
 			</div>
-
 			<RepresentationPopup userGoogleID={props.userGoogleID} otherGoogleID={props.otherGoogleID} />
 		</div>
 	);
