@@ -33,7 +33,7 @@ const App = () => {
     console.log(`Logged in as ${res.profileObj.name}`);
     const userToken = res.tokenObj.id_token;
     post("/api/login", { token: userToken }).then((user) => {
-      this.setUserId(user._id);
+      setUserId(user._id);
       post("/api/initsocket", { socketid: socket.id });
       console.log(user);
     });
