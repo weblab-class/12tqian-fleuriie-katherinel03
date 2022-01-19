@@ -1,3 +1,10 @@
+@font-face {
+  font-family: "Mali";
+  font-style: normal;
+  font-weight: 400;
+  src: url("./../Mali-Regular.ttf");
+}
+
 .EditProfile-button {
   background-color: rgb(167, 216, 167);
 }
@@ -13,6 +20,7 @@
 }
 
 .EditProfile-content {
+  flex-direction: column;
 }
 
 .EditProfile-actions {
@@ -28,7 +36,6 @@
   color: rgb(167, 216, 167);
   cursor: pointer;
   display: inline-block;
-  font-family: din-round,sans-serif;
   font-size: 15px;
   font-weight: 700;
   letter-spacing: .8px;
