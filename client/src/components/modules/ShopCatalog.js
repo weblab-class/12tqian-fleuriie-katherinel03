@@ -8,8 +8,6 @@ const ShopCatalog = (props) => {
 
 	const [displayItems, setDisplayItems] = useState([]);
 	useEffect(() => {
-		console.log(props.itemList);
-		console.log("NANINANI");
 		setDisplayItems(
 			props.itemList.map((item) => {
 				return <Item
@@ -18,6 +16,7 @@ const ShopCatalog = (props) => {
 					callback={item.callback}
 					key={item.key}
 					itemID={item.itemID}
+					cost={item.cost}
 				/>
 			})
 		);

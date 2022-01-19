@@ -2,7 +2,7 @@ const mongoose = require("mongoose");
 
 const UserAvatarSchema = new mongoose.Schema({
   googleID: String,
-  avatarNames: [String],
+  avatarID: Number,
 });
 
 // compile model from schema
