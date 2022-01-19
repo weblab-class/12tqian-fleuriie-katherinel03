@@ -1,8 +1,10 @@
 import React, { useEffect, useState, Component } from "react";
 
+import Collapsible from 'react-collapsible';
+
 import Popup from 'reactjs-popup';
-import NewActivityPopup from "./Representation/NewActivityPopup";
 import PairInteractionPopup from "./PairInteractionPopup";
+import "./RepresentationPopup.css";
 
 const RepresentationPopup = (props) => {
 	return (

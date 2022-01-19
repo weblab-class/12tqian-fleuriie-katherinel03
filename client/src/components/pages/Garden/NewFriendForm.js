@@ -65,6 +65,7 @@ const NewFriendForm = (props) => {
 			});
 		} else if (otherName !== undefined && otherID === undefined && goalFrequency !== undefined) {
 			// trying to add a user who doesn't exist via name
+
 			const otherGoogleID = props.userGoogleID + "__GAP__" + otherName;
 			post("/api/userprofile", {
 				googleID: otherGoogleID,

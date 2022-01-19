@@ -13,6 +13,10 @@ import Representation from "./Representation/Representation.js";
 import NewPairPopup from "./NewPairPopup";
 
 import RepresentationChangePopup from "./RepresentationChangePopup";
+import { Carousel, ScrollingCarousel } from '@trendyol-js/react-carousel';
+import Slider from "react-slick";
+import "slick-carousel/slick/slick.css";
+import "slick-carousel/slick/slick-theme.css";
 
 
 const handleDragStart = (e) => e.preventDefault();
@@ -27,7 +31,6 @@ const responsive = {
 
 const Garden = (props) => {
 	const [user, setUser] = useState(undefined);
-	const [pairProfiles, setPairProfiles] = useState([]);
 	const [carouselItems, setCarouselItems] = useState([]);
 
 	useEffect(() => {
@@ -55,9 +58,6 @@ const Garden = (props) => {
 			get("/api/pairprofile", {
 				userGoogleID: user.googleID,
 			}).then((profileList) => {
-				setPairProfiles(profileList);
-				return profileList;
-			}).then((profileList) => {
 				resetCarousel(profileList);
 			});
 		}
@@ -68,44 +68,86 @@ const Garden = (props) => {
 	}, [user]);
 
 	useEffect(() => {
+		socket.on("newPairProfileUpdate", loadPairProfiles);
+		return () => {
+			socket.off("newPairProfileUpdate", loadPairProfiles);
+		};
+	}, [user]);
+
+	useEffect(() => {
 		socket.on("newPairProfile", loadPairProfiles);
 		return () => {
 			socket.off("newPairProfile", loadPairProfiles);
 		};
 	}, [user]);
 
-	let carousel;
-	if (carouselItems.length === 0) {
-		carousel =
-			<div>
-				no fronds go out and make some dummy
-			</div>
-	} else {
-		carousel = <AliceCarousel
-			mouseTracking items={carouselItems}
-			keyboardNavigation={true}
-			infinite={true}
-			controlsStrategy="alternate"
-			responsive={responsive}
-			disableDotsControls={true}
-			animationDuration={140}
-		/>;
+	const generateCarousel = () => {
+		let carousel;
+		if (carouselItems.length === 0) {
+			carousel =
+				<div>
+					no fronds go out and make some dummy
+				</div>
+		} else {
+
+			// const settings = {
+			// 	className: "center",
+			// 	centerMode: true,
+			// 	infinite: true,
+			// 	centerPadding: "60px",
+			// 	slidesToShow: 3,
+			// 	speed: 500
+			// };
+			const settings = {
+				className: "center",
+				infinite: false,
+				// infinite: true,
+				centerPadding: "60px",
+				slidesToShow: 5,
+				swipeToSlide: true,
+				afterChange: function (index) {
+					console.log(
+						`Slider Changed to: ${index + 1}, background: #222; color: #bada55`
+					);
+				}
+			};
+
+			// carousel = carouselItems.map(
+			// 	(item, index) =>
+			// 		<div key={index}>{item}</div>
+			// );
+			carousel = (
+				<Slider {...settings}>
+					{
+						carouselItems.map(
+							(item, index) =>
+								<div key={index}>{item}</div>
+						)
+					}
+				</Slider>
+			);
+		}
+		if (!user) {
+			return (
+				<div>
+					Please login.
+				</div>
+			);
+		} else {
+			return (
+				<div>
+					<NewPairPopup userGoogleID={user.googleID} />
+					{carousel}
+				</div>
+			);
+		}
 	}
-	if (!user) {
-		return (
-			<div>
-				Please login.
-			</div>
-		);
-	} else {
-		return (
-			<div>
-				<RepresentationChangePopup userGoogleID={user.googleID} />
-				<NewPairPopup userGoogleID={user.googleID} />
-				{carousel}
-			</div>
-		);
-	}
+
+	return (
+		<div>
+			{generateCarousel()}
+		</div>
+	)
 };
 
 export default Garden;

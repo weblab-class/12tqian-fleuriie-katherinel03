@@ -40,14 +40,6 @@ const Home = ({ userId, handleLogin, handleLogout }) => {
 					/>
 				)}
 			</div>
-			{userId && (
-				<Link to={`/profile/`} className="Home-profileLink">
-							<div className="profileButton">
-
-					Profile
-					</div>
-				</Link>
-			)}
 		</div>
 
 	)

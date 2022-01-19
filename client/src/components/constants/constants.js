@@ -7,16 +7,19 @@ const representationList = [
 		name: "Representation0",
 		image: representation0,
 		cost: 0,
+		representationID: 0,
 	},
 	{
 		name: "Representation1",
 		image: representation1,
-		cost: 500,
+		cost: 0,
+		representationID: 1,
 	},
 	{
 		name: "Representation2",
 		image: representation2,
 		cost: 1000,
+		representationID: 2,
 	},
 ];
 
@@ -29,16 +32,19 @@ const avatarList = [
 		name: "Avatar0",
 		image: avatar0,
 		cost: 0,
+		avatarID: 0,
 	},
 	{
 		name: "Avatar1",
 		image: avatar1,
 		cost: 500,
+		avatarID: 1,
 	},
 	{
 		name: "Avatar2",
 		image: avatar2,
-		cost: 0,
+		cost: 1000,
+		avatarID: 2,
 	},
 ]
 
