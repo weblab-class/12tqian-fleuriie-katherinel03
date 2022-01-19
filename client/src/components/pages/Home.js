@@ -11,13 +11,13 @@ import "./Home.css";
 import { RouteComponentProps } from "@reach/router";
 
 const GOOGLE_CLIENT_ID = "714676168299-nil4moo5m1o2q1v79lq9rnloep1jn5uh.apps.googleusercontent.com";
-
 const Home = ({ userId, handleLogin, handleLogout }) => {
 	return (
+		// we should get rid of navbar on homepage
 		<div className="Home-background">
-			<div className="Home-plantIconContainer">
+			{/* <div className="Home-plantIconContainer">
 				<div className="Home-plantIcon" />
-			</div>
+			</div> */}
 			<h1 className="Home-introduction">welcome to flowerfriends, a tool built to help you build and maintain relationships!</h1>
 			<div>
 				{userId ? (
@@ -26,7 +26,15 @@ const Home = ({ userId, handleLogin, handleLogout }) => {
 						buttonText="Logout"
 						onLogoutSuccess={handleLogout}
 						onFailure={(err) => console.log(err)}
-						className="Home-googleButton"
+						render={(renderProps) => {
+							return(
+								<button
+									onClick={renderProps.onClick}
+									className = "Home-googleButton">
+								logout
+								</button>
+							)
+						}}
 					/>
 				) : (
 					<GoogleLogin
@@ -37,6 +45,15 @@ const Home = ({ userId, handleLogin, handleLogout }) => {
 						cookiePolicy={'single_host_origin'}
 						isSignedIn={true}
 						className="Home-googleButton"
+						render={(renderProps) => {
+							return(
+								<button
+									onClick={renderProps.onClick}
+									className = "Home-googleButton">
+								log in with google
+								</button>
+							)
+						}}
 					/>
 				)}
 			</div>
