@@ -22,12 +22,13 @@ const PairInteractionPopup = (props) => {
 	const [userName, setUserName] = useState(undefined);
 	const [otherName, setOtherName] = useState(undefined);
 
+
 	useEffect(() => {
 		get("/api/userprofile", {
 			googleID: props.userGoogleID,
 		}).then((profile) => {
 			setUserName(profile.userName);
-			setUserAvatar(<Avatar avatarID={profile.currentAvatarID} width={100} />);
+			setUserAvatar(<Avatar avatarID={profile.currentAvatarID} width="100%" />);
 		});
 	}, []);
 
@@ -35,7 +36,7 @@ const PairInteractionPopup = (props) => {
 		get("/api/userprofile", {
 			googleID: props.otherGoogleID,
 		}).then((profile) => {
-			setOtherAvatar(<Avatar avatarID={profile.currentAvatarID} width={100} />);
+			setOtherAvatar(<Avatar avatarID={profile.currentAvatarID} width="100%" />);
 		});
 	}, []);
 
@@ -45,7 +46,7 @@ const PairInteractionPopup = (props) => {
 			otherGoogleID: props.otherGoogleID,
 		}).then((pairProfile) => {
 			setRepresentation(
-				<RepresentationAvatar representationID={pairProfile.currentRepresentationID} width={100} />
+				<RepresentationAvatar representationID={pairProfile.currentRepresentationID} width="30%" />
 			);
 			setOtherName(pairProfile.pairName);
 		});
@@ -101,8 +102,10 @@ const PairInteractionPopup = (props) => {
 				{userAvatar}
 			</div>
 			<div>
-				<h1>{userName + " & " + otherName}</h1>
-				{representation}
+				<div>
+					<h1 textAlign="center">{userName + " & " + otherName}</h1>
+					{representation}
+				</div >
 				<Collapsible trigger="Change Avatar">
 					<RepresentationChangePopup userGoogleID={props.userGoogleID} otherGoogleID={props.otherGoogleID} />
 				</Collapsible>

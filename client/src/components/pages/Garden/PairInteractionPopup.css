@@ -4,9 +4,15 @@
 }
 
 .sideColumn {
-	width: 25%;
+	width: 100%;
+}
+
+.representationStuffCentered {
+	margin: auto;
+	margin-left: auto;
+	margin-right: auto;
 }
 
 .middleColumn {
-
+	width: 50%;
 }

@@ -87,7 +87,7 @@ const Garden = (props) => {
 				console.log('do validate')
 			}
 		}
-	
+
 		return <input type="text" onKeyDown={handleKeyDown} />
 	}
 
