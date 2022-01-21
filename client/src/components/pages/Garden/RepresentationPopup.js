@@ -7,9 +7,10 @@ import PairInteractionPopup from "./PairInteractionPopup";
 import "./RepresentationPopup.css";
 
 const RepresentationPopup = (props) => {
+	console.log(props.otherName, "HUH");
 	return (
 		<Popup
-			trigger={<button className="detail-button"> Activity Details </button>}
+			trigger={<button className="detail-button"> {props.otherName} </button>}
 			modal
 			nested
 		>

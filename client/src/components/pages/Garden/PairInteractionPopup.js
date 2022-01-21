@@ -86,6 +86,14 @@ const PairInteractionPopup = (props) => {
 		};
 	}, []);
 
+	const formatTime = (date) => {
+		date = new Date(date);
+		let shortMonth = date.toLocaleString('en-us', { month: 'short' }); /* Jun */
+		let day = date.getUTCDate();
+		let year = date.getUTCFullYear();
+		return shortMonth + " " + day + ", " + year;
+	};
+
 	return (
 		<div className="container">
 
@@ -104,14 +112,18 @@ const PairInteractionPopup = (props) => {
 				<div>
 					<ReactTable
 						data={activities}
+						width="100%"
 						columns={[
 							{
 								Header: "Activities <3",
 								columns: [
 									{
-										Header: "Activity Time",
+										Header: "Date",
 										id: "activitytime",
-										accessor: d => d.activityTime
+										accessor: d => {
+											return formatTime(d.activityTime);
+										},
+										width: "50%",
 									},
 									{
 										Header: "Activity Name",
