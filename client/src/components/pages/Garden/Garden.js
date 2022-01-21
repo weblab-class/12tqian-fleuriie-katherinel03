@@ -144,7 +144,7 @@ const Garden = (props) => {
 	}
 
 	return (
-		<div>
+		<div className="garden-holder">
 			{generateCarousel()}
 		</div>
 	)

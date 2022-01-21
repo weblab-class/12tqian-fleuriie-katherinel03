@@ -5,7 +5,7 @@
     border-radius: 16px;
     border-width: 0 0 4px;
     box-sizing: border-box;
-    color: rgb(167, 216, 167);
+    color: #008040;
     cursor: pointer;
     display: inline-block;
     font-size: 15px;
@@ -13,6 +13,7 @@
     letter-spacing: .8px;
     line-height: 20px;
     margin: 4px;
+    margin-top: 20px;
     outline: none;
     overflow: visible;
     padding: 13px 16px;
@@ -34,8 +35,8 @@
   }
   
   .add-friend-button:hover:not(:disabled) {
-    filter: brightness(1.1);
-  }
+    background-color: #acd4ad;
+}
   
   .add-friend-button:disabled {
     cursor: auto;
