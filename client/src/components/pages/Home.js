@@ -14,7 +14,7 @@ const GOOGLE_CLIENT_ID = "714676168299-nil4moo5m1o2q1v79lq9rnloep1jn5uh.apps.goo
 const Home = ({ userId, handleLogin, handleLogout }) => {
 	return (
 		// we should get rid of navbar on homepage
-		<body className="Home-background">
+		<div className="Home-background">
 			<h1 className="Home-introduction">welcome to flowerfriends, a tool built to help you build and maintain relationships!</h1>
 			<div>
 				{userId ? (
@@ -54,7 +54,7 @@ const Home = ({ userId, handleLogin, handleLogout }) => {
 					/>
 				)}
 			</div>
-		</body>
+		</div>
 
 	)
 };
