@@ -39,3 +39,53 @@
 	border-radius: 18px;
 	border: 1px solid #cfcece;
 }
+
+.detail-button {
+    appearance: button;
+    background-color: white;
+    border: solid transparent;
+    border-radius: 16px;
+    border-width: 0 0 4px;
+    box-sizing: border-box;
+    color: #008040;
+    cursor: pointer;
+    display: inline-block;
+    font-size: 15px;
+    font-weight: 700;
+    letter-spacing: .8px;
+    line-height: 20px;
+    margin: 4px;
+    margin-top: 20px;
+    outline: none;
+    overflow: visible;
+    padding: 13px 16px;
+    text-align: center;
+    text-transform: uppercase;
+    touch-action: manipulation;
+    transform: translateZ(0);
+    transition: filter .2s;
+    user-select: none;
+    -webkit-user-select: none;
+    vertical-align: middle;
+    white-space: nowrap;
+    width: 95%;
+  }
+  
+  .detail-button:main,
+  .detail-button:focus {
+    user-select: auto;
+  }
+  
+  .detail-button:hover:not(:disabled) {
+    background-color: #acd4ad;
+}
+  
+  .detail-button:disabled {
+    cursor: auto;
+  }
+
+  .detail-container {
+      margin: auto;
+      text-align: center;
+      margin-bottom: 18px;
+  }

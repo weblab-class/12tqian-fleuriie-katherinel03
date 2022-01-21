@@ -9,7 +9,7 @@ import "./RepresentationPopup.css";
 const RepresentationPopup = (props) => {
 	return (
 		<Popup
-			trigger={<button className="button"> Activity Details </button>}
+			trigger={<button className="detail-button"> Activity Details </button>}
 			modal
 			nested
 		>
