@@ -81,6 +81,16 @@ const Garden = (props) => {
 		};
 	}, [user]);
 
+	const Input = () => {
+		const handleKeyDown = (event) => {
+			if (event.key === 'Enter') {
+				console.log('do validate')
+			}
+		}
+	
+		return <input type="text" onKeyDown={handleKeyDown} />
+	}
+
 	const generateCarousel = () => {
 		let carousel;
 		if (carouselItems.length === 0) {
@@ -101,10 +111,12 @@ const Garden = (props) => {
 			const settings = {
 				className: "center",
 				infinite: false,
-				// infinited: true,
+				// infinite: true,
 				centerPadding: "60px",
 				slidesToShow: 5,
 				swipeToSlide: true,
+				accessibility: true,
+				speed: 200,
 				afterChange: function (index) {
 					console.log(
 						`Slider Changed to: ${index + 1}, background: #222; color: #bada55`
@@ -137,7 +149,9 @@ const Garden = (props) => {
 			return (
 				<div className="pair-popup-holder">
 					<NewPairPopup userGoogleID={user.googleID} />
-					{carousel}
+					<div className="carouselDiv">
+						{carousel}
+					</div>
 				</div>
 			);
 		}
