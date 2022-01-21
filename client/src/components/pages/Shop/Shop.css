@@ -71,6 +71,7 @@
   background-color: white;
   width: 400px;
   border-radius: 16px;
+  margin: auto;
 }
 
 .shop-button:hover {
