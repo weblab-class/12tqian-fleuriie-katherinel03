@@ -16,3 +16,19 @@
 .middleColumn {
 	width: 50%;
 }
+
+
+.shop-button {
+	color: #008040;
+	background-color: white;
+	width: 100%;
+	border-radius: 16px;
+	margin: auto;
+	text-align: center;
+  }
+  
+  .shop-button:hover {
+	color: white;
+	cursor: pointer;
+	background-color: #008040;
+  }
