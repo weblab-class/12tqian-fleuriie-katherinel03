@@ -1,49 +1,95 @@
 .add-friend-button {
-    appearance: button;
-    background-color: white;
-    border: solid transparent;
-    border-radius: 16px;
-    border-width: 0 0 4px;
-    box-sizing: border-box;
-    color: #008040;
-    cursor: pointer;
-    display: inline-block;
-    font-size: 15px;
-    font-weight: 700;
-    letter-spacing: .8px;
-    line-height: 20px;
-    margin: 4px;
-    margin-top: 20px;
-    outline: none;
-    overflow: visible;
-    padding: 13px 16px;
-    text-align: center;
-    text-transform: uppercase;
-    touch-action: manipulation;
-    transform: translateZ(0);
-    transition: filter .2s;
-    user-select: none;
-    -webkit-user-select: none;
-    vertical-align: middle;
-    white-space: nowrap;
-    width: 40%;
-  }
-  
-  .add-friend-button:main,
-  .add-friend-button:focus {
-    user-select: auto;
-  }
-  
-  .add-friend-button:hover:not(:disabled) {
-    background-color: #acd4ad;
+  appearance: button;
+  background-color: white;
+  border: solid transparent;
+  border-radius: 16px;
+  border-width: 0 0 4px;
+  box-sizing: border-box;
+  color: #008040;
+  cursor: pointer;
+  display: inline-block;
+  font-size: 15px;
+  font-weight: 700;
+  letter-spacing: .8px;
+  line-height: 20px;
+  margin: 4px;
+  margin-top: 20px;
+  outline: none;
+  overflow: visible;
+  padding: 13px 16px;
+  text-align: center;
+  text-transform: uppercase;
+  touch-action: manipulation;
+  transform: translateZ(0);
+  transition: filter .2s;
+  user-select: none;
+  -webkit-user-select: none;
+  vertical-align: middle;
+  white-space: nowrap;
+  width: 40%;
 }
-  
-  .add-friend-button:disabled {
-    cursor: auto;
-  }
 
-  .add-friend-container {
-      margin: auto;
-      text-align: center;
-      margin-bottom: 18px;
-  }
+.add-friend-button:main,
+.add-friend-button:focus {
+  user-select: auto;
+}
+
+.add-friend-button:hover:not(:disabled) {
+  background-color: #acd4ad;
+}
+
+.add-friend-button:disabled {
+  cursor: auto;
+}
+
+.add-friend-container {
+  margin: auto;
+  text-align: center;
+  margin-bottom: 18px;
+}
+
+.modal {
+  font-family: "Mali", cursive;
+}
+.modal > .header {
+  width: 100%;
+  border-bottom: 1px solid gray;
+  font-size: 18px;
+  text-align: center;
+  background-color: pink;
+  padding: 0px 0px;
+  border-top-left-radius: 25px;
+  border-top-right-radius: 25px;
+}
+.modal > .content {
+  width: 100%;
+  /* padding: 10px 5px; */
+  padding: 0px 0px;
+  background-color: blanchedalmond;
+  border-bottom-left-radius: 25px;
+  border-bottom-right-radius: 25px;
+}
+
+.popup-content {
+  padding: 0px 0px;
+  border-radius: 25px;
+}
+.modal > .actions {
+  width: 100%;
+  padding: 10px 5px;
+  margin: auto;
+  text-align: center;
+}
+.modal > .close {
+  cursor: pointer;
+  position: absolute;
+  display: block;
+  padding: 2px 5px;
+  line-height: 20px;
+  right: -10px;
+  top: -10px;
+  font-size: 24px;
+  background: #ffffff;
+  border-radius: 18px;
+  border: 1px solid #cfcece;
+}

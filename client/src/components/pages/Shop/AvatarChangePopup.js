@@ -65,8 +65,8 @@ const AvatarChangePopup = (props) => {
 	const handleTry = (itemID) => { // try on something new
 		post("/api/userprofileupdate",
 			{
-				pairProfile: {
-					googleID: googleID,
+				userProfile: {
+					googleID: props.googleID,
 				},
 				update: {
 					currentAvatarID: itemID,

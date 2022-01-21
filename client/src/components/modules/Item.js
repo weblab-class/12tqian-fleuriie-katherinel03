@@ -1,6 +1,10 @@
 import React from "react";
 import "./Item.css";
 
+import { Button, Radio } from 'antd';
+import { DownloadOutlined } from '@ant-design/icons';
+
+
 // this has props
 // type: 
 // active whether the item is the one actively used
@@ -13,29 +17,31 @@ import "./Item.css";
 const Item = (props) => {
 	let button; // this is the button 
 	let displayImage;
-	if (props.type === "active") {	
-		button = <button onClick={() => {props.callback(props.itemID)}}>Active</button>;
+	let buttonText;
+
+	if (props.type === "active") {
+		buttonText = "Active";
 		displayImage = (
 			<div className="active">
 				{props.image}
 			</div>
 		);
 	} else if (props.type === "bought") {
-		button = <button onClick={() => {props.callback(props.itemID)}}>Try on!</button>;
+		buttonText = "Try";
 		displayImage = (
 			<div className="bought">
 				{props.image}
 			</div>
 		);
 	} else if (props.type === "afford") {
-		button = <button onClick={() => {props.callback(props.itemID)}}>Buy</button>;
+		buttonText = "Buy";
 		displayImage = (
 			<div className="afford">
 				{props.image}
 			</div>
 		);
 	} else if (props.type === "cannotAfford") {
-		button = (<button>Need more money</button>);
+		buttonText = "Locked";
 		displayImage = (
 			<div className="cannotAfford">
 				{props.image}
@@ -45,17 +51,21 @@ const Item = (props) => {
 		console.log("Incorrect item typing passed");
 	}
 
-	const logobjects = () => {
-		console.log("OBJECT PROPS ITEM");
-		console.log(props);
+	button = <Button type="primary" shape="round" onClick={() => { props.callback(props.itemID); }} size="small">
+		{buttonText}
+	</Button>;
 
-	};
 	return (
-		<div>
-			{displayImage}
-			{props.cost}
-			{button}
-			{logobjects()}
+		<div className="itemCatalogWrapper">
+			<div className="displayImageInside">
+				{displayImage}
+			</div>
+			<div className="interactionSection">
+				{button}
+				<div className="costItem">
+					{"Cost: " + props.cost}
+				</div>
+			</div>
 		</div>
 	);
 };

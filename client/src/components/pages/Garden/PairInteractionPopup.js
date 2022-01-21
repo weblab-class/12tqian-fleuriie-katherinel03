@@ -119,11 +119,16 @@ const PairInteractionPopup = (props) => {
 								columns: [
 									{
 										Header: "Date",
-										id: "activitytime",
+										id: "activityTime",
 										accessor: d => {
-											return formatTime(d.activityTime);
+											return (
+												<div style={{
+													textAlign: "center"
+												}}>
+													{formatTime(d.activityTime)}
+												</div>);
 										},
-										width: "50%",
+										width: 75,
 									},
 									{
 										Header: "Activity Name",
