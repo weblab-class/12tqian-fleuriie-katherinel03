@@ -5,6 +5,7 @@ import Avatar from "../Avatar/Avatar.js";
 import NewActivityPopup from "./Representation/NewActivityPopup.js";
 import RepresentationAvatar from "./Representation/RepresentationAvatar.js";
 import { socket } from "../../../client-socket"
+import "./PairInteractionPopup.css";
 
 // Import React Table
 import ReactTable from "react-table-6";
@@ -86,54 +87,52 @@ const PairInteractionPopup = (props) => {
 	}, []);
 
 	return (
-		<div>
-			<div style={{ display: "grid", gridTemplateColumns: "repeat(3, 1fr)", gridGap: 20 }}>
+		<div className="container">
+
+			<div className="sideColumn">
+				{userAvatar}
+			</div>
+			<div>
+				<h1>{userName + " & " + otherName}</h1>
+				{representation}
+				<Collapsible trigger="Change Avatar">
+					<RepresentationChangePopup userGoogleID={props.userGoogleID} otherGoogleID={props.otherGoogleID} />
+				</Collapsible>
+				{/* to do add something that would add a new activity */}
+				<NewActivityPopup userGoogleID={props.userGoogleID} otherGoogleID={props.otherGoogleID} />
+				<br />
 				<div>
-					{userAvatar}
-				</div>
-				<div>
-					<h1>{userName + " & " + otherName}</h1>
-					{representation}
-					<Collapsible trigger="Change Avatar">
-						<RepresentationChangePopup userGoogleID={props.userGoogleID} otherGoogleID={props.otherGoogleID} />
-					</Collapsible>
-					{/* to do add something that would add a new activity */}
-					<NewActivityPopup userGoogleID={props.userGoogleID} otherGoogleID={props.otherGoogleID} />
+					<ReactTable
+						data={activities}
+						columns={[
+							{
+								Header: "Activities <3",
+								columns: [
+									{
+										Header: "Activity Time",
+										id: "activitytime",
+										accessor: d => d.activityTime
+									},
+									{
+										Header: "Activity Name",
+										id: "activityName",
+										accessor: d => d.activityName
+									}
+								]
+							},
+						]}
+						defaultPageSize={20}
+						style={{
+							height: "400px" // This will force the table body to overflow and scroll, since there is not enough room
+						}}
+						className="-striped -highlight"
+					/>
 					<br />
-					<div>
-						<ReactTable
-							data={activities}
-							columns={[
-								{
-									Header: "Activities <3",
-									columns: [
-										{
-											Header: "Activity Time",
-											id: "activitytime",
-											accessor: d => d.activityTime
-										},
-										{
-											Header: "Activity Name",
-											id: "activityName",
-											accessor: d => d.activityName
-										}
-									]
-								},
-							]}
-							defaultPageSize={20}
-							style={{
-								height: "400px" // This will force the table body to overflow and scroll, since there is not enough room
-							}}
-							className="-striped -highlight"
-						/>
-						<br />
-					</div>
-				</div>
-				<div>
-					{otherAvatar}
 				</div>
 			</div>
-
+			<div className="sideColumn">
+				{otherAvatar}
+			</div>
 		</div>
 	);
 };

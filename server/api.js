@@ -118,7 +118,7 @@ router.post("/useravatar", auth.ensureLoggedIn, (req, res) => {
     googleID: req.body.googleID,
     avatarID: req.body.avatarID,
   });
-  newAvatar.save().then(data => {
+  newUserAvatar.save().then(data => {
     res.send(data);
     socketManager.getIo().emit("newUserAvatarUpdate", {});
   })

@@ -44,12 +44,19 @@ const Item = (props) => {
 	} else {
 		console.log("Incorrect item typing passed");
 	}
+
+	const logobjects = () => {
+		console.log("OBJECT PROPS ITEM");
+		console.log(props);
+
+	};
 	return (
-		<span>
+		<div>
 			{displayImage}
 			{props.cost}
 			{button}
-		</span>
+			{logobjects()}
+		</div>
 	);
 };
 

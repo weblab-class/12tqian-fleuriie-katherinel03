@@ -152,6 +152,7 @@ const AvatarChangePopup = (props) => {
 				}
 			}
 		}
+		console.log(itemList);
 		setShopCatalog(
 			<ShopCatalog 
 				itemList={itemList}

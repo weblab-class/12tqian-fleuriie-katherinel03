@@ -20,11 +20,17 @@ const ShopCatalog = (props) => {
 				/>
 			})
 		);
-	}, []);
+	}, [props.itemList]);
+
+	const displaystuff = () => {
+		console.log("NEW ITEM LIST");
+		console.log(props.itemList);
+	};
 
 	return (
 		<div>
 			{displayItems}
+			{displaystuff()}
 		</div>
 	);
 };
