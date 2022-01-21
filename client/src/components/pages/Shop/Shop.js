@@ -30,11 +30,11 @@ const Shop = () => {
 			return (
 				<div className="Shop-background">
 					<div className="shop">
-						<Collapsible trigger="Avatar Customization">
+						<Collapsible trigger="Avatar Customization" className="shop-button" openedClassName="shop-button">
 							<AvatarChangePopup googleID={user.googleID} />
 						</Collapsible>
 						<div className="space"></div>
-						<Collapsible trigger="Garden Customization">
+						<Collapsible trigger="Garden Customization" className="shop-button" openedClassName="shop-button">
 
 						</Collapsible>
 					</div>

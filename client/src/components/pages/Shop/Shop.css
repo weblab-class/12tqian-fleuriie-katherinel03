@@ -65,3 +65,16 @@
   border-radius: 18px;
   border: 1px solid #cfcece;
 }
+
+.shop-button {
+  color: #008040;
+  background-color: white;
+  width: 400px;
+  border-radius: 16px;
+}
+
+.shop-button:hover {
+  color: white;
+  cursor: pointer;
+  background-color: #008040;
+}
