@@ -15,9 +15,11 @@
   background-image: url("/client/src/components/constants/background.jpg");
   background-position: center;
   background-size: cover;
+  background-attachment: fixed;
   text-align: center;
   width: 100%;
-  height: auto;
+  height: 100%;
+  font-family: "Mali", cursive;
 }
 
 .Home-introduction {
