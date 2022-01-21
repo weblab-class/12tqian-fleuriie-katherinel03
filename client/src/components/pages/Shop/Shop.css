@@ -69,7 +69,7 @@
 .shop-button {
   color: #008040;
   background-color: white;
-  width: 400px;
+  width: 100%;
   border-radius: 16px;
   margin: auto;
 }
