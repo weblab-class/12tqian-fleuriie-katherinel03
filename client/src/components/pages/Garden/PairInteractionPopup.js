@@ -103,7 +103,8 @@ const PairInteractionPopup = (props) => {
 			<div>
 				<h1>{userName + " & " + otherName}</h1>
 				{representation}
-				<Collapsible trigger="Change Avatar">
+				<Collapsible trigger=
+				{<div className="shop-button">Change Plant</div>}>
 					<RepresentationChangePopup userGoogleID={props.userGoogleID} otherGoogleID={props.otherGoogleID} />
 				</Collapsible>
 				{/* to do add something that would add a new activity */}
