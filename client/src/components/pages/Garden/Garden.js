@@ -135,7 +135,7 @@ const Garden = (props) => {
 			);
 		} else {
 			return (
-				<div>
+				<div className="pair-popup-holder">
 					<NewPairPopup userGoogleID={user.googleID} />
 					{carousel}
 				</div>

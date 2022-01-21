@@ -2,13 +2,14 @@ import React, { useEffect, useState } from "react";
 
 import NewFriendForm from "./NewFriendForm.js";
 import Popup from 'reactjs-popup';
+import "./NewPairPopup.css";
 
 const NewPairPopup = (props) => {
 
 	return (
-		<div>
+		<div className="add-friend-container">
 			<Popup
-				trigger={<button className="button">Add new friend!</button>}
+				trigger={<button className="add-friend-button">Add new friend!</button>}
 				modal
 				nested
 			>
