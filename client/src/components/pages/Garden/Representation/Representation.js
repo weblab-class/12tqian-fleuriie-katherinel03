@@ -7,6 +7,7 @@ import RepresentationAvatar from "./RepresentationAvatar.js";
 import HealthBar from "./HealthBar.js";
 import RepresentationPopup from "../RepresentationPopup";
 import { socket } from "../../../../client-socket";
+import "./Representation.css"
 
 const MULT_FACTOR = 2;
 const MINUTES_IN_DAY = 1440;
@@ -77,15 +78,14 @@ const Representation = (props) => {
 	}, []);
 
 	return (
-		<div>
-			{healthBar}
-			{representationAvatar}
-			<div style={{ textAlign: "center" }}>
-				<span>
-					{otherName}
-				</span>
+		<div style={{textAlign: "center"}} className="representation-container">
+			<div className="centeredDiv">
+				{healthBar}
+				{representationAvatar}
 			</div>
-			<RepresentationPopup userGoogleID={props.userGoogleID} otherGoogleID={props.otherGoogleID} />
+			<div style={{ textAlign: "center" }}>
+			</div>
+			<RepresentationPopup userGoogleID={props.userGoogleID} otherGoogleID={props.otherGoogleID} otherName={otherName} />
 		</div>
 	);
 };
