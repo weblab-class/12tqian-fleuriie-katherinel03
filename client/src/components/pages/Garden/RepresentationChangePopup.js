@@ -103,6 +103,7 @@ const RepresentationChangePopup = (props) => {
 							image: <RepresentationAvatar
 								representationID={representation.representationID}
 								width="100%"
+								stage={1}
 							/>,
 							type: "active",
 							callback: handleTry,
@@ -117,6 +118,7 @@ const RepresentationChangePopup = (props) => {
 							image: <RepresentationAvatar
 								representationID={representation.representationID}
 								width="100%"
+								stage={1}
 							/>,
 							type: "bought",
 							callback: handleTry,
@@ -133,6 +135,7 @@ const RepresentationChangePopup = (props) => {
 							image: <RepresentationAvatar
 								representationID={representation.representationID}
 								width="100%"
+								stage={1}
 							/>,
 							type: "afford",
 							callback: handleBuy,
@@ -147,6 +150,7 @@ const RepresentationChangePopup = (props) => {
 							image: <RepresentationAvatar
 								representationID={representation.representationID}
 								width="100%"
+								stage={1}
 							/>,
 							type: "cannotAfford",
 							callback: handleReject,

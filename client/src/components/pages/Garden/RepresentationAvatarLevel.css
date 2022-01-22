@@ -1,0 +1,8 @@
+.centeredWithinProgressBar {
+	text-align: center;
+}
+
+.itemWithinProgressBarDiv {
+	margin: auto;
+	width: 60%;
+}

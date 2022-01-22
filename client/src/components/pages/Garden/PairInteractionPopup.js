@@ -46,7 +46,11 @@ const PairInteractionPopup = (props) => {
 			otherGoogleID: props.otherGoogleID,
 		}).then((pairProfile) => {
 			setRepresentation(
-				<RepresentationAvatar representationID={pairProfile.currentRepresentationID} width="30%" />
+				<RepresentationAvatar
+					representationID={pairProfile.currentRepresentationID}
+					width="30%"
+					stage={2}
+				/>
 			);
 			setOtherName(pairProfile.pairName);
 		});
@@ -102,7 +106,7 @@ const PairInteractionPopup = (props) => {
 			</div>
 			<div>
 				<div className="name-avatar-container">
-					<h1 className="names" textAlign="center">{userName + " & " + otherName}</h1>
+					<h1 className="names" textalign="center">{userName + " & " + otherName}</h1>
 					<div className="avatars-plant">
 						{userAvatar}
 						{representation}
@@ -110,7 +114,7 @@ const PairInteractionPopup = (props) => {
 					</div>
 				</div >
 				<Collapsible trigger=
-				{<div className="shop-button">Change Plant</div>}>
+					{<div className="shop-button">Change Plant</div>}>
 					<RepresentationChangePopup userGoogleID={props.userGoogleID} otherGoogleID={props.otherGoogleID} />
 				</Collapsible>
 				{/* to do add something that would add a new activity */}
@@ -130,7 +134,7 @@ const PairInteractionPopup = (props) => {
 										accessor: d => {
 											return (
 												<div style={{
-													textAlign: "center"
+													textalign: "center"
 												}}>
 													{formatTime(d.activityTime)}
 												</div>);

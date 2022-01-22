@@ -4,6 +4,7 @@ import "../../../../utilities.css";
 import { get, post } from "../../../../utilities.js";
 
 import RepresentationAvatar from "./RepresentationAvatar.js";
+import RepresentationAvatarLevel from "../RepresentationAvatarLevel";
 import HealthBar from "./HealthBar.js";
 import RepresentationPopup from "../RepresentationPopup";
 import { socket } from "../../../../client-socket";
@@ -14,7 +15,7 @@ const MINUTES_IN_DAY = 1440;
 
 const Representation = (props) => {
 	const [healthBar, setHealthBar] = useState(undefined);
-	const [representationAvatar, setRepresentationAvatar] = useState(undefined);
+	const [representationAvatarLevel, setRepresentationAvatarLevel] = useState(undefined);
 	const [otherName, setOtherName] = useState(undefined);
 
 	const getHealthBarPercentage = (goalFrequency, timeMilliseconds) => {
@@ -33,12 +34,22 @@ const Representation = (props) => {
 	};
 
 	const setRepresentation = () => {
-
 		get("/api/pairprofileone", {
 			userGoogleID: props.userGoogleID,
 			otherGoogleID: props.otherGoogleID,
 		}).then((pairProfile) => {
-			setRepresentationAvatar(<RepresentationAvatar representationID={pairProfile.currentRepresentationID} width={100} />);
+			setRepresentationAvatarLevel(
+				<RepresentationAvatarLevel
+					representationAvatar={
+						<RepresentationAvatar
+							representationID={pairProfile.currentRepresentationID}
+							width={"100%"}
+							stage={1}
+						/>
+					}
+					experience={100}
+				/>
+			);
 			setOtherName(pairProfile.pairName);
 			get("/api/pairactivity", {
 				userGoogleID: props.userGoogleID,
@@ -68,8 +79,6 @@ const Representation = (props) => {
 		setRepresentation();
 	}, []);
 
-	
-
 	useEffect(() => {
 		socket.on("newPairProfileUpdate", setRepresentation);
 		return () => {
@@ -78,12 +87,14 @@ const Representation = (props) => {
 	}, []);
 
 	return (
-		<div style={{textAlign: "center"}} className="representation-container">
+		<div className="representation-container">
 			<div className="centeredDiv">
-				{healthBar}
-				{representationAvatar}
+				<div className="healthBarWithinDiv">
+					{healthBar}
+				</div>
+				{representationAvatarLevel}
 			</div>
-			<div style={{ textAlign: "center" }}>
+			<div style={{ textalign: "center" }}>
 			</div>
 			<RepresentationPopup userGoogleID={props.userGoogleID} otherGoogleID={props.otherGoogleID} otherName={otherName} />
 		</div>
