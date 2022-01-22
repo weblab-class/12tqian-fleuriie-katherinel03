@@ -99,12 +99,15 @@ const PairInteractionPopup = (props) => {
 		<div className="container">
 
 			<div className="sideColumn">
-				{userAvatar}
 			</div>
 			<div>
 				<div className="name-avatar-container">
-					<h1 textAlign="center">{userName + " & " + otherName}</h1>
-					{representation}
+					<h1 className="names" textAlign="center">{userName + " & " + otherName}</h1>
+					<div className="avatars-plant">
+						{userAvatar}
+						{representation}
+						{otherAvatar}
+					</div>
 				</div >
 				<Collapsible trigger=
 				{<div className="shop-button">Change Plant</div>}>
@@ -152,7 +155,6 @@ const PairInteractionPopup = (props) => {
 				</div>
 			</div>
 			<div className="sideColumn">
-				{otherAvatar}
 			</div>
 		</div>
 	);
