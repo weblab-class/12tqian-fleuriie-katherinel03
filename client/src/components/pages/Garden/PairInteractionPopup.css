@@ -1,5 +1,6 @@
 .container {
 	display: flex;
+	color: #008040;
 }
 
 .sideColumn {
@@ -36,4 +37,13 @@
 	  margin: auto;
 	  text-align: center;
 	  margin-bottom: 12px;
+  }
+
+  .names {
+	color: #008040;
+  }
+
+  .avatars-plant {
+	  display: flex;
+	  flex-direction: row;
   }
