@@ -56,7 +56,7 @@
   border-bottom: 1px solid gray;
   font-size: 18px;
   text-align: center;
-  background-color: pink;
+  background-color: #AAFFD2;
   padding: 0px 0px;
   border-top-left-radius: 25px;
   border-top-right-radius: 25px;
@@ -65,7 +65,7 @@
   width: 100%;
   /* padding: 10px 5px; */
   padding: 0px 0px;
-  background-color: blanchedalmond;
+  background-color: #E3FFF0;
   border-bottom-left-radius: 25px;
   border-bottom-right-radius: 25px;
 }

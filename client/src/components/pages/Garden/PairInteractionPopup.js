@@ -102,7 +102,7 @@ const PairInteractionPopup = (props) => {
 				{userAvatar}
 			</div>
 			<div>
-				<div>
+				<div className="name-avatar-container">
 					<h1 textAlign="center">{userName + " & " + otherName}</h1>
 					{representation}
 				</div >
