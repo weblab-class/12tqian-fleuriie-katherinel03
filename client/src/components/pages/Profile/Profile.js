@@ -18,13 +18,7 @@ const Profile = (props) => {
       }
     });
   }, [])
-
-  // useEffect(() => {
-  //   document.title = "Profile Page";
-  //   get(`/api/user`, { googleID: user.googleID }).then((user) => {
-  //     setUser(user.name);
-  //   })
-  // }, []);
+  
   const [avatar, setAvatar] = useState(undefined);
   useEffect(() => {
     if (user) {
@@ -35,9 +29,6 @@ const Profile = (props) => {
       });
     }
   }, [user]);
-  // // getting user data!
-
-  // // i want to die! :)
   if (!user) {
     return (<div className="Profile-notLoggedIn"> Log in before you can view your profile! </div>)
   }

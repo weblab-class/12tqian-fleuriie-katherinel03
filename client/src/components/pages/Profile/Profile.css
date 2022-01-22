@@ -4,7 +4,9 @@
 .Profile-container {
   border: none;
   text-align: center;
-  background-image: url("./ProfileBackground.jpg");
+  background-image: url("/client/src/components/constants/background.jpg");
+  height: 100%;
+  width: auto;
   background-position: center;
   background-size: cover;
 }
