@@ -1,8 +1,13 @@
 .representation-container {
-    margin: auto;
+    text-align: center;
 }
 
 .centeredDiv {
     margin-left: auto;
     margin-right: auto;
+    width: 70%;
+}
+
+.healthBarWithinDiv {
+    margin-left: 20%;
 }

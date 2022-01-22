@@ -38,6 +38,7 @@
     "react": "^16.14.0",
     "react-alice-carousel": "^2.5.1",
     "react-catalog-view": "^1.0.6",
+    "react-circular-progressbar": "^2.0.4",
     "react-collapsible": "^2.8.4",
     "react-datepicker": "^4.6.0",
     "react-dom": "^16.14.0",
