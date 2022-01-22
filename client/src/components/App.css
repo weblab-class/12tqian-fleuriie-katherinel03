@@ -1,5 +1,12 @@
 .App-container {
   margin: 0px;
   font-family: "Mali", cursive;
-  height: 100%;
+  width: 100vw;
+  height: 100vh;
+  position: absolute;
+}
+.Router {
+  width: 100vw;
+  height: 100vh;
+  position: absolute;
 }

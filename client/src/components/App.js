@@ -45,7 +45,6 @@ const App = () => {
   };
 
   return (
-    <>
       <div className="App-container">
         <NavBar
           handleLogin={handleLogin}
@@ -60,7 +59,6 @@ const App = () => {
           <NotFound default />
         </Router>
       </div>
-    </>
   );
 };
 
