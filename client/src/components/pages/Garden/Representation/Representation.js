@@ -10,8 +10,7 @@ import RepresentationPopup from "../RepresentationPopup";
 import { socket } from "../../../../client-socket";
 import "./Representation.css"
 
-const MULT_FACTOR = 2;
-const MINUTES_IN_DAY = 1440;
+import { getStage, MULT_FACTOR, MINUTES_IN_DAY } from "../../../constants/constants";
 
 const Representation = (props) => {
 	const [healthBar, setHealthBar] = useState(undefined);
@@ -44,10 +43,10 @@ const Representation = (props) => {
 						<RepresentationAvatar
 							representationID={pairProfile.currentRepresentationID}
 							width={"100%"}
-							stage={1}
+							stage={getStage(pairProfile.totalExperience)}
 						/>
 					}
-					experience={100}
+					totalExperience={pairProfile.totalExperience}
 				/>
 			);
 			setOtherName(pairProfile.pairName);

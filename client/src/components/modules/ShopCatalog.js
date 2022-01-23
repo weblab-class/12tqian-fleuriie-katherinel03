@@ -4,11 +4,14 @@ import "./ShopCatalog.css";
 
 import Item from "./Item";
 
+import { get, post } from "../../utilities";
+
 // passes in a list of props
 
 const ShopCatalog = (props) => {
 
 	const [displayItems, setDisplayItems] = useState([]);
+	const [currency, setCurrency] = useState(0);
 	useEffect(() => {
 		setDisplayItems(
 			props.itemList.map((item) => {
@@ -26,10 +29,18 @@ const ShopCatalog = (props) => {
 				);
 			})
 		);
+		get("/api/userprofile", {
+			googleID: props.googleID,
+		}).then((userProfile) => {
+			setCurrency(userProfile.currency);
+		});
 	}, [props.itemList]);
 
 	return (
 		<div className="parentWrapper">
+			<div className="currencyLabel">
+				Total currency: {currency}
+			</div>
 			<div className="parent">
 				{displayItems}
 			</div>

@@ -14,6 +14,8 @@ import Collapsible from 'react-collapsible';
 
 import RepresentationChangePopup from "./RepresentationChangePopup.js";
 
+import { formatTime, getStage } from "../../constants/constants.js";
+
 const PairInteractionPopup = (props) => {
 	const [userAvatar, setUserAvatar] = useState(undefined);
 	const [otherAvatar, setOtherAvatar] = useState(undefined);
@@ -49,7 +51,7 @@ const PairInteractionPopup = (props) => {
 				<RepresentationAvatar
 					representationID={pairProfile.currentRepresentationID}
 					width="30%"
-					stage={2}
+					stage={getStage(pairProfile.totalExperience)}
 				/>
 			);
 			setOtherName(pairProfile.pairName);
@@ -91,14 +93,6 @@ const PairInteractionPopup = (props) => {
 		};
 	}, []);
 
-	const formatTime = (date) => {
-		date = new Date(date);
-		let shortMonth = date.toLocaleString('en-us', { month: 'short' }); /* Jun */
-		let day = date.getUTCDate();
-		let year = date.getUTCFullYear();
-		return shortMonth + " " + day + ", " + year;
-	};
-
 	return (
 		<div className="container">
 
@@ -139,10 +133,10 @@ const PairInteractionPopup = (props) => {
 													{formatTime(d.activityTime)}
 												</div>);
 										},
-										width: 75,
+										width: 83,
 									},
 									{
-										Header: "Activity Name",
+										Header: "Activity Description",
 										id: "activityName",
 										accessor: d => d.activityName
 									}

@@ -118,7 +118,9 @@ router.get("/pairactivity", (req, res) => {
     userGoogleID: req.query.userGoogleID,
     otherGoogleID: req.query.otherGoogleID,
   }).then((pairActivity) => {
-    res.send(pairActivity);
+    const sortedActivities = pairActivity.sort((a, b) => new Date(b.activityTime) - new Date(a.activityTime));
+    res.send(sortedActivities);
+    // res.send(pairActivity);
   });
 });
 

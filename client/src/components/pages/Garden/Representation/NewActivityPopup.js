@@ -8,6 +8,8 @@ import 'react-popup-alert/dist/index.css'
 import {post, get} from "../../../../utilities.js";
 import Alert from 'react-popup-alert';
 
+import { EXPERIENCE_PER_ACTIVITY, CURRENCY_PER_LEVEL, formatTime } from "../../../constants/constants.js";
+
 const NewActivityPopup = (props) => {
 	const { handleSubmit, control } = useForm();
 
@@ -33,7 +35,6 @@ const NewActivityPopup = (props) => {
 		})
 	}
 
-
 	const onSubmit = (data, e) => {
 		const activityTime = new Date(data.activityTime);
 		const activityName = data.activityName;
@@ -48,6 +49,32 @@ const NewActivityPopup = (props) => {
 			}).then((data) => {
 				console.log(data);
 			});
+			get("/api/userprofile", {
+				googleID: props.userGoogleID,
+			}).then((profile) => {
+				post("/api/userprofileupdate", {
+					userProfile: {
+						googleID: props.userGoogleID,
+					},
+					update: {
+						currency: profile.currency + CURRENCY_PER_LEVEL,
+					},
+				});
+			});
+			get("/api/pairprofileone", {
+				userGoogleID: props.userGoogleID,
+				otherGoogleID: props.otherGoogleID,
+			}).then((profile) => {
+				post("/api/pairprofileupdate", {
+					pairProfile: {
+						userGoogleID: props.userGoogleID,
+						otherGoogleID: props.otherGoogleID,
+					},
+					update: {
+						totalExperience: profile.totalExperience + EXPERIENCE_PER_ACTIVITY,
+					},
+				});
+			});
 		}
 	};
 
@@ -60,7 +87,7 @@ const NewActivityPopup = (props) => {
 
 			<form onSubmit={handleSubmit(onSubmit, onError)}>
 				<div>
-					Enter new activity pls
+					<h4>Enter new activities!</h4>
 				</div>
 				<Controller
 					control={control}
@@ -75,7 +102,7 @@ const NewActivityPopup = (props) => {
 					control={control}
 					name="activityName"
 					render={({ field: { onChange, onBlur, value, ref } }) => (
-						<Input placeholder="Basic usage" style={{ width: 400 }}
+						<Input placeholder="activity description" style={{ width: 400 }}
 							onChange={onChange}
 							onBlur={onBlur}
 							selected={value} />
