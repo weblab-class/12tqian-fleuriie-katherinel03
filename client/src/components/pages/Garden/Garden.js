@@ -11,6 +11,7 @@ import "./Garden.css";
 
 import Representation from "./Representation/Representation.js";
 import NewPairPopup from "./NewPairPopup";
+import Avatar from "../Avatar/Avatar.js";
 
 import RepresentationChangePopup from "./RepresentationChangePopup";
 import { Carousel, ScrollingCarousel } from '@trendyol-js/react-carousel';
@@ -40,6 +41,19 @@ const Garden = (props) => {
 			}
 		});
 	}, []);
+
+
+	const [avatar, setAvatar] = useState(undefined);
+	useEffect(() => {
+	  if (user) {
+		get("/api/userprofile", {
+		  googleID: user.googleID,
+		}).then((profile) => {
+		  setAvatar(<Avatar avatarID={profile.currentAvatarID} width={100} />);
+		});
+	  }
+	}, [user]);
+
 
 	const resetCarousel = (profileList) => {
 		const newCarouselItems = [];
@@ -160,6 +174,7 @@ const Garden = (props) => {
 	return (
 		<div className="garden-holder">
 			{generateCarousel()}
+			<div className="avatar-holder">{avatar}</div>
 		</div>
 	)
 };

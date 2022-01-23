@@ -38,7 +38,6 @@ const Profile = (props) => {
         {avatar}
       </div>
       <h1 className="Profile-username">{user.name}</h1>
-      <hr />
       <EditProfile />
     </div>
   );

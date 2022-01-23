@@ -21,3 +21,9 @@
 	font-size: 36px;
 	color: #008040;
 }
+
+.avatar-holder {
+	margin: auto;
+	text-align: center;
+	margin-top: 24px;
+}
