@@ -39,13 +39,13 @@ const Garden = (props) => {
 
 	const [avatar, setAvatar] = useState(undefined);
 	useEffect(() => {
-	  if (user) {
-		get("/api/userprofile", {
-		  googleID: user.googleID,
-		}).then((profile) => {
-		  setAvatar(<Avatar avatarID={profile.currentAvatarID} width={100} />);
-		});
-	  }
+		if (user) {
+			get("/api/userprofile", {
+				googleID: user.googleID,
+			}).then((profile) => {
+				setAvatar(<Avatar avatarID={profile.currentAvatarID} width={100} />);
+			});
+		}
 	}, [user]);
 
 
@@ -58,6 +58,16 @@ const Garden = (props) => {
 				</span>
 			);
 		}
+
+		// newCarouselItems.sort(function (a, b) {
+		// 	var nameA = a.name.toLowerCase(), nameB = b.name.toLowerCase();
+		// 	if (nameA < nameB) //sort string ascending
+		// 		return -1;
+		// 	if (nameA > nameB)
+		// 		return 1;
+		// 	return 0; //default return value (no sorting)
+		// });
+
 		setCarouselItems(newCarouselItems);
 	};
 
@@ -119,38 +129,38 @@ const Garden = (props) => {
 				beforeChange: (current, next) => setSlideIndex(next),
 			};
 
-		// carousel = carouselItems.map(
-		// 	(item, index) =>
-		// 		<div key={index}>{item}</div>
-		// );
-		carousel = (
-			<Slider ref={slider => (setSlider(slider))} {...settings}>
-				{
-					carouselItems.map(
-						(item, index) =>
-							<div key={index}>{item}</div>
-					)
-				}
-			</Slider>
-		);
-	}
-	if (!user) {
-		return (
-			<div className="no-friends">
-				Please login.
-			</div>
-		);
-	} else {
-		return (
-			<div className="pair-popup-holder">
-				<NewPairPopup userGoogleID={user.googleID} />
-				<div className="carouselDiv">
-					{carousel}
+			// carousel = carouselItems.map(
+			// 	(item, index) =>
+			// 		<div key={index}>{item}</div>
+			// );
+			carousel = (
+				<Slider ref={slider => (setSlider(slider))} {...settings}>
+					{
+						carouselItems.map(
+							(item, index) =>
+								<div key={index}>{item}</div>
+						)
+					}
+				</Slider>
+			);
+		}
+		if (!user) {
+			return (
+				<div className="no-friends">
+					Please login.
 				</div>
-			</div>
-		);
+			);
+		} else {
+			return (
+				<div className="pair-popup-holder">
+					<NewPairPopup userGoogleID={user.googleID} />
+					<div className="carouselDiv">
+						{carousel}
+					</div>
+				</div>
+			);
+		}
 	}
-}
 
 
 	return (

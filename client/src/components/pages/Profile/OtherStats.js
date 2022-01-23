@@ -3,7 +3,7 @@ import React, { useEffect, useState } from "react";
 import "./OtherStats.css";
 
 import "../../../utilities.css";
-import {get, post} from "../../../utilities.js";
+import { get, post } from "../../../utilities.js";
 
 const OtherStats = (props) => {
     const [achievement, setAchievement] = useState([]);
@@ -19,7 +19,7 @@ const OtherStats = (props) => {
         })
     }, []);
     // bro idk what the heck im doing or why theres an error CRYGE
-    
+
     return (
         <div>
 

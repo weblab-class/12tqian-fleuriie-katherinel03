@@ -6,9 +6,10 @@ import OtherStats from "./OtherStats.js";
 import "../../../utilities.css";
 import "./Profile.css";
 import { get, post } from "../../../utilities.js";
-
+import { socket } from "../../../client-socket"; 
 const Profile = (props) => {
   const [user, setUser] = useState(undefined);
+  const [userName, setUserName] = useState(undefined);
 
   useEffect(() => {
     get("/api/whoami").then((user) => {
@@ -18,17 +19,31 @@ const Profile = (props) => {
       }
     });
   }, [])
-  
+
   const [avatar, setAvatar] = useState(undefined);
-  useEffect(() => {
+
+  const resetUser = () => {
     if (user) {
       get("/api/userprofile", {
         googleID: user.googleID,
       }).then((profile) => {
         setAvatar(<Avatar avatarID={profile.currentAvatarID} width={100} />);
+        setUserName(profile.userName);
       });
     }
+  };
+
+  useEffect(() => {
+    socket.on("newUserProfileUpdate", resetUser);
+    return () => {
+      socket.off("newUserProfileUpdate", resetUser);
+    };
+  });
+
+  useEffect(() => {
+    resetUser();
   }, [user]);
+
   if (!user) {
     return (<div className="Profile-notLoggedIn"> Log in before you can view your profile! </div>)
   }
@@ -37,8 +52,8 @@ const Profile = (props) => {
       <div className="Profile-avatarContainer">
         {avatar}
       </div>
-      <h1 className="Profile-username">{user.name}</h1>
-      <EditProfile />
+      <h1 className="Profile-username">{userName}</h1>
+      <EditProfile googleID={user.googleID} />
     </div>
   );
 };
