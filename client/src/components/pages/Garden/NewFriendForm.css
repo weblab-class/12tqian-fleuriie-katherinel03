@@ -1,5 +1,6 @@
 .NewFriendForm-form {
   padding: 20px;
+  padding-top: 10px;
 }
 
 .urmom-popup-overlay {
@@ -16,7 +17,7 @@
 
 .new-text {
   color: #008040;
-  margin: 4px;
+  margin: 12px;
   font-size: 14px;
 }
 
