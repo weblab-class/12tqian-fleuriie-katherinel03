@@ -50,7 +50,7 @@ const PairInteractionPopup = (props) => {
 			setRepresentation(
 				<RepresentationAvatar
 					representationID={pairProfile.currentRepresentationID}
-					width="30%"
+					width="60%"
 					stage={getStage(pairProfile.totalExperience)}
 				/>
 			);

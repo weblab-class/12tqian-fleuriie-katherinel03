@@ -1,5 +1,4 @@
 import React, { useEffect, useState } from "react";
-import { Link } from "@reach/router";
 import Avatar from "../Avatar/Avatar.js";
 import EditProfile from "./EditProfile.js";
 import OtherStats from "./OtherStats.js";
@@ -10,6 +9,7 @@ import { get, post } from "../../../utilities.js";
 
 const Profile = (props) => {
   const [user, setUser] = useState(undefined);
+
   useEffect(() => {
     get("/api/whoami").then((user) => {
       if (user._id) {
@@ -25,7 +25,7 @@ const Profile = (props) => {
       get("/api/userprofile", {
         googleID: user.googleID,
       }).then((profile) => {
-        setAvatar(<Avatar avatarID={profile.currentAvatarID} width={100} />);
+        setAvatar(<Avatar avatarID={profile.currentAvatarID} width="30%" />);
       });
     }
   }, [user]);

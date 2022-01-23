@@ -175,7 +175,7 @@ const NewFriendForm = (props) => {
 					control={control}
 					name="otherID"
 					render={({ field: { onChange, onBlur, value, ref } }) => (
-						<Input placeholder="Code" style={{ width: 200 }}
+						<Input placeholder="Code (ask you friend for their code, which is located under their profile)	" style={{ width: 400 }}
 							onChange={onChange}
 							onBlur={onBlur}
 							selected={value} />
@@ -194,7 +194,9 @@ const NewFriendForm = (props) => {
 							selected={value} />
 					)}
 				/>
-				<input type="submit" />
+				<div>
+					<input type="submit" />
+				</div>
 			</form>
 			<Alert
 				header={'Error in submission'}
