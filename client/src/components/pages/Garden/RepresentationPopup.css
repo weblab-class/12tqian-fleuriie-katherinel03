@@ -25,6 +25,9 @@
 	margin: auto;
 	text-align: center;
 }
+button.close {
+  background-color: #E3FFF0 !important;
+}
 
 .modal>.close {
 	cursor: pointer;
