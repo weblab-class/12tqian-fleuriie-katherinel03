@@ -108,12 +108,6 @@ const PairInteractionPopup = (props) => {
 						{otherAvatar}
 					</div>
 				</div>
-				<div>
-					<DeleteFriend userGoogleID={props.userGoogleID} otherGoogleID={props.otherGoogleID} />
-				</div>
-				<div>
-					<EditPairName userGoogleID={props.userGoogleID} otherGoogleID={props.otherGoogleID} />
-				</div>
 				<Collapsible trigger=
 					{<div className="shop-button">Change Plant</div>}>
 					<RepresentationChangePopup userGoogleID={props.userGoogleID} otherGoogleID={props.otherGoogleID} />
@@ -157,6 +151,13 @@ const PairInteractionPopup = (props) => {
 						className="-striped -highlight"
 					/>
 					<br />
+					<div>
+					<EditPairName userGoogleID={props.userGoogleID} otherGoogleID={props.otherGoogleID} />
+				</div>
+
+					<div>
+					<DeleteFriend userGoogleID={props.userGoogleID} otherGoogleID={props.otherGoogleID} />
+					</div>
 				</div>
 			</div>
 			<div className="sideColumn">

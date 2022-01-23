@@ -195,7 +195,7 @@ const NewFriendForm = (props) => {
 					)}
 				/>
 				<div>
-					<input type="submit" />
+					<input className="submit-button2" type="submit" />
 				</div>
 			</form>
 			<Alert

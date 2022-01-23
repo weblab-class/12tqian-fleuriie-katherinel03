@@ -1,6 +1,7 @@
 import React from "react";
 
 import { get, post } from "../../../utilities";
+import "./DeleteFriend.css";
 
 const DeleteFriend = (props) => {
 	const clearAPI = () => {
@@ -30,7 +31,7 @@ const DeleteFriend = (props) => {
 
 	return (
 		<div className='container'>
-			<button onClick={onSubmit}>Remove friend</button>
+			<button className="submit-button3" onClick={onSubmit}>Remove friend</button>
 		</div>
 	);
 };

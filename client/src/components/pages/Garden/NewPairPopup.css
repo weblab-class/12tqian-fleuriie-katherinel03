@@ -93,3 +93,9 @@
   border-radius: 18px;
   border: 1px solid #cfcece;
 }
+
+.new-header {
+  text-align: center;
+  font-size: 36px;
+  color:#008040;
+}
