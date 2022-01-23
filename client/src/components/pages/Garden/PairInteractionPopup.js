@@ -6,7 +6,7 @@ import NewActivityPopup from "./Representation/NewActivityPopup.js";
 import RepresentationAvatar from "./Representation/RepresentationAvatar.js";
 import { socket } from "../../../client-socket"
 import "./PairInteractionPopup.css";
-
+import EditPairName from "./Representation/EditPairName.js";
 // Import React Table
 import ReactTable from "react-table-6";
 import "react-table-6/react-table.css"
@@ -107,6 +107,9 @@ const PairInteractionPopup = (props) => {
 						{otherAvatar}
 					</div>
 				</div >
+				<div>
+					<EditPairName userGoogleID={props.userGoogleID} otherGoogleID={props.otherGoogleID} />
+				</div>
 				<Collapsible trigger=
 					{<div className="shop-button">Change Plant</div>}>
 					<RepresentationChangePopup userGoogleID={props.userGoogleID} otherGoogleID={props.otherGoogleID} />
