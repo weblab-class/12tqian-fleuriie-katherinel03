@@ -15,6 +15,10 @@
   margin-left: var(--l);
 }
 
+.NavBar-loginlogout {
+  right: var(--l);
+}
+
 .NavBar-link,
 .NavBar-link:visited {
   color: var(--black);
