@@ -6,8 +6,8 @@ import Popup from 'reactjs-popup';
 import PairInteractionPopup from "./PairInteractionPopup";
 import "./RepresentationPopup.css";
 
+
 const RepresentationPopup = (props) => {
-	console.log(props.otherName, "HUH");
 	return (
 		<Popup
 			trigger={<button className="detail-button"> {props.otherName} </button>}
