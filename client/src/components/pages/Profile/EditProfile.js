@@ -89,8 +89,8 @@ const EditProfile = (props) => {
 	return (
 		<div>
 			<form onSubmit={handleSubmit(onSubmit, onError)}>
-				<div>
-					Change your name
+				<div className="change-name">
+					Change your name:
 				</div>
 				<Controller
 					control={control}
@@ -103,7 +103,7 @@ const EditProfile = (props) => {
 					)}
 				/>
 				<div>
-					<input type="submit" />
+					<input className="submit-button" type="submit" />
 				</div>
 			</form>
 			<Alert
