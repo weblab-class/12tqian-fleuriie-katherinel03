@@ -7,7 +7,6 @@ import 'antd/dist/antd.css';
 import 'react-popup-alert/dist/index.css'
 import { post, get } from "../../../utilities.js";
 import Alert from 'react-popup-alert';
-import { isUndefined } from "util";
 import './NewFriendForm.css';
 
 const NewFriendForm = (props) => {
