@@ -1,11 +1,12 @@
 import React, { useState, useEffect } from "react";
-import { Router } from "@reach/router";
+import { Router, Location } from "@reach/router";
 import NotFound from "./pages/NotFound.js";
 import Garden from "./pages/Garden/Garden.js";
 import NavBar from "./modules/NavBar.js";
 import Home from "./pages/Home.js";
 import Profile from "./pages/Profile/Profile.js";
 import Shop from "./pages/Shop/Shop.js";
+import ScrollToTop from "./ScrollToTop.js";
 
 import "../utilities.css";
 import "./App.css";
@@ -17,6 +18,7 @@ import { get, post } from "../utilities";
 /**
  * Define the "App" component
  */
+
 const App = () => {
   const [userId, setUserId] = useState(undefined);
 
@@ -51,17 +53,19 @@ const App = () => {
           handleLogout={handleLogout}
           userId={userId}
         />
-        <Router role="group">
+        <Router role="group" primary={false}>
 {/* setting role to group allows the css in app.css to force the div 
 created by router to be the whole screen */}
+          <ScrollToTop path="/">
           <Home path="/" handleLogin={handleLogin} handleLogout={handleLogout} userId={userId} />
           <Profile path="/profile/" />
           <Garden path="/garden/" />
           <Shop path="/shop/" />
           <NotFound default />
+          </ScrollToTop>
         </Router>
       </div>
   );
-};
+}
 
 export default App;
