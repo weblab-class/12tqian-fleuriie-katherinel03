@@ -2,7 +2,6 @@ import React from "react";
 
 import { get, post } from "../../../utilities";
 
-
 const DeleteFriend = (props) => {
 	const clearAPI = () => {
 		if (props.otherGoogleID.includes("__GAP__")) {
