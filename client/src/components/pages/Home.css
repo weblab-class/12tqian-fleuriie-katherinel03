@@ -1,5 +1,5 @@
 .Home-background {
-  background-image: url("/client/src/components/constants/background.jpg");
+  background-image: url("/client/src/components/constants/BackgroundImages/background.jpg");
   background-position: center center;
   background-size: cover;
   background-attachment: fixed;

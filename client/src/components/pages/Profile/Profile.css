@@ -5,7 +5,7 @@
 .Profile-container {
   border: none;
   text-align: center;
-  background-image: url("./ProfileBackground.png");
+  background-image: url("/client/src/components/constants/BackgroundImages/ProfileBackground.png");
   height: 100%;
   width: auto;
   background-position: center;
