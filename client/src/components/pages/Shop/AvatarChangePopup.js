@@ -91,70 +91,44 @@ const AvatarChangePopup = (props) => {
 					break;
 				}
 			}
+			let type;
+			let callback;
 			if (bought === 1) { // purchased
 				if (avatar.avatarID === currentAvatarID) {
-					itemList.push(
-						{
-							image: <Avatar
-								avatarID={avatar.avatarID}
-								width={100}
-							/>,
-							type: "active",
-							callback: handleTry,
-							key: avatar.avatarID,
-							itemID: avatar.avatarID,
-						}
-					);
+					type = "active";
+					callback = handleTry;
+
 				} else {
-					itemList.push(
-						{
-							image: <Avatar
-								avatarID={avatar.avatarID}
-								width={100}
-							/>,
-							type: "bought",
-							callback: handleTry,
-							key: avatar.avatarID,
-							itemID: avatar.avatarID,
-							cost: avatar.cost,
-						}
-					);
+					type = "bought";
+					callback = handleTry;
 				}
 			} else {
 				if (avatar.cost <= currency) { // afford
-					itemList.push(
-						{
-							image: <Avatar
-								avatarID={avatar.avatarID}
-								width={100}
-							/>,
-							type: "afford",
-							callback: handleBuy,
-							key: avatar.avatarID,
-							itemID: avatar.avatarID,
-							cost: avatar.cost,
-						}
-					);
+					type = "afford";
+					callback = handleBuy;
 				} else { // other
-					itemList.push(
-						{
-							image: <Avatar
-								avatarID={avatar.avatarID}
-								width={100}
-							/>,
-							type: "cannotAfford",
-							callback: handleReject,
-							key: avatar.avatarID,
-							itemID: avatar.avatarID,
-							cost: avatar.cost,
-						}
-					);
+					type = "cannotAfford";
+					callback = handleReject;
 				}
 			}
+			itemList.push(
+				{
+					image:
+						<Avatar
+							avatarID={avatar.avatarID}
+							width="85px"
+						/>,
+					type: type,
+					callback: callback,
+					key: avatar.avatarID,
+					itemID: avatar.avatarID,
+					cost: avatar.cost,
+				}
+			);
 		}
 		console.log(itemList);
 		setShopCatalog(
-			<ShopCatalog 
+			<ShopCatalog
 				itemList={itemList}
 			/>
 		);
