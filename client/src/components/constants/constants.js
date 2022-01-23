@@ -1,8 +1,3 @@
-import representation0 from "./RepresentationAvatarImages/Representation0.png";
-import representation1 from "./RepresentationAvatarImages/Representation1.png";
-import representation2 from "./RepresentationAvatarImages/Representation2.png";
-
-
 import representation0_1 from "./RepresentationAvatarImages/Representation0_Stage1.png";
 import representation0_2 from "./RepresentationAvatarImages/Representation0_Stage2.png";
 import representation0_3 from "./RepresentationAvatarImages/Representation0_Stage3.png";
