@@ -94,6 +94,15 @@ router.get("/pairprofile", (req, res) => {
   });
 });
 
+router.get("/pairprofilename", (req, res) => {
+  PairProfile.find({
+    userGoogleID: req.query.userGoogleID,
+    pairName: req.query.pairName,
+  }).then((pairProfiles) => {
+    res.send(pairProfiles);
+  });
+});
+
 
 router.get("/pairprofileone", (req, res) => {
   PairProfile.findOne({
