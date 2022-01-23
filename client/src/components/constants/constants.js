@@ -23,7 +23,6 @@ import representation7_1 from "./RepresentationAvatarImages/Representation7_Stag
 import representation7_2 from "./RepresentationAvatarImages/Representation7_Stage2.png";
 import representation7_3 from "./RepresentationAvatarImages/Representation7_Stage3.png";
 
-
 const representationList = [
 	{
 		name: "Representation0",
