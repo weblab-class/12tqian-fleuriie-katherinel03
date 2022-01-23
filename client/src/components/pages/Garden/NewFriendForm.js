@@ -153,8 +153,8 @@ const NewFriendForm = (props) => {
 
 	return (
 		<div className="NewFriendForm-form">
-			<form onSubmit={handleSubmit(onSubmit, onError)} className="urmom">
-				<div>
+			<form onSubmit={handleSubmit(onSubmit, onError)}>
+				<div className="new-text">
 					Name for new friend:
 				</div>
 				<Controller
@@ -167,7 +167,7 @@ const NewFriendForm = (props) => {
 							selected={value} />
 					)}
 				/>
-				<div>
+				<div className="new-text">
 					Friend code if you have one (or leave blank if you don't have one):
 				</div>
 				<Controller
@@ -180,7 +180,7 @@ const NewFriendForm = (props) => {
 							selected={value} />
 					)}
 				/>
-				<div>
+				<div className="new-text">
 					You want at most this many days between interactions with your friend:
 				</div>
 				<Controller
