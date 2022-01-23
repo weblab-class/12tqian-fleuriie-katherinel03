@@ -7,6 +7,7 @@ import GoogleLogin, {
 } from "react-google-login";
 
 import "./NavBar.css";
+import { RouteComponentProps } from "@reach/router";
 
 /**
  * The navigation bar at the top of all pages. Has a login button on the right.
@@ -30,14 +31,21 @@ import "./NavBar.css";
           <Link to="/shop/" className="NavBar-link">
             Shop
           </Link>
-        </div>
-        <div className="NavBar-loginlogout u-inlineBlock">
-          {userId ? (
+        {userId ? (
 					<GoogleLogout
 						clientId={GOOGLE_CLIENT_ID}
 						buttonText="Logout"
 						onLogoutSuccess={handleLogout}
 						onFailure={(err) => console.log(err)}
+            render={(renderProps) => {
+							return(
+								<button
+									onClick={renderProps.onClick}
+									className = "NavBar-googleButton">
+								Logout
+								</button>
+							)
+						}}
 					/>
 				) : (
 					<GoogleLogin
@@ -47,6 +55,15 @@ import "./NavBar.css";
 						onFailure={(err) => console.log(err)}
 						cookiePolicy={'single_host_origin'}
 						isSignedIn={true}
+            render={(renderProps) => {
+							return(
+								<button
+									onClick={renderProps.onClick}
+									className = "NavBar-googleButton">
+								Login
+								</button>
+							)
+						}}
 					/>
 				)}
         </div>
