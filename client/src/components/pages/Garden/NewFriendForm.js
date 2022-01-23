@@ -153,7 +153,7 @@ const NewFriendForm = (props) => {
 
 	return (
 		<div className="NewFriendForm-form">
-			<form onSubmit={handleSubmit(onSubmit, onError)}>
+			<form onSubmit={handleSubmit(onSubmit, onError)} className="urmom">
 				<div>
 					Name for new friend:
 				</div>
