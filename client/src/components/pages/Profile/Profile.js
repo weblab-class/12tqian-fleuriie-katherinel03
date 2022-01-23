@@ -7,8 +7,10 @@ import "../../../utilities.css";
 import "./Profile.css";
 import { get, post } from "../../../utilities.js";
 import { socket } from "../../../client-socket"; 
+import { setConstantValue } from "typescript";
 const Profile = (props) => {
   const [user, setUser] = useState(undefined);
+  const [code, setCode] = useState(undefined);
   const [userName, setUserName] = useState(undefined);
 
   useEffect(() => {
@@ -29,6 +31,7 @@ const Profile = (props) => {
       }).then((profile) => {
         setAvatar(<Avatar avatarID={profile.currentAvatarID} width="25%" />);
         setUserName(profile.userName);
+        setCode(user.googleID);
       });
     }
   };
@@ -54,6 +57,9 @@ const Profile = (props) => {
       </div>
       <h1 className="Profile-username">{userName}</h1>
       <EditProfile googleID={user.googleID} />
+      <div className="friendCodeBox">
+        Your friend code: <h3>{code}</h3>
+      </div>
     </div>
   );
 };
