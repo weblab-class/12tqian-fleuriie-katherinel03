@@ -93,6 +93,13 @@ const Garden = (props) => {
 	}, [user]);
 
 	useEffect(() => {
+		socket.on("deletion", loadPairProfiles);
+		return () => {
+			socket.off("deletion", loadPairProfiles);
+		};
+	}, [user]);
+
+	useEffect(() => {
 		socket.on("newPairProfile", loadPairProfiles);
 		return () => {
 			socket.off("newPairProfile", loadPairProfiles);

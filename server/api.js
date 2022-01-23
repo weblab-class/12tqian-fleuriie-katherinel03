@@ -165,6 +165,34 @@ router.post("/userprofileupdate", auth.ensureLoggedIn, (req, res) => {
   UserProfile.findOneAndUpdate(req.body.userProfile, req.body.update).then(data => res.send(data));
 });
 
+router.post("/userprofiledelete", auth.ensureLoggedIn, (req, res) => {
+  UserProfile.deleteMany(req.body).then((data) => {
+    res.send(data);
+    socketManager.getIo().emit("deletion", data);
+  });
+});
+
+router.post("/pairactivitydelete", auth.ensureLoggedIn, (req, res) => {
+  PairActivity.deleteMany(req.body).then((data) => {
+    res.send(data);
+    socketManager.getIo().emit("deletion", data);
+  });
+});
+
+router.post("/pairrepresentationdelete", auth.ensureLoggedIn, (req, res) => {
+  PairRepresentation.deleteMany(req.body).then((data) => {
+    res.send(data);
+    socketManager.getIo().emit("deletion", data);
+  });
+});
+
+router.post("/pairprofiledelete", auth.ensureLoggedIn, (req, res) => {
+  PairProfile.deleteMany(req.body).then((data) => {
+    res.send(data);
+    socketManager.getIo().emit("deletion", data);
+  });
+});
+
 router.post("/userprofile", auth.ensureLoggedIn, (req, res) => {
   const newUserProfile = UserProfile({
     googleID: req.body.googleID,
