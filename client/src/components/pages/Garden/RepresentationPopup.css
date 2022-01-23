@@ -4,7 +4,7 @@
 
 .modal>.header {
 	width: 100%;
-	border-bottom: 1px solid gray;
+	border-bottom: 1px solid white;
 	font-size: 18px;
 	text-align: center;
 	padding: 5px;
@@ -27,6 +27,8 @@
 }
 button.close {
   background-color: #E3FFF0 !important;
+  border: 2px solid white !important;
+  color: #008040 !important;
 }
 
 .modal>.close {
@@ -95,4 +97,10 @@ button.close {
 
   .popup-content {
     padding: 0px !important
+  }
+
+  .pair-interaction-header {
+    color: #008040;
+    text-align: center;
+    font-size: 36px;
   }
