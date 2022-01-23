@@ -52,6 +52,8 @@ const App = () => {
           userId={userId}
         />
         <Router role="group">
+{/* setting role to group allows the css in app.css to force the div 
+created by router to be the whole screen */}
           <Home path="/" handleLogin={handleLogin} handleLogout={handleLogout} userId={userId} />
           <Profile path="/profile/" />
           <Garden path="/garden/" />
