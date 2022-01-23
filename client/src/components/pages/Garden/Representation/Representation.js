@@ -9,6 +9,7 @@ import HealthBar from "./HealthBar.js";
 import RepresentationPopup from "../RepresentationPopup";
 import { socket } from "../../../../client-socket";
 import "./Representation.css"
+import EditPairName from "./EditPairName";
 
 import { getStage, MULT_FACTOR, MINUTES_IN_DAY } from "../../../constants/constants";
 
