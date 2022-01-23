@@ -22,7 +22,7 @@ const Shop = () => {
 	const generateShop = () => {
 		if (!user) {
 			return (
-				<div>
+				<div className="log-in">
 					Please login.
 				</div>
 			);

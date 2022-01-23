@@ -79,3 +79,9 @@
   cursor: pointer;
   background-color: #008040;
 }
+
+.log-in {
+  text-align: center;
+  padding-top: 10%;
+  font-size: 36px;
+}
