@@ -43,7 +43,7 @@ const Garden = (props) => {
 		get("/api/userprofile", {
 		  googleID: user.googleID,
 		}).then((profile) => {
-		  setAvatar(<Avatar avatarID={profile.currentAvatarID} width={100} />);
+		  setAvatar(<Avatar avatarID={profile.currentAvatarID} width="20%" />);
 		});
 	  }
 	}, [user]);
