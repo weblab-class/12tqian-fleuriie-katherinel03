@@ -31,6 +31,11 @@ button.close {
   color: #008040 !important;
 }
 
+button:hover {
+  background-color: #008040 !important;
+  color: #E3FFF0 !important;
+}
+
 .modal>.close {
 	cursor: pointer;
 	position: absolute;
