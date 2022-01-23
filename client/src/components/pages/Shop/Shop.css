@@ -1,8 +1,13 @@
 .Shop-background {
   background-color: #acd4ad;
   text-align: center;
-  height: 700px;
+  height: 1000px;
   padding: 24px;
+  background-position: center center;
+  background-size: cover;
+  background-attachment: fixed;
+  background-repeat: repeat-x;
+  width: auto;
   background-image: url("/client/src/components/constants/BackgroundImages/shopbackground.jpg");
 }
 
