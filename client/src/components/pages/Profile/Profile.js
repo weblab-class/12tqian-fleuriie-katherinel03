@@ -27,7 +27,7 @@ const Profile = (props) => {
       get("/api/userprofile", {
         googleID: user.googleID,
       }).then((profile) => {
-        setAvatar(<Avatar avatarID={profile.currentAvatarID} width="30%" />);
+        setAvatar(<Avatar avatarID={profile.currentAvatarID} width="25%" />);
         setUserName(profile.userName);
       });
     }
