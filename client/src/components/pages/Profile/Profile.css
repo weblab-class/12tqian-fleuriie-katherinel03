@@ -1,10 +1,11 @@
 .Profile-avatarContainer {
+  padding-top: 10%;
 }
 
 .Profile-container {
   border: none;
   text-align: center;
-  background-image: url("/client/src/components/constants/background.jpg");
+  background-image: url("./ProfileBackground.jpg");
   height: 100%;
   width: auto;
   background-position: center;
