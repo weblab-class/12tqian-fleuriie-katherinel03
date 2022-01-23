@@ -18,20 +18,14 @@ import Slider from "react-slick";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 
-
 const handleDragStart = (e) => e.preventDefault();
-
-const carouselItems = [];
-
-const responsive = {
-	0: { items: 1 },
-	568: { items: 2 },
-	1024: { items: 5 },
-};
 
 const Garden = (props) => {
 	const [user, setUser] = useState(undefined);
 	const [carouselItems, setCarouselItems] = useState([]);
+	const [slideIndex, setSlideIndex] = useState(0);
+	const [updateCount, setUpdateCount] = useState(0);
+	const [slider, setSlider] = useState(undefined);
 
 	useEffect(() => {
 		get("/api/whoami",).then((curUser) => {
@@ -81,15 +75,6 @@ const Garden = (props) => {
 		};
 	}, [user]);
 
-	const Input = () => {
-		const handleKeyDown = (event) => {
-			if (event.key === 'Enter') {
-				console.log('do validate')
-			}
-		}
-
-		return <input type="text" onKeyDown={handleKeyDown} />
-	}
 
 	const generateCarousel = () => {
 		let carousel;
@@ -117,51 +102,47 @@ const Garden = (props) => {
 				swipeToSlide: true,
 				accessibility: true,
 				speed: 200,
-				afterChange: function (index) {
-					console.log(
-						`Slider Changed to: ${index + 1}, background: #222; color: #bada55`
-					);
-				}
+				beforeChange: (current, next) => setSlideIndex(next),
 			};
 
-			// carousel = carouselItems.map(
-			// 	(item, index) =>
-			// 		<div key={index}>{item}</div>
-			// );
-			carousel = (
-				<Slider {...settings}>
-					{
-						carouselItems.map(
-							(item, index) =>
-								<div key={index}>{item}</div>
-						)
-					}
-				</Slider>
-			);
-		}
-		if (!user) {
-			return (
-				<div className="no-friends">
-					Please login.
-				</div>
-			);
-		} else {
-			return (
-				<div className="pair-popup-holder">
-					<NewPairPopup userGoogleID={user.googleID} />
-					<div className="carouselDiv">
-						{carousel}
-					</div>
-				</div>
-			);
-		}
+		// carousel = carouselItems.map(
+		// 	(item, index) =>
+		// 		<div key={index}>{item}</div>
+		// );
+		carousel = (
+			<Slider ref={slider => (setSlider(slider))} {...settings}>
+				{
+					carouselItems.map(
+						(item, index) =>
+							<div key={index}>{item}</div>
+					)
+				}
+			</Slider>
+		);
 	}
+	if (!user) {
+		return (
+			<div className="no-friends">
+				Please login.
+			</div>
+		);
+	} else {
+		return (
+			<div className="pair-popup-holder">
+				<NewPairPopup userGoogleID={user.googleID} />
+				<div className="carouselDiv">
+					{carousel}
+				</div>
+			</div>
+		);
+	}
+}
 
-	return (
-		<div className="garden-holder">
-			{generateCarousel()}
-		</div>
-	)
+return (
+	<div className="garden-holder">
+		{generateCarousel()}
+	</div>
+)
 };
 
 export default Garden;
