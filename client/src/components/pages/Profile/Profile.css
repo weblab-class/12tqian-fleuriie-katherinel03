@@ -1,5 +1,5 @@
 .Profile-avatarContainer {
-  padding-top: 10%;
+  padding-top: 5vh;
 }
 
 .Profile-container {
@@ -17,4 +17,9 @@
   padding-top: 10%;
   font-size: 36px;
   color: #008040;
+}
+
+.Profile-username {
+  color: #008040;
+  font-size: 36px;
 }
