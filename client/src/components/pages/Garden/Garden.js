@@ -95,8 +95,8 @@ const Garden = (props) => {
 		let carousel;
 		if (carouselItems.length === 0) {
 			carousel =
-				<div>
-					no fronds go out and make some dummy
+				<div className="no-friends">
+					add your friends!!
 				</div>
 		} else {
 
@@ -141,7 +141,7 @@ const Garden = (props) => {
 		}
 		if (!user) {
 			return (
-				<div>
+				<div className="no-friends">
 					Please login.
 				</div>
 			);

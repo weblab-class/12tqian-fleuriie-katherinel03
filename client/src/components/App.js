@@ -45,14 +45,13 @@ const App = () => {
   };
 
   return (
-    <>
       <div className="App-container">
         <NavBar
           handleLogin={handleLogin}
           handleLogout={handleLogout}
           userId={userId}
         />
-        <Router>
+        <Router role="group">
           <Home path="/" handleLogin={handleLogin} handleLogout={handleLogout} userId={userId} />
           <Profile path="/profile/" />
           <Garden path="/garden/" />
@@ -60,7 +59,6 @@ const App = () => {
           <NotFound default />
         </Router>
       </div>
-    </>
   );
 };
 
