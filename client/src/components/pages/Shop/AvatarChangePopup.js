@@ -130,6 +130,7 @@ const AvatarChangePopup = (props) => {
 		setShopCatalog(
 			<ShopCatalog
 				itemList={itemList}
+				googleID={props.googleID}
 			/>
 		);
 	};

@@ -166,4 +166,53 @@ const avatarList = [
 	},
 ]
 
-export { representationList, avatarList };
+const EXPERIENCE_PER_ACTIVITY = 100;
+const CURRENCY_PER_LEVEL = 100;
+const EXPERIENCE_PER_LEVEL = 200;
+
+const STAGE_1_LEVEL = 0;
+const STAGE_2_LEVEL = 15;
+const STAGE_3_LEVEL = 30;
+
+const formatTime = (date) => {
+	date = new Date(date);
+	let shortMonth = date.toLocaleString('en-us', { month: 'short' }); /* Jun */
+	let day = date.getUTCDate();
+	let year = date.getUTCFullYear();
+	return shortMonth + " " + day + ", " + year;
+};
+
+const getLevel = (experience) => {
+	const rem = experience % EXPERIENCE_PER_LEVEL;	
+	return (experience - rem) / EXPERIENCE_PER_LEVEL + 1;
+};
+
+const getStage = (experience) => {
+	const level = getLevel(experience);
+	if (level >= STAGE_3_LEVEL) {
+		return 3;
+	} else if (level >= STAGE_2_LEVEL) {
+		return 2;
+	} else {
+		return 1;
+	}
+};
+
+const MULT_FACTOR = 2;
+const MINUTES_IN_DAY = 1440;
+
+export { 
+	representationList, 
+	avatarList,
+	EXPERIENCE_PER_ACTIVITY,
+	CURRENCY_PER_LEVEL,
+	EXPERIENCE_PER_LEVEL,
+	formatTime,
+	STAGE_1_LEVEL,
+	STAGE_2_LEVEL,
+	STAGE_3_LEVEL,
+	getLevel,
+	getStage,
+	MULT_FACTOR,
+	MINUTES_IN_DAY
+};

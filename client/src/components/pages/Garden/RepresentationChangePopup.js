@@ -6,6 +6,7 @@ import { representationList } from "../../constants/constants";
 import { get, post } from "../../../utilities";
 import { socket } from "../../../client-socket";
 
+import { getStage } from "../../constants/constants";
 // passes in a list of props
 // 
 
@@ -14,6 +15,7 @@ const RepresentationChangePopup = (props) => {
 	const [currency, setCurrency] = useState(0);
 	const [representations, setRepresentations] = useState([]);
 	const [currentRepresentationID, setCurrentRepresentationID] = useState(0);
+	const [experience, setExperience] = useState(0);
 	const [shopCatalog, setShopCatalog] = useState(undefined);
 	const [displayItems, setDisplayItems] = useState([]);
 
@@ -39,6 +41,7 @@ const RepresentationChangePopup = (props) => {
 			userGoogleID: props.userGoogleID,
 			otherGoogleID: props.otherGoogleID,
 		}).then((profile) => {
+			setExperience(profile.totalExperience);
 			setCurrentRepresentationID(profile.currentRepresentationID);
 		});
 	}, []);
@@ -96,77 +99,48 @@ const RepresentationChangePopup = (props) => {
 					break;
 				}
 			}
+			let type;
+			let callback;
+
 			if (bought === 1) { // purchased
 				if (representation.representationID === currentRepresentationID) {
-					itemList.push(
-						{
-							image: <RepresentationAvatar
-								representationID={representation.representationID}
-								width="100%"
-								stage={1}
-							/>,
-							type: "active",
-							callback: handleTry,
-							key: representation.representationID,
-							itemID: representation.representationID,
-							cost: representation.cost,
-						}
-					);
+					type = "active";
+					callback = handleTry;
 				} else {
-					itemList.push(
-						{
-							image: <RepresentationAvatar
-								representationID={representation.representationID}
-								width="100%"
-								stage={1}
-							/>,
-							type: "bought",
-							callback: handleTry,
-							key: representation.representationID,
-							itemID: representation.representationID,
-							cost: representation.cost,
-						}
-					);
+					type = "bought";
+					callback = handleTry;
 				}
 			} else {
 				if (representation.cost <= currency) { // afford
-					itemList.push(
-						{
-							image: <RepresentationAvatar
-								representationID={representation.representationID}
-								width="100%"
-								stage={1}
-							/>,
-							type: "afford",
-							callback: handleBuy,
-							key: representation.representationID,
-							itemID: representation.representationID,
-							cost: representation.cost,
-						}
-					);
+					type = "afford";
+					callback = handleBuy;
 				} else { // other
-					itemList.push(
-						{
-							image: <RepresentationAvatar
-								representationID={representation.representationID}
-								width="100%"
-								stage={1}
-							/>,
-							type: "cannotAfford",
-							callback: handleReject,
-							key: representation.representationID,
-							itemID: representation.representationID,
-							cost: representation.cost,
-						}
-					);
+					type = "cannotAfford";
+					callback = handleReject;
 				}
 			}
+
+			itemList.push(
+				{
+					image: <RepresentationAvatar
+						representationID={representation.representationID}
+						width="100%"
+						stage={getStage(experience)}
+					/>,
+					type: type,
+					callback: callback,
+					key: representation.representationID,
+					itemID: representation.representationID,
+					cost: representation.cost,
+				}
+			);
 		}
 		console.log(itemList);
 		console.log("OLD ITEM LIST");
 		setShopCatalog(
 			<ShopCatalog 
 				itemList={itemList}
+				googleID={props.userGoogleID}
 			/>
 		);
 	};
