@@ -9,6 +9,7 @@
   height: 100%;
   width: auto;
   background-position: center;
+  background-attachment: fixed;
   background-size: cover;
 }
 
