@@ -112,30 +112,12 @@ const representationList = [
 	},
 ];
 
-// const representationList = [
-// 	{
-// 		name: "Representation0",
-// 		image: representation0,
-// 		cost: 0,
-// 		representationID: 0,
-// 	},
-// 	{
-// 		name: "Representation1",
-// 		image: representation1,
-// 		cost: 0,
-// 		representationID: 1,
-// 	},
-// 	{
-// 		name: "Representation2",
-// 		image: representation2,
-// 		cost: 1000,
-// 		representationID: 2,
-// 	},
-// ];
-
 import avatar0 from "./Avatars/Avatar0.png";
 import avatar1 from "./Avatars/Avatar1.png";
 import avatar2 from "./Avatars/Avatar2.png";
+import avatar3 from "./Avatars/Avatar3.png";
+import avatar4 from "./Avatars/Avatar4.png";
+import avatar5 from "./Avatars/Avatar5.png";
 
 const avatarList = [
 	{
@@ -155,6 +137,24 @@ const avatarList = [
 		image: avatar2,
 		cost: 1000,
 		avatarID: 2,
+	},
+	{
+		name: "Avatar3",
+		image: avatar3,
+		cost: 1000,
+		avatarID: 3,
+	},
+	{
+		name: "Avatar4",
+		image: avatar4,
+		cost: 1000,
+		avatarID: 4,
+	},
+	{
+		name: "Avatar5",
+		image: avatar5,
+		cost: 1000,
+		avatarID: 5,
 	},
 ]
 

@@ -14,7 +14,7 @@
 
 .child {
 	display: inline;
-	flex-grow: 1;
+	/* flex-grow: 1; */
 	width: calc(100% * (1/4));
 	height: 200px;
 }

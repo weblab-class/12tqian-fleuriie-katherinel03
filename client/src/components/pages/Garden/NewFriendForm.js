@@ -69,69 +69,81 @@ const NewFriendForm = (props) => {
 		let errorText = "";
 		let otherID = data.otherID;
 		let goalFrequency = data.goalFrequency;
-		if (isNaN(goalFrequency) || !Number.isFinite(Number(goalFrequency)) || Number(goalFrequency) <= 0) {
-			errorText += "The goal frequency should be a positive integer!\n";
+		if (!isEmpty(otherName) && String(otherName).length > 20) {
+			onShowErrorAlert("invalidSubmission", "Please keep your name less than or equal to 20 characters.\n");
+		} else if (isNaN(goalFrequency) || !Number.isFinite(Number(goalFrequency)) || Number(goalFrequency) <= 0) {
+			onShowErrorAlert("invalidSubmission", "The goal frequency should be a positive integer!\n");
 		} else if (!isEmpty(otherID) && isNaN(otherID)) {
-			errorText += "The friend code you entered is invalid!\n";
+			onShowErrorAlert("invalidSubmission", "The friend code you entered is invalid.\n");
 		} else {
 			goalFrequency = Number(data.goalFrequency);
-			if (!isEmpty(otherName) && !isEmpty(otherID)) {
-				otherID = Number(otherID);
-				// trying to add an existing user
-				get("/api/user", {
-					googleID: otherID,
-				}).then((user) => {
-					if (!user) {
-						errorText += "You tried to reference a user code that doesn't exist in the system yet!\n";
+			if (isEmpty(otherName)) {
+				onShowErrorAlert("invalidSubmission", "The name can't be empty.\n");
+			} else {
+				get("/api/pairprofilename", {
+					userGoogleID: props.userGoogleID,
+					pairName: otherName,
+				}).then((pairProfiles) => {
+					if (pairProfiles.length !== 0) {
+						onShowErrorAlert("invalidSubmission", "You already have a friend with that name.\n");
 					} else {
-						post("/api/pairprofile", {
-							userGoogleID: props.userGoogleID,
-							otherGoogleID: otherID,
-							currentRepresentationID: 0,
-							totalExperience: 0,
-							goalFrequency: goalFrequency,
-							pairName: otherName,
-						});
-						post("/api/pairrepresentation", {
-							userGoogleID: props.userGoogleID,
-							otherGoogleID: otherID,
-							representationID: 0,
-						});
+						if (!isEmpty(otherName) && !isEmpty(otherID)) {
+							otherID = Number(otherID);
+							// trying to add an existing user
+							get("/api/user", {
+								googleID: otherID,
+							}).then((user) => {
+								if (!user) {
+									onShowErrorAlert("invalidSubmission", "You tried to reference a user code that doesn't exist in the system yet.\n");
+								} else {
+									post("/api/pairprofile", {
+										userGoogleID: props.userGoogleID,
+										otherGoogleID: otherID,
+										currentRepresentationID: 0,
+										totalExperience: 0,
+										goalFrequency: goalFrequency,
+										pairName: otherName,
+									});
+									post("/api/pairrepresentation", {
+										userGoogleID: props.userGoogleID,
+										otherGoogleID: otherID,
+										representationID: 0,
+									});
+									onShowSuccessAlert("validSubmission", "You have succecssfully added a new friend!");
+								}
+							});
+						} else if (!isEmpty(otherName) && isEmpty(otherID)) {
+							const otherGoogleID = props.userGoogleID + "__GAP__" + otherName;
+							post("/api/userprofile", {
+								googleID: otherGoogleID,
+								currentAvatarID: 0,
+								currency: 0,
+								userName: otherName,
+							});
+							post("/api/useravatar", {
+								googleID: otherGoogleID,
+								avatarID: 0,
+							});
+							post("/api/pairprofile", {
+								userGoogleID: props.userGoogleID,
+								otherGoogleID: otherGoogleID,
+								currentRepresentationID: 0,
+								totalExperience: 0,
+								goalFrequency: goalFrequency,
+								pairName: otherName,
+							});
+							post("/api/pairrepresentation", {
+								userGoogleID: props.userGoogleID,
+								otherGoogleID: otherGoogleID,
+								representationID: 0,
+							});
+							onShowSuccessAlert("validSubmission", "You have succecssfully added a new friend!");
+						} else {
+							onShowErrorAlert("invalidSubmission", "You didn't add a name for your friend!\n");
+						}
 					}
 				});
-			} else if (!isEmpty(otherName) && isEmpty(otherID)) {
-				const otherGoogleID = props.userGoogleID + "__GAP__" + otherName;
-				post("/api/userprofile", {
-					googleID: otherGoogleID,
-					currentAvatarID: 0,
-					currency: 0,
-					userName: otherName,
-				});
-				post("/api/useravatar", {
-					googleID: otherGoogleID,
-					avatarID: 0,
-				});
-				post("/api/pairprofile", {
-					userGoogleID: props.userGoogleID,
-					otherGoogleID: otherGoogleID,
-					currentRepresentationID: 0,
-					totalExperience: 0,
-					goalFrequency: goalFrequency,
-					pairName: otherName,
-				});
-				post("/api/pairrepresentation", {
-					userGoogleID: props.userGoogleID,
-					otherGoogleID: otherGoogleID,
-					representationID: 0,
-				});
-			} else {
-				errorText += "You didn't add a name for your friend!\n";
 			}
-		}
-		if (errorText.length != 0) {
-			onShowErrorAlert("invalidSubmission", errorText);
-		} else {
-			onShowSuccessAlert("validSubmission", "You have succecssfully added a new friend!");
 		}
 	}
 
