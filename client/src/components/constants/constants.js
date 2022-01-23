@@ -118,6 +118,8 @@ import avatar2 from "./Avatars/Avatar2.png";
 import avatar3 from "./Avatars/Avatar3.png";
 import avatar4 from "./Avatars/Avatar4.png";
 import avatar5 from "./Avatars/Avatar5.png";
+import avatar6 from "./Avatars/Avatar6.png";
+import avatar7 from "./Avatars/Avatar7.png";
 
 const avatarList = [
 	{
@@ -155,6 +157,18 @@ const avatarList = [
 		image: avatar5,
 		cost: 1000,
 		avatarID: 5,
+	},
+	{
+		name: "Avatar6",
+		image: avatar6,
+		cost: 1000,
+		avatarID: 6,
+	},
+	{
+		name: "Avatar7",
+		image: avatar7,
+		cost: 1000,
+		avatarID: 7,
 	},
 ]
 
