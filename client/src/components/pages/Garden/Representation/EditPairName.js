@@ -96,9 +96,9 @@ const EditPairName = (props) => {
 		}
 	};
 	return (
-		<div>
+		<div className="edit-pair-name">
 			<form onSubmit={handleSubmit(onSubmit, onError)}>
-				<div className="new-text2">
+				<div className="change-name">
 					Change friend name:
 				</div>
 				<Controller
@@ -112,7 +112,7 @@ const EditPairName = (props) => {
 					)}
 				/>
 				<div>
-					<input type="submit" />
+					<input type="submit" className="submit-button2" />
 				</div>
 			</form>
 			<Alert
