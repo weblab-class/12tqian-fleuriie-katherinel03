@@ -1,10 +1,9 @@
 .Shop-background {
-  border-style: solid;
-  border-width: 24px;
-  border-color: #acd4ad;
   background-color: #acd4ad;
   text-align: center;
   height: 700px;
+  padding: 24px;
+  background-image: url("/client/src/components/constants/BackgroundImages/shopbackground.png");
 }
 
 .space {

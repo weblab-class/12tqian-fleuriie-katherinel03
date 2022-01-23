@@ -1,8 +1,3 @@
-import representation0 from "./RepresentationAvatarImages/Representation0.png";
-import representation1 from "./RepresentationAvatarImages/Representation1.png";
-import representation2 from "./RepresentationAvatarImages/Representation2.png";
-
-
 import representation0_1 from "./RepresentationAvatarImages/Representation0_Stage1.png";
 import representation0_2 from "./RepresentationAvatarImages/Representation0_Stage2.png";
 import representation0_3 from "./RepresentationAvatarImages/Representation0_Stage3.png";
@@ -27,7 +22,6 @@ import representation6_3 from "./RepresentationAvatarImages/Representation6_Stag
 import representation7_1 from "./RepresentationAvatarImages/Representation7_Stage1.png";
 import representation7_2 from "./RepresentationAvatarImages/Representation7_Stage2.png";
 import representation7_3 from "./RepresentationAvatarImages/Representation7_Stage3.png";
-
 
 const representationList = [
 	{
@@ -118,6 +112,8 @@ import avatar2 from "./Avatars/Avatar2.png";
 import avatar3 from "./Avatars/Avatar3.png";
 import avatar4 from "./Avatars/Avatar4.png";
 import avatar5 from "./Avatars/Avatar5.png";
+import avatar6 from "./Avatars/Avatar6.png";
+import avatar7 from "./Avatars/Avatar7.png";
 
 const avatarList = [
 	{
@@ -155,6 +151,18 @@ const avatarList = [
 		image: avatar5,
 		cost: 1000,
 		avatarID: 5,
+	},
+	{
+		name: "Avatar6",
+		image: avatar6,
+		cost: 1000,
+		avatarID: 6,
+	},
+	{
+		name: "Avatar7",
+		image: avatar7,
+		cost: 1000,
+		avatarID: 7,
 	},
 ]
 
