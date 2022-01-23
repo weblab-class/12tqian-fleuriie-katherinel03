@@ -98,8 +98,8 @@ const EditPairName = (props) => {
 	return (
 		<div>
 			<form onSubmit={handleSubmit(onSubmit, onError)}>
-				<div>
-					Change friend name
+				<div className="new-text2">
+					Change friend name:
 				</div>
 				<Controller
 					control={control}
