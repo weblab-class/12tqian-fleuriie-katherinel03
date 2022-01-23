@@ -39,13 +39,13 @@ const Garden = (props) => {
 
 	const [avatar, setAvatar] = useState(undefined);
 	useEffect(() => {
-		if (user) {
-			get("/api/userprofile", {
-				googleID: user.googleID,
-			}).then((profile) => {
-				setAvatar(<Avatar avatarID={profile.currentAvatarID} width={100} />);
-			});
-		}
+	  if (user) {
+		get("/api/userprofile", {
+		  googleID: user.googleID,
+		}).then((profile) => {
+		  setAvatar(<Avatar avatarID={profile.currentAvatarID} width="20%" />);
+		});
+	  }
 	}, [user]);
 
 

@@ -166,6 +166,45 @@ const avatarList = [
 	},
 ]
 
+import Garden1 from "./BackgroundImages/Garden1.png";
+import Garden2 from "./BackgroundImages/Garden2.png";
+import Garden3 from "./BackgroundImages/Garden3.png";
+import Garden4 from "./BackgroundImages/Garden4.png";
+import Garden5 from "./BackgroundImages/Garden5.png";
+
+const gardenList = [
+	{
+		name: "Garden1",
+		image: Garden1,
+		cost: 0,
+		gardenID: 1,
+	},
+	{
+		name: "Garden2",
+		image: Garden2,
+		cost: 200,
+		gardenID: 2,
+	},
+	{
+		name: "Garden3",
+		image: Garden3,
+		cost: 200,
+		gardenID: 3,
+	},
+	{
+		name: "Garden4",
+		image: Garden4,
+		cost: 200,
+		gardenID: 4,
+	},
+	{
+		name: "Garden5",
+		image: Garden5,
+		cost: 200,
+		gardenID: 5,
+	},
+]
+
 const EXPERIENCE_PER_ACTIVITY = 100;
 const CURRENCY_PER_LEVEL = 100;
 const EXPERIENCE_PER_LEVEL = 200;

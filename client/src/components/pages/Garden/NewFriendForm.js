@@ -7,6 +7,7 @@ import 'antd/dist/antd.css';
 import 'react-popup-alert/dist/index.css'
 import { post, get } from "../../../utilities.js";
 import Alert from 'react-popup-alert';
+import './NewFriendForm.css';
 
 const NewFriendForm = (props) => {
 	const { handleSubmit, control } = useForm();
@@ -151,7 +152,7 @@ const NewFriendForm = (props) => {
 	};
 
 	return (
-		<div>
+		<div className="NewFriendForm-form">
 			<form onSubmit={handleSubmit(onSubmit, onError)}>
 				<div>
 					Name for new friend:
@@ -160,7 +161,7 @@ const NewFriendForm = (props) => {
 					control={control}
 					name="otherName"
 					render={({ field: { onChange, onBlur, value, ref } }) => (
-						<Input placeholder="Name" style={{ width: 400 }}
+						<Input placeholder="Name" style={{ width: 200 }}
 							onChange={onChange}
 							onBlur={onBlur}
 							selected={value} />
@@ -186,7 +187,7 @@ const NewFriendForm = (props) => {
 					control={control}
 					name="goalFrequency"
 					render={({ field: { onChange, onBlur, value, ref } }) => (
-						<Input placeholder="Goal frequency" style={{ width: 400 }}
+						<Input placeholder="Goal frequency" style={{ width: 200 }}
 							onChange={onChange}
 							onBlur={onBlur}
 							selected={value} />
