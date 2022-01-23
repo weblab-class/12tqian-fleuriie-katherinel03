@@ -18,7 +18,7 @@ const NewPairPopup = (props) => {
 						<button className="close" onClick={close}>
 							&times;
 						</button>
-						<div className="header"> New Friend </div>
+						<div className="new-header"> New Friend </div>
 						<div className="content">
 							<NewFriendForm userGoogleID={props.userGoogleID} />
 						</div>
