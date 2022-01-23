@@ -1,6 +1,8 @@
 const { OAuth2Client } = require("google-auth-library");
 const User = require("./models/user");
 const UserProfile = require("./models/userprofile");
+const UserAvatar = require("./models/useravatar");
+const UserGarden = require("./models/usergarden");
 const socketManager = require("./server-socket");
 
 // create a new OAuth client used to verify google sign-in
@@ -33,10 +35,21 @@ function getOrCreateUser(user) {
     const newUserProfile = new UserProfile({
       googleID: user.sub,
       currentAvatarID: 0,
+      currentGardenID: 0,
       currency: 0,
       userName: user.name,
     });
     newUserProfile.save();
+    const newUserAvatar = new UserAvatar({
+      googleID: user.sub,
+      avatarID: 0,
+    });
+    newUserAvatar.save();
+    const newUserGarden = new UserGarden({
+      googleID: user.sub,
+      gardenID: 0,
+    });
+    newUserGarden.save();
     return newUser.save();
   });
 }

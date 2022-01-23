@@ -6,6 +6,7 @@ import "../../../utilities.css";
 import "./Shop.css";
 import Collapsible from 'react-collapsible';
 import AvatarChangePopup from "./AvatarChangePopup";
+import GardenChangePopup from "./GardenChangePopup";
 import {get, post} from "../../../utilities";
 
 const Shop = () => {
@@ -37,7 +38,7 @@ const Shop = () => {
 						<div className="space"></div>
 						<Collapsible trigger=
 						{<div className="shop-button">Garden Customization</div>}>
-							hi
+							<GardenChangePopup googleID={user.googleID} />
 						</Collapsible>
 					</div>
 				</div>

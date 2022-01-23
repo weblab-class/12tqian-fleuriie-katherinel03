@@ -166,44 +166,44 @@ const avatarList = [
 	},
 ]
 
-import Garden1 from "./BackgroundImages/Garden1.png";
-import Garden2 from "./BackgroundImages/Garden2.png";
-import Garden3 from "./BackgroundImages/Garden3.png";
-import Garden4 from "./BackgroundImages/Garden4.png";
-import Garden5 from "./BackgroundImages/Garden5.png";
+import garden0 from "./BackgroundImages/Garden0.png";
+import garden1 from "./BackgroundImages/Garden1.png";
+import garden2 from "./BackgroundImages/Garden2.png";
+import garden3 from "./BackgroundImages/Garden3.png";
+import garden4 from "./BackgroundImages/Garden4.png";
 
 const gardenList = [
 	{
-		name: "Garden1",
-		image: Garden1,
+		name: "Garden0",
+		image: garden0,
 		cost: 0,
+		gardenID: 0,
+	},
+	{
+		name: "Garden1",
+		image: garden1,
+		cost: 200,
 		gardenID: 1,
 	},
 	{
 		name: "Garden2",
-		image: Garden2,
+		image: garden2,
 		cost: 200,
 		gardenID: 2,
 	},
 	{
 		name: "Garden3",
-		image: Garden3,
+		image: garden3,
 		cost: 200,
 		gardenID: 3,
 	},
 	{
 		name: "Garden4",
-		image: Garden4,
+		image: garden4,
 		cost: 200,
 		gardenID: 4,
 	},
-	{
-		name: "Garden5",
-		image: Garden5,
-		cost: 200,
-		gardenID: 5,
-	},
-]
+];
 
 const EXPERIENCE_PER_ACTIVITY = 100;
 const CURRENCY_PER_LEVEL = 100;
@@ -253,5 +253,6 @@ export {
 	getLevel,
 	getStage,
 	MULT_FACTOR,
-	MINUTES_IN_DAY
+	MINUTES_IN_DAY,
+	gardenList,
 };

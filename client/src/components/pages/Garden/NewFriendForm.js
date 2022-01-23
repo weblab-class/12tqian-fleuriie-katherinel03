@@ -117,6 +117,7 @@ const NewFriendForm = (props) => {
 							post("/api/userprofile", {
 								googleID: otherGoogleID,
 								currentAvatarID: 0,
+								currentGardenID: 0,
 								currency: 0,
 								userName: otherName,
 							});

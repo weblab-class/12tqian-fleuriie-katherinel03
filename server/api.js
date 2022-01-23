@@ -13,6 +13,7 @@ const express = require("express");
 const User = require("./models/user");
 
 const UserAvatar = require("./models/useravatar");
+const UserGarden = require("./models/usergarden");
 const UserProfile = require("./models/userprofile");
 const UserAchievement = require("./models/userachievement");
 
@@ -62,6 +63,12 @@ router.get("/user", (req, res) => {
 router.get("/useravatar", (req, res) => {
   UserAvatar.find({ googleID: req.query.googleID }).then((avatar) => {
     res.send(avatar);
+  });
+});
+
+router.get("/usergarden", (req, res) => {
+  UserGarden.find({ googleID: req.query.googleID }).then((gardens) => {
+    res.send(gardens);
   });
 });
 
@@ -122,6 +129,17 @@ router.get("/pairactivity", (req, res) => {
     res.send(sortedActivities);
     // res.send(pairActivity);
   });
+});
+
+router.post("/usergarden", auth.ensureLoggedIn, (req, res) => {
+  const newUserGarden = UserGarden({
+    googleID: req.body.googleID,
+    gardenID: req.body.gardenID,
+  });
+  newUserGarden.save().then(data => {
+    res.send(data);
+    socketManager.getIo().emit("newUserGarden", {});
+  })
 });
 
 router.post("/useravatar", auth.ensureLoggedIn, (req, res) => {
@@ -197,6 +215,7 @@ router.post("/userprofile", auth.ensureLoggedIn, (req, res) => {
   const newUserProfile = UserProfile({
     googleID: req.body.googleID,
     currentAvatarID: req.body.currentAvatarID,
+    currentGardenID: req.body.currentGardenID,
     currency: req.body.currency,
     userName: req.body.userName
   });

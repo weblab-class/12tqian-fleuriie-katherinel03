@@ -1,10 +1,10 @@
 import React, { useState, useEffect } from "react";
 import ShopCatalog from "../../modules/ShopCatalog";
 
-import GardenBackground from "../Garden/GardenBackground";
 import { gardenList } from "../../constants/constants";
 import { get, post } from "../../../utilities";
 import { socket } from "../../../client-socket";
+import GardenBackground from "./GardenBackground";
 
 const GardenChangePopup = (props) => {
 	const [timesBought, setTimesBought] = useState(0);
@@ -12,9 +12,8 @@ const GardenChangePopup = (props) => {
 	const [gardens, setGardens] = useState([]);
 	const [currentGardenID, setCurrentGardenID] = useState(1);
 	const [shopCatalog, setShopCatalog] = useState(undefined);
-
-    useEffect(() => {
-		get("/api/useravatar", {
+	useEffect(() => {
+		get("/api/usergarden", {
 			googleID: props.googleID,
 		}).then((list) => {
 			setGardens(list);
@@ -49,10 +48,10 @@ const GardenChangePopup = (props) => {
 				},
 			}
 		).then(() => {
-			post("/api/useravatar", {
+			post("/api/usergarden", {
 				googleID: props.googleID,
 				gardenID: itemID,
-			}).then(() => {
+			}).then((data) => {
 				setCurrency(currency - item.cost);
 				setTimesBought(timesBought + 1);
 			});
@@ -112,7 +111,7 @@ const GardenChangePopup = (props) => {
 				{
 					image:
 						<GardenBackground
-							avatarID={avatar.avatarID}
+							gardenID={garden.gardenID}
 							width="85px"
 						/>,
 					type: type,
@@ -123,7 +122,6 @@ const GardenChangePopup = (props) => {
 				}
 			);
 		}
-		console.log(itemList);
 		setShopCatalog(
 			<ShopCatalog
 				itemList={itemList}
@@ -133,9 +131,9 @@ const GardenChangePopup = (props) => {
 	};
 
 	useEffect(() => {
-		socket.on("newUserGardenUpdate", setItemList);
+		socket.on("newUserGarden", setItemList);
 		return () => {
-			socket.off("newUserGardenUpdate", setItemList);
+			socket.off("newUserGarden", setItemList);
 		};
 	}, []);
 
