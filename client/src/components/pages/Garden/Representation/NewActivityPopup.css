@@ -1,0 +1,47 @@
+.activity-text {
+    margin: 10px;
+    margin-top: 0px;
+}
+
+.activities {
+    background-color: white;
+    border-radius: 16px;
+    border-width: 40px;
+    border-color: #008040;
+}
+
+.submit-button4 {
+    appearance: button;
+    background-color: #E3FFF0;
+    border: solid transparent;
+    border-radius: 16px;
+    border-width: 0 0 4px;
+    box-sizing: border-box;
+    color: #008040;
+    cursor: pointer;
+    display: inline-block;
+    font-size: 15px;
+    font-weight: 700;
+    letter-spacing: .8px;
+    line-height: 20px;
+    margin: 4px;
+    margin-top: 20px;
+    margin-bottom: 20px;
+    outline: none;
+    overflow: visible;
+    padding: 13px 16px;
+    text-align: center;
+    touch-action: manipulation;
+    transform: translateZ(0);
+    transition: filter .2s;
+    user-select: none;
+    -webkit-user-select: none;
+    vertical-align: middle;
+    white-space: nowrap;
+    width: 20%;
+  }  
+
+.submit-button4:hover {
+    background-color: #008040;
+    color: #E3FFF0;
+}
