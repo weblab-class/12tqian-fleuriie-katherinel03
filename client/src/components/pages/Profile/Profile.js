@@ -7,7 +7,7 @@ import "../../../utilities.css";
 import "./Profile.css";
 import { get, post } from "../../../utilities.js";
 import { socket } from "../../../client-socket"; 
-import { setConstantValue } from "typescript";
+
 const Profile = (props) => {
   const [user, setUser] = useState(undefined);
   const [code, setCode] = useState(undefined);

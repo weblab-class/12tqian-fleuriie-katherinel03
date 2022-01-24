@@ -57,7 +57,7 @@ const NewFriendForm = (props) => {
 	}
 
 	const isEmpty = (item) => {
-		if (item === undefined || item.length === 0) {
+		if (item === undefined || String(item).length === 0) {
 			return true;
 		} else {
 			return false;
@@ -84,16 +84,16 @@ const NewFriendForm = (props) => {
 					userGoogleID: props.userGoogleID,
 					pairName: otherName,
 				}).then((pairProfiles) => {
+					console.log("WHAY");
 					if (pairProfiles.length !== 0) {
 						onShowErrorAlert("invalidSubmission", "You already have a friend with that name.\n");
 					} else {
 						if (!isEmpty(otherName) && !isEmpty(otherID)) {
-							otherID = Number(otherID);
 							// trying to add an existing user
-							get("/api/user", {
+							get("/api/usermany", {
 								googleID: otherID,
-							}).then((user) => {
-								if (!user) {
+							}).then((users) => {
+								if (users.length === 0) {
 									onShowErrorAlert("invalidSubmission", "You tried to reference a user code that doesn't exist in the system yet.\n");
 								} else {
 									post("/api/pairprofile", {

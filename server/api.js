@@ -59,6 +59,11 @@ router.get("/user", (req, res) => {
   });
 });
 
+router.get("/usermany", (req, res) => {
+  User.find({ googleID: req.query.googleID }).then((users) => {
+    res.send(users);
+  });
+});
 
 router.get("/useravatar", (req, res) => {
   UserAvatar.find({ googleID: req.query.googleID }).then((avatar) => {
