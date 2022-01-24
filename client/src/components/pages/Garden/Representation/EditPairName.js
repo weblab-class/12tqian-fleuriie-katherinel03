@@ -112,7 +112,7 @@ const EditPairName = (props) => {
 					)}
 				/>
 				<div>
-					<input type="submit" className="submit-button2" />
+					<input type="submit" className="submit-button2" value="Change Name" />
 				</div>
 			</form>
 			<Alert
