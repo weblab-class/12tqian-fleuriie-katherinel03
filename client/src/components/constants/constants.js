@@ -171,6 +171,9 @@ import garden1 from "./BackgroundImages/Garden1.png";
 import garden2 from "./BackgroundImages/Garden2.png";
 import garden3 from "./BackgroundImages/Garden3.png";
 import garden4 from "./BackgroundImages/Garden4.png";
+import garden5 from "./BackgroundImages/Garden5.png";
+import garden6 from "./BackgroundImages/Garden6.png";
+import garden7 from "./BackgroundImages/Garden7.png";
 
 const gardenList = [
 	{
@@ -202,6 +205,24 @@ const gardenList = [
 		image: garden4,
 		cost: 200,
 		gardenID: 4,
+	},
+	{
+		name: "Garden5",
+		image: garden5,
+		cost: 200,
+		gardenID: 5,
+	},
+	{
+		name: "Garden6",
+		image: garden6,
+		cost: 200,
+		gardenID: 6,
+	},
+	{
+		name: "Garden7",
+		image: garden7,
+		cost: 200,
+		gardenID: 7,
 	},
 ];
 
