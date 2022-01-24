@@ -87,24 +87,22 @@ const EditProfile = (props) => {
 		}
 	};
 	return (
-		<div>
+		<div className="activities2">
 			<form onSubmit={handleSubmit(onSubmit, onError)}>
-				<div className="change-name">
+				<div className="new-text">
 					Change your name:
 				</div>
 				<Controller
 					control={control}
 					name="newName"
 					render={({ field: { onChange, onBlur, value, ref } }) => (
-						<Input placeholder="New Name" style={{ width: 400 }}
+						<Input placeholder="New Name" style={{ width: 200 }} className="activity-text"
 							onChange={onChange}
 							onBlur={onBlur}
 							selected={value} />
 					)}
 				/>
-				<div>
-					<input className="submit-button" type="submit" />
-				</div>
+					<input className="submit-button5" type="submit" />
 			</form>
 			<Alert
 				header={'Error in submission'}
