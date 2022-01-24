@@ -228,11 +228,16 @@ const gardenList = [
 
 const EXPERIENCE_PER_ACTIVITY = 100;
 const CURRENCY_PER_LEVEL = 100;
-const EXPERIENCE_PER_LEVEL = 200;
+const EXPERIENCE_PER_LEVEL = 500;
+const CURRENCY_LEVEL_MULTIPLIER = 2;
+const EXPERIENCE_LEVEL_MULTIPLIER = 2;
+
+const MULTIPLIER_LOW = 0.9;
+const MULTIPLIER_HIGH = 1.1;
 
 const STAGE_1_LEVEL = 0;
-const STAGE_2_LEVEL = 15;
-const STAGE_3_LEVEL = 30;
+const STAGE_2_LEVEL = 5;
+const STAGE_3_LEVEL = 10;
 
 const formatTime = (date) => {
 	date = new Date(date);
@@ -242,9 +247,27 @@ const formatTime = (date) => {
 	return shortMonth + " " + day + ", " + year;
 };
 
+const CONSTANT_A = 1000;
+const CONSTANT_B = 100;
+
+const getTotalExperience = (level) => { // how much experience to be at level 
+	return Math.round(CONSTANT_A * level + Math.pow(level, 1.5) * CONSTANT_B);
+};
+
 const getLevel = (experience) => {
-	const rem = experience % EXPERIENCE_PER_LEVEL;	
-	return (experience - rem) / EXPERIENCE_PER_LEVEL + 1;
+	let level = 0;
+	while (experience >= getTotalExperience(level)) {
+		level = level + 1;
+	}
+	return level - 1;
+};
+
+const getRemainder = (experience) => {
+	return experience - getTotalExperience(getLevel(experience));
+};
+
+const getToNextLevel = (experience) => {
+	return getTotalExperience(getLevel(experience) + 1) - getTotalExperience(getLevel(experience));
 };
 
 const getStage = (experience) => {
@@ -267,13 +290,19 @@ export {
 	EXPERIENCE_PER_ACTIVITY,
 	CURRENCY_PER_LEVEL,
 	EXPERIENCE_PER_LEVEL,
+	EXPERIENCE_LEVEL_MULTIPLIER,
+	CURRENCY_LEVEL_MULTIPLIER,
 	formatTime,
 	STAGE_1_LEVEL,
 	STAGE_2_LEVEL,
 	STAGE_3_LEVEL,
 	getLevel,
+	getRemainder,
+	getToNextLevel,
 	getStage,
 	MULT_FACTOR,
 	MINUTES_IN_DAY,
+	MULTIPLIER_LOW,
+	MULTIPLIER_HIGH,
 	gardenList,
 };

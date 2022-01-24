@@ -1,4 +1,5 @@
 import React, { useEffect, useState, Component } from "react";
+import { Fireworks } from 'fireworks/lib/react'
 
 import { useForm, Controller } from "react-hook-form";
 import "react-datepicker/dist/react-datepicker.css";
@@ -8,7 +9,16 @@ import 'react-popup-alert/dist/index.css'
 import { post, get } from "../../../../utilities.js";
 import Alert from 'react-popup-alert';
 
-import { EXPERIENCE_PER_ACTIVITY, CURRENCY_PER_LEVEL, formatTime } from "../../../constants/constants.js";
+import {
+	EXPERIENCE_PER_ACTIVITY,
+	CURRENCY_PER_LEVEL,
+	formatTime,
+	EXPERIENCE_LEVEL_MULTIPLIER,
+	CURRENCY_LEVEL_MULTIPLIER,
+	MULTIPLIER_LOW,
+	MULTIPLIER_HIGH,
+	getLevel
+} from "../../../constants/constants.js";
 
 const NewActivityPopup = (props) => {
 	const { handleSubmit, control } = useForm();
@@ -66,6 +76,12 @@ const NewActivityPopup = (props) => {
 		}
 	};
 
+	const genRand = (min, max, decimalPlaces) => {
+		var rand = Math.random() * (max - min) + min;
+		var power = Math.pow(10, decimalPlaces);
+		return Math.floor(rand * power) / power;
+	}
+
 	const onSubmit = (data, e) => {
 		const activityTime = new Date(data.activityTime);
 		const activityName = data.activityName;
@@ -82,31 +98,50 @@ const NewActivityPopup = (props) => {
 			});
 			get("/api/userprofile", {
 				googleID: props.userGoogleID,
-			}).then((profile) => {
-				post("/api/userprofileupdate", {
-					userProfile: {
-						googleID: props.userGoogleID,
-					},
-					update: {
-						currency: profile.currency + CURRENCY_PER_LEVEL,
-					},
+			}).then((userProfile) => {
+				get("/api/pairprofileone", {
+					userGoogleID: props.userGoogleID,
+					otherGoogleID: props.otherGoogleID,
+				}).then((pairProfile) => {
+					let currencyGained = CURRENCY_PER_LEVEL
+						+ CURRENCY_LEVEL_MULTIPLIER * getLevel(pairProfile.totalExperience);
+					currencyGained = currencyGained * genRand(MULTIPLIER_LOW, MULTIPLIER_HIGH, 2);
+					currencyGained = Math.round(currencyGained);
+					let experienceGained = EXPERIENCE_PER_ACTIVITY
+						+ EXPERIENCE_LEVEL_MULTIPLIER * getLevel(pairProfile.totalExperience);
+					experienceGained = experienceGained * genRand(MULTIPLIER_LOW, MULTIPLIER_HIGH, 2);
+					experienceGained = Math.round(currencyGained);
+					post("/api/pairprofileupdate", {
+						pairProfile: {
+							userGoogleID: props.userGoogleID,
+							otherGoogleID: props.otherGoogleID,
+						},
+						update: {
+							totalExperience: pairProfile.totalExperience + experienceGained,
+						},
+					});
+
+					post("/api/userprofileupdate", {
+						userProfile: {
+							googleID: props.userGoogleID,
+						},
+						update: {
+							currency: userProfile.currency + currencyGained,
+						},
+					});
+					const messages = [];
+
+					messages.push(<div>{"You have successfully added an activity!"}</div>);
+					messages.push(<div>{"Your plant gained " + String(experienceGained) + " experience!"}</div>);
+					messages.push(<div>{"You gained " + String(currencyGained) + " gold!"}</div>);
+					if (getLevel(pairProfile.totalExperience) !== getLevel(pairProfile.totalExperience + experienceGained)) {
+						messages.push(<div>{"Your plant became level "
+							+ String(getLevel(pairProfile.totalExperience + experienceGained))
+							+ "!"}</div>);
+					}
+					onShowSuccessAlert("validSubmission", <div>{messages}</div>);
 				});
 			});
-			get("/api/pairprofileone", {
-				userGoogleID: props.userGoogleID,
-				otherGoogleID: props.otherGoogleID,
-			}).then((profile) => {
-				post("/api/pairprofileupdate", {
-					pairProfile: {
-						userGoogleID: props.userGoogleID,
-						otherGoogleID: props.otherGoogleID,
-					},
-					update: {
-						totalExperience: profile.totalExperience + EXPERIENCE_PER_ACTIVITY,
-					},
-				});
-			});
-			onShowSuccessAlert("validSubmission", "You have succecssfully added an activity!");
 		}
 	};
 

@@ -6,7 +6,7 @@ import OtherStats from "./OtherStats.js";
 import "../../../utilities.css";
 import "./Profile.css";
 import { get, post } from "../../../utilities.js";
-import { socket } from "../../../client-socket"; 
+import { socket } from "../../../client-socket";
 
 const Profile = (props) => {
   const [user, setUser] = useState(undefined);

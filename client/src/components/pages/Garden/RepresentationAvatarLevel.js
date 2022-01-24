@@ -4,7 +4,7 @@ import { CircularProgressbarWithChildren } from 'react-circular-progressbar';
 import 'react-circular-progressbar/dist/styles.css';
 import "./RepresentationAvatarLevel.css";
 
-import { EXPERIENCE_PER_ACTIVITY, EXPERIENCE_PER_LEVEL } from "../../constants/constants";
+import { getLevel, getRemainder, getToNextLevel } from "../../constants/constants";
 
 // props include representation avatar
 
@@ -15,9 +15,10 @@ const RepresentationAvatarLevel = (props) => {
 	const [displayImage, setDisplayImage] = useState(undefined);
 
 	useEffect(() => {
-		const rem = props.totalExperience % EXPERIENCE_PER_LEVEL;
-		const level = (props.totalExperience - rem) / EXPERIENCE_PER_LEVEL + 1;
-		const percentage = rem / level * 100;
+		const rem = getRemainder(props.totalExperience);
+		const level = getLevel(props.totalExperience);
+		const total = getToNextLevel(props.totalExperience);
+		const percentage = rem / total * 100;
 		setDisplayImage(
 			<CircularProgressbarWithChildren value={percentage}>
 				<div className="centeredWithinProgressBar">
