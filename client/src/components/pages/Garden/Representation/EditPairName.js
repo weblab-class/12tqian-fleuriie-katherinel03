@@ -96,24 +96,22 @@ const EditPairName = (props) => {
 		}
 	};
 	return (
-		<div className="edit-pair-name">
+		<div>
 			<form onSubmit={handleSubmit(onSubmit, onError)}>
-				<div className="change-name">
+				<div className="new-text">
 					Change friend name:
 				</div>
 				<Controller
 					control={control}
 					name="newName"
 					render={({ field: { onChange, onBlur, value, ref } }) => (
-						<Input placeholder="New Name" style={{ width: 400 }}
+						<Input placeholder="New Name" style={{ width: 300 }} className="activity-text"
 							onChange={onChange}
 							onBlur={onBlur}
 							selected={value} />
 					)}
 				/>
-				<div>
-					<input type="submit" className="submit-button2" />
-				</div>
+					<input type="submit" className="submit-button5" value="Change Name" />
 			</form>
 			<Alert
 				header={'Error in submission'}

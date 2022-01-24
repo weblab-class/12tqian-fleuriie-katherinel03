@@ -27,8 +27,10 @@
 
 .friendCodeBox {
   border-radius: 10px;
-  border: solid black 3px;
+  border: solid #008040 3px;
+  color: #008040;
   width: 20%;
   margin: auto;
-  background-color: bisque;
+  background-color: #FFF0E6;
+  padding-top: 4px;
 }

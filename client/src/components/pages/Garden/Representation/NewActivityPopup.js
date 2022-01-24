@@ -8,6 +8,7 @@ import 'antd/dist/antd.css';
 import 'react-popup-alert/dist/index.css'
 import { post, get } from "../../../../utilities.js";
 import Alert from 'react-popup-alert';
+import "./NewActivityPopup.css"
 
 import {
 	EXPERIENCE_PER_ACTIVITY,
@@ -151,31 +152,33 @@ const NewActivityPopup = (props) => {
 
 	return (
 		<div>
-			<form onSubmit={handleSubmit(onSubmit, onError)}>
-				<div>
-					<h4>Enter new activities!</h4>
-				</div>
-				<Controller
-					control={control}
-					name="activityTime"
-					render={({ field: { onChange, onBlur, value, ref } }) => (
-						<DatePicker placeholder="select date" onChange={onChange}
-							onBlur={onBlur}
-							selected={value} />
-					)}
-				/>
-				<Controller
-					control={control}
-					name="activityName"
-					render={({ field: { onChange, onBlur, value, ref } }) => (
-						<Input placeholder="activity description" style={{ width: 400 }}
-							onChange={onChange}
-							onBlur={onBlur}
-							selected={value} />
-					)}
-				/>
-				<input type="submit" />
-			</form>
+			<div className="activities">
+				<form onSubmit={handleSubmit(onSubmit, onError)}>
+					<div >
+						<div className="new-text">Enter new activities!</div>
+					</div>
+					<Controller
+						control={control}
+						name="activityTime"
+						render={({ field: { onChange, onBlur, value, ref } }) => (
+							<DatePicker placeholder="select date" onChange={onChange} className="activity-text"
+								onBlur={onBlur}
+								selected={value} />
+						)}
+					/>
+					<Controller
+						control={control}
+						name="activityName"
+						render={({ field: { onChange, onBlur, value, ref } }) => (
+							<Input placeholder="activity description" style={{ width: 300 }} className="activity-text"
+								onChange={onChange}
+								onBlur={onBlur}
+								selected={value} />
+						)}
+					/>
+					<input type="submit" className="submit-button4"/>
+				</form>
+			</div>
 			<Alert
 				header={'Error in submission'}
 				btnText={'Close'}

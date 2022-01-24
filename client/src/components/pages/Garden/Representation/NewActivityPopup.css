@@ -1,0 +1,100 @@
+.activity-text {
+    margin: 10px;
+    margin-top: 0px;
+    margin-left: 0px;
+}
+
+.activities {
+    background-color: white;
+    border-style: solid;
+    border-width: 4px;
+    border-color: #008040;
+    border-radius: 16px;
+    margin-top: 12px;
+    padding-left: 12px;
+}
+.activities2 {
+    background-color: white;
+    border-style: solid;
+    border-width: 4px;
+    border-color: #008040;
+    border-radius: 16px;
+    margin: auto;
+    margin-top: 12px;
+    margin-bottom: 12px;
+    padding-left: 12px;
+    width: 50vh;
+}
+
+
+.submit-button4 {
+    appearance: button;
+    background-color: #E3FFF0;
+    border: solid transparent;
+    border-radius: 16px;
+    border-width: 0 0 4px;
+    box-sizing: border-box;
+    color: #008040;
+    cursor: pointer;
+    display: inline-block;
+    font-size: 15px;
+    font-weight: 700;
+    letter-spacing: .8px;
+    line-height: 20px;
+    margin: 4px;
+    margin-top: 20px;
+    margin-bottom: 20px;
+    outline: none;
+    overflow: visible;
+    padding: 13px 16px;
+    text-align: center;
+    touch-action: manipulation;
+    transform: translateZ(0);
+    transition: filter .2s;
+    user-select: none;
+    -webkit-user-select: none;
+    vertical-align: middle;
+    white-space: nowrap;
+    width: 20%;
+  }  
+
+.submit-button4:hover {
+    background-color: #008040;
+    color: #E3FFF0;
+}
+
+.submit-button5 {
+    appearance: button;
+    background-color: #E3FFF0;
+    border: solid transparent;
+    border-radius: 16px;
+    border-width: 0 0 4px;
+    box-sizing: border-box;
+    color: #008040;
+    cursor: pointer;
+    display: inline-block;
+    font-size: 15px;
+    font-weight: 700;
+    letter-spacing: .8px;
+    line-height: 20px;
+    margin: 4px;
+    margin-top: 20px;
+    margin-bottom: 20px;
+    outline: none;
+    overflow: visible;
+    padding: 13px 16px;
+    text-align: center;
+    touch-action: manipulation;
+    transform: translateZ(0);
+    transition: filter .2s;
+    user-select: none;
+    -webkit-user-select: none;
+    vertical-align: middle;
+    white-space: nowrap;
+    width: 25%;
+  }  
+
+.submit-button5:hover {
+    background-color: #008040;
+    color: #E3FFF0;
+}

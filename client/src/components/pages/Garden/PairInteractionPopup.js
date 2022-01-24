@@ -151,7 +151,7 @@ const PairInteractionPopup = (props) => {
 						className="-striped -highlight"
 					/>
 					<br />
-					<div>
+					<div className="activities">
 					<EditPairName userGoogleID={props.userGoogleID} otherGoogleID={props.otherGoogleID} />
 				</div>
 
