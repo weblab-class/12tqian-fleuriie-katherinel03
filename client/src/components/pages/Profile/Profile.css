@@ -6,7 +6,7 @@
   border: none;
   text-align: center;
   background-image: url("/client/src/components/constants/BackgroundImages/ProfileBackground.png");
-  height: 100vh;
+  height: 92vh;
   width: auto;
   background-position: center;
   background-attachment: fixed;
@@ -35,5 +35,4 @@
   background-color: #fff0e6;
   padding-top: 4px;
 }
-
 
