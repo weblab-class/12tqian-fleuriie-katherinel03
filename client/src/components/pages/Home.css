@@ -39,4 +39,21 @@
 
 .alert-main {
   border-radius: 20px;
+  background-color: #acd4ad;
+  padding-top: 10px;
+  color: #008440 !important;
+}
+
+.alert-button {
+  background-color: white !important;
+  color: #008840 !important;
+}
+
+.alert-button:hover {
+  color: white !important;
+  background-color: #008840 !important;
+}
+
+.alert-header {
+  color: #008040;
 }
