@@ -57,8 +57,10 @@ const Profile = (props) => {
       </div>
       <h1 className="Profile-username">{userName}</h1>
       <EditProfile googleID={user.googleID} />
-      <div className="friendCodeBox">
-        Your friend code: <h3>{code}</h3>
+      <div className="friend-box">
+        <div className="friendCodeBox">
+          Your friend code: <h3>{code}</h3>
+        </div>
       </div>
     </div>
   );
