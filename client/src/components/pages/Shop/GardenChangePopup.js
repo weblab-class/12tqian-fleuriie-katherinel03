@@ -112,7 +112,7 @@ const GardenChangePopup = (props) => {
 					image:
 						<GardenBackground
 							gardenID={garden.gardenID}
-							width="85px"
+							width="140px"
 						/>,
 					type: type,
 					callback: callback,

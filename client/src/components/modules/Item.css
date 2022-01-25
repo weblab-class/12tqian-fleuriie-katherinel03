@@ -6,7 +6,8 @@
 .itemCatalogWrapper {
 	background-color: #FFF0E6;
 	width: 80%;
-	height: calc(width * 0.8);
+	/* height: calc(width * 0.8); */
+	height: calc(100vw * 0.123);
 	border: solid 4px white;
 	border-radius: 20%
 }
