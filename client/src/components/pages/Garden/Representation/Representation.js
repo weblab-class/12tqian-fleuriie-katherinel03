@@ -21,16 +21,18 @@ const Representation = (props) => {
 	const getHealthBarPercentage = (goalFrequency, timeMilliseconds) => {
 		const goal = goalFrequency * MINUTES_IN_DAY;
 		const timeElapsed = timeMilliseconds / 1000 / 60;
-		if (timeElapsed <= goal) {
-			return 100;
-		} else {
-			const gap = MULT_FACTOR * goal;
-			if (timeElapsed >= gap) {
-				return 0;
-			} else {
-				return (1 - timeElapsed / gap) * 100;
-			}
-		}
+		const gap = MULT_FACTOR * goal;
+		return (1 - timeElapsed / gap) * 100;
+		// if (timeElapsed <= goal) {
+		// 	return 100;
+		// } else {
+		// 	const gap = MULT_FACTOR * goal;
+		// 	if (timeElapsed >= gap) {
+		// 		return 0;
+		// 	} else {
+		// 		return (1 - timeElapsed / gap) * 100;
+		// 	}
+		// }
 	};
 
 	const setRepresentation = () => {
