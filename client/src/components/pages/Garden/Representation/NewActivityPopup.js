@@ -170,7 +170,7 @@ const NewActivityPopup = (props) => {
 						control={control}
 						name="activityName"
 						render={({ field: { onChange, onBlur, value, ref } }) => (
-							<Input placeholder="activity description" style={{ width: 300 }} className="activity-text"
+							<Input placeholder="activity description (90 char. max)" style={{ width: 300 }} className="activity-text"
 								onChange={onChange}
 								onBlur={onBlur}
 								selected={value} />
