@@ -94,6 +94,14 @@ router.get("/pairrepresentation", (req, res) => {
 
 router.get("/pairrepresentationall", (req, res) => {
   PairRepresentation.find({
+    googleID: req.query.googleID,
+  }).then((pairRepresentation) => {
+    res.send(pairRepresentation);
+  });
+});
+
+router.get("/pairrepresentationall", (req, res) => {
+  PairRepresentation.find({
     userGoogleID: req.query.userGoogleID,
   }).then((pairRepresentation) => {
     res.send(pairRepresentation);
@@ -102,6 +110,15 @@ router.get("/pairrepresentationall", (req, res) => {
 
 router.get("/userachievement", (req, res) => {
   UserAchievement.find({ googleID: req.query.googleID }).then((userAchievement) => {
+    res.send(userAchievement);
+  });
+});
+
+router.get("/userachievementcheck", (req, res) => {
+  UserAchievement.find({
+    googleID: req.query.googleID,
+    achievementID: req.query.achievementID
+  }).then((userAchievement) => {
     res.send(userAchievement);
   });
 });
@@ -158,10 +175,27 @@ router.post("/userachievement", auth.ensureLoggedIn, (req, res) => {
     achievementID: req.body.achievementID,
     achievementDate: req.body.achievementDate,
   });
-  newUserAchievement.save().then(data => {
+  UserAchievement.replaceOne(
+    {
+      googleID: req.body.googleID,
+      achievementID: req.body.achievementID,
+    },
+    {
+      googleID: req.body.googleID,
+      achievementID: req.body.achievementID,
+      achievementDate: req.body.achievementDate,
+    },
+    {
+      upsert: true,
+    }
+  ).then(data => {
     res.send(data);
     socketManager.getIo().emit("newUserAchievement", {});
   });
+  // newUserAchievement.save().then(data => {
+  //   res.send(data);
+  //   socketManager.getIo().emit("newUserAchievement", {});
+  // });
 });
 
 router.post("/usergarden", auth.ensureLoggedIn, (req, res) => {

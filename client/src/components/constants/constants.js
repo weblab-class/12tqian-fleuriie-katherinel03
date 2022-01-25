@@ -165,18 +165,28 @@ const avatarList = [
 		avatarID: 7,
 	},
 ]
-
+// 5 to 8 and 14, 15 are sketch
 import badge0 from "./Badges/Badge0.png";
 import badge1 from "./Badges/Badge1.png";
 import badge2 from "./Badges/Badge2.png";
 import badge3 from "./Badges/Badge3.png";
 import badge4 from "./Badges/Badge4.png";
+import badge5 from "./Badges/Badge0.png";
+import badge6 from "./Badges/Badge0.png";
+import badge7 from "./Badges/Badge0.png";
+import badge8 from "./Badges/Badge0.png";
 import badge9 from "./Badges/Badge9.png";
+import badge10 from "./Badges/Badge10.png";
+import badge11 from "./Badges/Badge11.png";
 import badge12 from "./Badges/Badge12.png";
 import badge13 from "./Badges/Badge13.png";
+import badge14 from "./Badges/Badge0.png";
+import badge15 from "./Badges/Badge0.png";
 import badge16 from "./Badges/Badge16.png";
 import badge17 from "./Badges/Badge17.png";
 import badge18 from "./Badges/Badge18.png";
+import badge19 from "./Badges/Badge19.png";
+import badge20 from "./Badges/Badge20.png";
 
 const badgeList = [
 	{
@@ -193,7 +203,7 @@ const badgeList = [
 	},
 	{
 		name: "Wow So Popular",
-		description: "Added 29 friends",
+		description: "Added 20 friends",
 		image: badge2,
 		badgeID: 2,
 	},
@@ -206,20 +216,50 @@ const badgeList = [
 	{
 		name: "Greener Thumb",
 		description: "Unlocked 3rd stage of a plant",
-		image: badge3,
-		badgeID: 3,
-	},
-	{
-		name: "Green Thumb",
-		description: "Unlocked second stage of a plant",
 		image: badge4,
 		badgeID: 4,
+	},
+	{
+		name: "sus5",
+		description: "Purchased 3 avatars",
+		image: badge5,
+		badgeID: 5,
+	},
+	{
+		name: "sus6",
+		description: "Purchased all avatars",
+		image: badge6,
+		badgeID: 6,
+	},
+	{
+		name: "sus7",
+		description: "Purchased 3 garden backgrounds",
+		image: badge7,
+		badgeID: 7,
+	},
+	{
+		name: "sus8",
+		description: "Purchased all garden backgrounds",
+		image: badge8,
+		badgeID: 8,
 	},
 	{
 		name: "New Identity",
 		description: "Edit your profile",
 		image: badge9,
 		badgeID: 9,
+	},
+	{
+		name: "Journalist",
+		description: "Logged 10 activities",
+		image: badge10,
+		badgeID: 10,
+	},
+	{
+		name: "Expert Journalist",
+		description: "Logged 50 activities",
+		image: badge11,
+		badgeID: 11,
 	},
 	{
 		name: "Commited",
@@ -232,6 +272,18 @@ const badgeList = [
 		description: "Log activities for 30 days",
 		image: badge13,
 		badgeID: 13,
+	},
+	{
+		name: "Botanist",
+		description: "Purchased 3 different types of plants",
+		image: badge14,
+		badgeID: 14,
+	},
+	{
+		name: "Horticulturist",
+		description: "Purchased all types of plants",
+		image: badge15,
+		badgeID: 15,
 	},
 	{
 		name: "Rich",
@@ -250,6 +302,18 @@ const badgeList = [
 		description: "Gained 50,000 in currency",
 		image: badge18,
 		badgeID: 18,
+	},
+	{
+		name: "Bye!",
+		description: "Deleted a friend",
+		image: badge19,
+		badgeID: 19,
+	},
+	{
+		name: "Secret Achievement",
+		description: "Added friends called annie, timmy, kat",
+		image: badge20,
+		badgeID: 20,
 	},
 ];
 

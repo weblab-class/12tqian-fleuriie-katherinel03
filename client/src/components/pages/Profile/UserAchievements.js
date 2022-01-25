@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import { get, post } from "../../../utilities";
 import SingleAchievement from "./SingleAchievement";
 import { socket } from "../../../client-socket";
-import { badgeList, getStage } from "../../constants/constants";
+import { badgeList, getStage, avatarList, gardenList, representationList } from "../../constants/constants";
 import "./UserAchievements.css";
 // props
 // googleID
@@ -22,7 +22,6 @@ const UserAchievement = (props) => {
 	};
 
 	const checkAchievements0 = (achievementIDs) => { // 0, 1, 2, 3, 4
-		console.log("JOE");
 		get("/api/pairprofile", {
 			userGoogleID: props.googleID,
 		}).then((profiles) => {
@@ -62,9 +61,6 @@ const UserAchievement = (props) => {
 		}).then((profile) => {
 			console.log(achievementIDs);
 			if (!achievementIDs.includes(9)) {
-				console.log(user);
-				console.log(profile);
-				console.log("WHY");
 				if (props.user.name !== profile.userName) {
 					postAchievement(9);
 				}
@@ -88,6 +84,16 @@ const UserAchievement = (props) => {
 		get("/api/pairactivityall", {
 			googleID: props.googleID,
 		}).then((activities) => {
+			if (!achievementIDs.includes(10)) {
+				if (activities.length >= 10) {
+					postAchievement(10);
+				}
+			}
+			if (!achievementIDs.includes(11)) {
+				if (activities.length >= 50) {
+					postAchievement(11);
+				}
+			}
 			const dates = [];
 			for (const obj of activities) {
 				if (!dates.includes(String(obj.activityTime))) {
@@ -100,6 +106,54 @@ const UserAchievement = (props) => {
 					if (!achievementIDs.includes(13)) {
 						if (dates.length >= 30) {
 							postAchievement(13);
+						}
+					}
+				}
+			}
+		});
+		get("/api/useravatar", {
+			googleID: props.googleID,
+		}).then((avatars) => {
+			if (!achievementIDs.includes(5)) {
+				if (avatars.length >= 3) {
+					postAchievement(5);
+				}
+			}
+			if (!achievementIDs.includes(6)) {
+				if (avatars.length === avatarList.length) {
+					postAchievement(6);
+				}
+			}
+		});
+		get("/api/usergarden", {
+			googleID: props.googleID,
+		}).then((gardens) => {
+			if (!achievementIDs.includes(7)) {
+				if (gardens.length >= 3) {
+					postAchievement(7);
+				}
+			}
+			if (!achievementIDs.includes(8)) {
+				if (gardens.length === gardenList.length) {
+					postAchievement(8);
+				}
+			}
+		});
+		get("/api/pairrepresentationall", {
+			googleID: props.googleID,
+		}).then((representations) => { // we can make this more efficient but maybe later
+			const lst = [];
+			for (const obj of representations) {
+				if (!lst.includes(obj.representationID)) {
+					lst.push(obj.representationID);
+					if (!achievementIDs.includes(14)) {
+						if (lst.length >= 3) {
+							postAchievement(14);
+						}
+					}
+					if (!achievementIDs.includes(15)) {
+						if (lst.length == representationList.length) {
+							postAchievement(15);
 						}
 					}
 				}

@@ -83,11 +83,42 @@ const Garden = (props) => {
 		setCarouselItems(newCarouselItems);
 	};
 
+	const uniformName = (name) => {
+		return (name.trim()).toLowerCase();
+	};
+
 	const loadPairProfiles = () => {
 		if (user) {
 			get("/api/pairprofile", {
 				userGoogleID: user.googleID,
 			}).then((profileList) => {
+				get("/api/userachievement", {
+					googleID: user.googleID,
+				}).then((achievements) => {
+					if (!achievements.includes(20)) {
+						let kat = 0;
+						let timmy = 0;
+						let annie = 0;
+						for (const obj of profileList) {
+							if (uniformName(obj.pairName) === "kat") {
+								kat = 1;
+							}
+							if (uniformName(obj.pairName) === "annie") {
+								annie = 1;
+							}
+							if (uniformName(obj.pairName) === "timmy") {
+								timmy = 1;
+							}
+						}
+						if (kat + timmy + annie == 3) {
+							post("/api/userachievement", {
+								googleID: user.googleID,
+								achievementID: 20,
+								achievementDate: String(new Date()),
+							});
+						}
+					}
+				})
 				resetCarousel(profileList);
 			});
 		}
@@ -110,6 +141,34 @@ const Garden = (props) => {
 			socket.off("newUserGarden", loadPairProfiles);
 		};
 	}, [user]);
+
+	const deleteFriendAchievement = () => {
+		get("/api/userachievement", {
+			googleID: user.googleID,
+		}).then((achievements) => {
+			let inside = 0;
+			for (const obj of achievements) {
+				if (obj.achievementID === 19) {
+					inside = 1;
+					break;
+				}
+			}
+			if (inside === 0) {
+				post("/api/userachievement", {
+					googleID: user.googleID,
+					achievementID: 19,
+					achievementDate: String(new Date()),
+				});
+			}
+		});
+	};
+
+	useEffect(() => {
+		socket.on("deletion", deleteFriendAchievement);
+		return () => {
+			socket.off("deletion", deleteFriendAchievement);
+		}
+	});
 
 	useEffect(() => {
 		socket.on("deletion", loadPairProfiles);
