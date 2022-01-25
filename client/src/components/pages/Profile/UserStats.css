@@ -1,22 +1,22 @@
 .stats {
-   font-size: 16px; 
-   color: #008840;
-   padding: 8px;
-   line-height: 150%;
+  font-size: 16px;
+  color: #008840;
+  padding: 8px;
+  line-height: 150%;
 }
 
 .stats-header {
-    color: white;
-    background-color: #008840;
-    text-align: center;
-    font-size: 36px;
-  }
+  color: white;
+  background-color: #008840;
+  text-align: center;
+  font-size: 36px;
+}
 
-  .stats-container {
-    background-color: white;
-    border-style: solid;
-    border-width: 4px;
-    border-color: #008040;
-    border-radius: 16px;
-    margin-top: 12px;
-  }
+.stats-container {
+  background-color: white;
+  border-style: solid;
+  border-width: 4px;
+  border-color: #008040;
+  border-radius: 16px;
+  margin-top: 12px;
+}

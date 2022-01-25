@@ -177,7 +177,7 @@ const NewActivityPopup = (props) => {
 								selected={value} />
 						)}
 					/>
-					<input type="submit" className="submit-button4"/>
+					<input type="submit" className="submit-button4" />
 				</form>
 			</div>
 			<Alert

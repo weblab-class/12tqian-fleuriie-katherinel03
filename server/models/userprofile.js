@@ -1,7 +1,7 @@
 const mongoose = require("mongoose");
 
 const UserProfileSchema = new mongoose.Schema({
-  googleID: String,
+	googleID: String,
 	currentAvatarID: Number,
 	currentGardenID: Number,
 	currency: Number,

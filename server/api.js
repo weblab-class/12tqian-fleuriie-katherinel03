@@ -158,7 +158,7 @@ router.post("/userachievement", auth.ensureLoggedIn, (req, res) => {
     achievementID: req.body.achievementID,
     achievementDate: req.body.achievementDate,
   });
-  newUserAchievement.save().then(date => {
+  newUserAchievement.save().then(data => {
     res.send(data);
     socketManager.getIo().emit("newUserAchievement", {});
   });
