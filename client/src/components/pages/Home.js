@@ -16,7 +16,8 @@ const Home = ({ userId, handleLogin, handleLogout }) => {
 		// we should get rid of navbar on homepage
 		<div className="Home-background">
 			<h1 className="Home-introduction">
-				welcome to flowerfriends, a tool built to help you build and maintain relationships!
+				welcome to flowerfriends, a tool built to help you build and maintain relationships! 
+				add your friends as flowers and watch your relationship grow as you log time spent with them :)
 			</h1>
 			<div>
 				{userId ? (
