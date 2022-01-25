@@ -25,6 +25,7 @@ const DeleteFriend = (props) => {
 					achievementDate: String(new Date()),
 				});
 			}
+			window.location.reload(false);
 		});
 	};
 
@@ -50,9 +51,8 @@ const DeleteFriend = (props) => {
 	};
 
 	const onSubmit = () => {
-		deleteFriendAchievement();
 		clearAPI();
-		window.location.reload(false);
+		deleteFriendAchievement();
 	};
 
 	return (
