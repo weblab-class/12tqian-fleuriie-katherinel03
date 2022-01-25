@@ -1,9 +1,7 @@
 .submit-button3 {
     appearance: button;
     background-color: white;
-    border: solid transparent;
     border-radius: 16px;
-    border-width: 0 0 4px;
     box-sizing: border-box;
     color: red;
     cursor: pointer;
@@ -26,6 +24,9 @@
     width: 30%;
     margin: auto;
     margin-top: 12px;
+    border-width: 4px;
+    border-style: solid;
+    border-color: #008040;  
   }
   
   .submit-button3:main,

@@ -1,9 +1,7 @@
 .add-friend-button {
   appearance: button;
   background-color: white;
-  border: solid transparent;
   border-radius: 16px;
-  border-width: 0 0 4px;
   box-sizing: border-box;
   color: #008040;
   cursor: pointer;
@@ -26,6 +24,9 @@
   vertical-align: middle;
   white-space: nowrap;
   width: 40%;
+  border-width: 4px;
+  border-style: solid;
+  border-color: #008040;
 }
 
 .add-friend-button:main,
