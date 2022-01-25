@@ -7,6 +7,8 @@ import Home from "./pages/Home.js";
 import Profile from "./pages/Profile/Profile.js";
 import Shop from "./pages/Shop/Shop.js";
 import ScrollToTop from "./ScrollToTop.js";
+import { useHistory } from "react-router-dom";
+
 
 import "../utilities.css";
 import "./App.css";
@@ -31,6 +33,8 @@ const App = () => {
     });
   }, []);
 
+  const history = useHistory();
+
   const handleLogin = (res) => {
     console.log(`Logged in as ${res.profileObj.name}`);
     const userToken = res.tokenObj.id_token;
@@ -38,12 +42,14 @@ const App = () => {
       setUserId(user._id);
       post("/api/initsocket", { socketid: socket.id });
       console.log(user);
+      window.location.reload(false);
     });
   };
 
   const handleLogout = () => {
     setUserId(undefined);
     post("/api/logout");
+    window.location.reload(false);
   };
 
   return (
