@@ -6,7 +6,7 @@
   border: none;
   text-align: center;
   background-image: url("/client/src/components/constants/BackgroundImages/ProfileBackground.png");
-  height: 100vh;
+  height: 92vh;
   width: auto;
   background-position: center;
   background-attachment: fixed;
@@ -36,5 +36,5 @@
 }
 
 .friend-box {
-  padding-bottom: 40px;
+  padding-bottom: 30px;
 }
