@@ -26,9 +26,6 @@ const handleDragStart = (e) => e.preventDefault();
 const Garden = (props) => {
 	const [user, setUser] = useState(undefined);
 	const [carouselItems, setCarouselItems] = useState([]);
-	const [slideIndex, setSlideIndex] = useState(0);
-	const [updateCount, setUpdateCount] = useState(0);
-	const [slider, setSlider] = useState(undefined);
 	const [currentGardenID, setCurrentGardenID] = useState(0);
 
 	useEffect(() => {
@@ -155,11 +152,10 @@ const Garden = (props) => {
 				swipeToSlide: true,
 				accessibility: true,
 				speed: 200,
-				beforeChange: (current, next) => setSlideIndex(next),
 			};
 
 			carousel = (
-				<Slider ref={slider => (setSlider(slider))} {...settings}>
+				<Slider {...settings}>
 					{
 						carouselItems.map(
 							(item, index) =>
