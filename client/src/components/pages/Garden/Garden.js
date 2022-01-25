@@ -166,8 +166,8 @@ const Garden = (props) => {
 		}
 		if (!user) {
 			return (
-				<div className="no-friends">
-					Please login.
+				<div className="notLoggedIn">
+					Please login to view your garden.
 				</div>
 			);
 		} else {

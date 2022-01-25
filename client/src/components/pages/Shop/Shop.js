@@ -24,7 +24,7 @@ const Shop = () => {
 		if (!user) {
 			return (
 				<div className="log-in">
-					Please login.
+					Please login to view the shop.
 				</div>
 			);
 		} else {

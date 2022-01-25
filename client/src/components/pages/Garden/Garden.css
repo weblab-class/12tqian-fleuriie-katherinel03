@@ -23,6 +23,15 @@
   color: #008040;
 }
 
+.notLoggedIn {
+  background-color: #e5fee6;
+  text-align: center;
+  padding-top: 10%;
+  font-size: 36px;
+  color: #008040;
+  height: 100vh;
+}
+
 .avatar-holder {
   margin: auto;
   text-align: center;
