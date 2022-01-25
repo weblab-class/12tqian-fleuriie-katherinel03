@@ -53,7 +53,7 @@ const App = () => {
   };
 
   return (
-      <div className="App-container">
+      <div className="App-container" role="group">
         <NavBar
           handleLogin={handleLogin}
           handleLogout={handleLogout}
