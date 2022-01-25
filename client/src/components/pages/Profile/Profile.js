@@ -53,28 +53,28 @@ const Profile = (props) => {
   }
   return (
     <div className="Profile-container">
-      <div className="Profile-leftColumn">
-        <div className="stats-container">
-          <UserStats googleID={user.googleID} />
-        </div>
-      </div>
-      <div className="Profile-centerColumn">
-        <div className="Profile-avatarContainer">
-          {avatar}
-        </div>
-        <h1 className="Profile-username">{userName}</h1>
-        <EditProfile googleID={user.googleID} />
-        <div className="friend-box">
-          <div className="friendCodeBox">
-            Your friend code: <h3>{code}</h3>
+      <div className="Profile-inner-container">
+        <div className="Profile-leftColumn">
+          <div className="stats-container">
+            <UserStats googleID={user.googleID} />
           </div>
         </div>
-        <br />
-        <br />
-      </div>
-      <div className="Profile-rightColumn">
-        <div className="achievements-container">
-          <UserAchievement user={user} googleID={user.googleID} />
+        <div className="Profile-centerColumn">
+          <div className="Profile-avatarContainer">
+            {avatar}
+          </div>
+          <h1 className="Profile-username">{userName}</h1>
+          <EditProfile googleID={user.googleID} />
+          <div className="friend-box">
+            <div className="friendCodeBox">
+              Your friend code: <h3>{code}</h3>
+            </div>
+          </div>
+        </div>
+        <div className="Profile-rightColumn">
+          <div className="achievements-container">
+            <UserAchievement user={user} googleID={user.googleID} />
+          </div>
         </div>
       </div>
     </div>

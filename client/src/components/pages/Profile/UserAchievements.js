@@ -22,6 +22,7 @@ const UserAchievement = (props) => {
 	};
 
 	const checkAchievements0 = (achievementIDs) => { // 0, 1, 2, 3, 4
+		console.log("JOE");
 		get("/api/pairprofile", {
 			userGoogleID: props.googleID,
 		}).then((profiles) => {
@@ -55,10 +56,15 @@ const UserAchievement = (props) => {
 				}
 			}
 		});
+		console.log("HI");
 		get("/api/userprofile", {
 			googleID: props.googleID,
 		}).then((profile) => {
+			console.log(achievementIDs);
 			if (!achievementIDs.includes(9)) {
+				console.log(user);
+				console.log(profile);
+				console.log("WHY");
 				if (props.user.name !== profile.userName) {
 					postAchievement(9);
 				}
@@ -135,14 +141,14 @@ const UserAchievement = (props) => {
 	useEffect(() => {
 		resetAchievements();
 	}, []);
+
 	return (
 		<div>
-			<div className="achievements-header"> Achievements </div>
+			<div className="achievements-header"> BADGES </div>
 			<div className="achievements">
 				{achievements}
 			</div>
 		</div>
-
 	);
 };
 

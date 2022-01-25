@@ -5,8 +5,8 @@
   background-attachment: fixed;
   background-repeat: repeat-x;
   text-align: center;
+  height: 100vh;
   width: auto;
-  height: 100%;
   font-family: "Mali", cursive;
   overflow-y: scroll;
 }

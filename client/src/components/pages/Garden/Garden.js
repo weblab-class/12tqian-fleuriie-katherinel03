@@ -173,6 +173,10 @@ const Garden = (props) => {
 			return (
 				<div className="notLoggedIn">
 					Please login to view your garden.
+					<br />
+					<br />
+					<br />
+					<br />
 				</div>
 			);
 		} else {
@@ -189,7 +193,7 @@ const Garden = (props) => {
 
 
 	return (
-		<div className="garden-holder" style={{
+		<div className="garden-holder" style={!user ? {} : {
 			backgroundImage: `url(${gardenList[currentGardenID].image})`,
 		}}>
 			{generateCarousel()}
