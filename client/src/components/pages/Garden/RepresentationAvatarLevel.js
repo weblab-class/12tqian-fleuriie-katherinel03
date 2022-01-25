@@ -26,6 +26,7 @@ const RepresentationAvatarLevel = (props) => {
 						{props.representationAvatar}
 					</div>
 					<div>Level {level}</div>
+					<div className="percentageHealth">({rem}/{total})</div>
 				</div>
 			</CircularProgressbarWithChildren>
 		);

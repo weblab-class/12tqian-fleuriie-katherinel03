@@ -6,3 +6,9 @@
 	margin: auto;
 	width: 60%;
 }
+
+.percentageHealth {
+	font-size: xx-small;
+	position: relative;
+	bottom: 6px;
+}

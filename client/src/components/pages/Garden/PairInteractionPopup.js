@@ -4,6 +4,7 @@ import { get, post } from "../../../utilities.js";
 import Avatar from "../Avatar/Avatar.js";
 import NewActivityPopup from "./Representation/NewActivityPopup.js";
 import RepresentationAvatar from "./Representation/RepresentationAvatar.js";
+import RepresentationAvatarLevel from "./RepresentationAvatarLevel.js";
 import { socket } from "../../../client-socket"
 import "./PairInteractionPopup.css";
 import EditPairName from "./Representation/EditPairName.js";
@@ -49,12 +50,24 @@ const PairInteractionPopup = (props) => {
 			otherGoogleID: props.otherGoogleID,
 		}).then((pairProfile) => {
 			setRepresentation(
-				<RepresentationAvatar
-					representationID={pairProfile.currentRepresentationID}
-					width="60%"
-					stage={getStage(pairProfile.totalExperience)}
+				<RepresentationAvatarLevel
+					representationAvatar={
+						<RepresentationAvatar
+							representationID={pairProfile.currentRepresentationID}
+							width={"100%"}
+							stage={getStage(pairProfile.totalExperience)}
+						/>
+					}
+					totalExperience={pairProfile.totalExperience}
 				/>
 			);
+			// setRepresentation(
+			// 	<RepresentationAvatar
+			// 		representationID={pairProfile.currentRepresentationID}
+			// 		width="60%"
+			// 		stage={getStage(pairProfile.totalExperience)}
+			// 	/>
+			// );
 			setOtherName(pairProfile.pairName);
 		});
 	};
@@ -103,9 +116,15 @@ const PairInteractionPopup = (props) => {
 				<div className="name-avatar-container">
 					<h1 className="names" textalign="center">{userName + " & " + otherName}</h1>
 					<div className="avatars-plant">
-						{userAvatar}
-						{representation}
-						{otherAvatar}
+						<div className="my-avatar-container">
+							{userAvatar}
+						</div>
+						<div className="my-representation-container">
+							{representation}
+						</div>
+						<div className="my-avatar-container">
+							{otherAvatar}
+						</div>
 					</div>
 				</div>
 				<Collapsible trigger=
@@ -152,11 +171,11 @@ const PairInteractionPopup = (props) => {
 					/>
 					<br />
 					<div className="activities">
-					<EditPairName userGoogleID={props.userGoogleID} otherGoogleID={props.otherGoogleID} />
-				</div>
+						<EditPairName userGoogleID={props.userGoogleID} otherGoogleID={props.otherGoogleID} />
+					</div>
 
 					<div>
-					<DeleteFriend userGoogleID={props.userGoogleID} otherGoogleID={props.otherGoogleID} />
+						<DeleteFriend userGoogleID={props.userGoogleID} otherGoogleID={props.otherGoogleID} />
 					</div>
 				</div>
 			</div>
