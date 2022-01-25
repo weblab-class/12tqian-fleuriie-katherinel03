@@ -8,7 +8,6 @@ import 'react-popup-alert/dist/index.css'
 import { post, get } from "../../../utilities.js";
 import Alert from 'react-popup-alert';
 import './NewFriendForm.css';
-import HelpButton from '/client/src/components/modules/HelpButton.js';
 
 const NewFriendForm = (props) => {
 	const { handleSubmit, control } = useForm();
@@ -200,10 +199,7 @@ const NewFriendForm = (props) => {
 							selected={value} />
 					)}
 				/>
-				<HelpButton 
-					helpHeader={'Adding new friends'}
-					helpDescription={'To add a new friend, input the name of your friend, their friend code if they have an account with us already (friend code can be found at the bottom of your profile page), and the number of days you want between interactions with them. Once you have made your friends, you can log new activities by clicking on their names!'}
-					/>
+				
 				<div>
 					<input className="submit-button2" type="submit" />
 				</div>
