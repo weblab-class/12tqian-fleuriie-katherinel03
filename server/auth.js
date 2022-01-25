@@ -27,7 +27,7 @@ function getOrCreateUser(user) {
   // the "sub" field means "subject", which is a unique identifier for each user
   return User.findOne({ googleID: user.sub }).then((existingUser) => {
     if (existingUser) return existingUser;
-
+    console.log("NEW USER");
     const newUser = new User({
       name: user.name,
       googleID: user.sub,

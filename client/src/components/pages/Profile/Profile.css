@@ -2,6 +2,19 @@
   padding-top: 5vh;
 }
 
+.Profile-leftColumn {
+  width: 30%;
+
+}
+
+.Profile-rightColumn {
+  width: 30%;
+}
+
+.Profile-centerColumn {
+  width: 40%;
+}
+
 .Profile-container {
   border: none;
   text-align: center;
@@ -12,6 +25,8 @@
   background-attachment: fixed;
   background-size: cover;
   overflow-y: scroll;
+  display: flex;
+  flex-direction: row;
 }
 
 .Profile-notLoggedIn {

@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import Avatar from "../Avatar/Avatar.js";
 import EditProfile from "./EditProfile.js";
-import OtherStats from "./OtherStats.js";
+import UserStats from "./UserStats.js";
 
 import "../../../utilities.css";
 import "./Profile.css";
@@ -52,18 +52,26 @@ const Profile = (props) => {
   }
   return (
     <div className="Profile-container">
-      <div className="Profile-avatarContainer">
-        {avatar}
+      <div className="Profile-leftColumn">
+        <UserStats googleID={user.googleID} />
       </div>
-      <h1 className="Profile-username">{userName}</h1>
-      <EditProfile googleID={user.googleID} />
-      <div className="friend-box">
-        <div className="friendCodeBox">
-          Your friend code: <h3>{code}</h3>
+      <div className="Profile-centerColumn">
+        <div className="Profile-avatarContainer">
+          {avatar}
         </div>
+        <h1 className="Profile-username">{userName}</h1>
+        <EditProfile googleID={user.googleID} />
+        <div className="friend-box">
+          <div className="friendCodeBox">
+            Your friend code: <h3>{code}</h3>
+          </div>
+        </div>
+        <br />
+        <br />
       </div>
-      <br />
-      <br />  
+      <div className="Profile-rightColumn">
+
+      </div>
     </div>
   );
 };

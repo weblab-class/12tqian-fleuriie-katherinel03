@@ -241,9 +241,9 @@ const STAGE_3_LEVEL = 10;
 
 const formatTime = (date) => {
 	date = new Date(date);
-	let shortMonth = date.toLocaleString('en-us', { month: 'short' }); /* Jun */
-	let day = date.getUTCDate();
-	let year = date.getUTCFullYear();
+	let shortMonth = date.toLocaleString('en-us', { timeZone: 'America/New_York', month: 'short' }); /* Jun */
+	let day = date.toLocaleString('en-us', { timeZone: 'America/New_York', day: 'numeric' });
+	let year = date.toLocaleString('en-us', { timeZone: 'America/New_York', year: 'numeric' });
 	return shortMonth + " " + day + ", " + year;
 };
 
@@ -284,8 +284,8 @@ const getStage = (experience) => {
 const MULT_FACTOR = 2;
 const MINUTES_IN_DAY = 1440;
 
-export { 
-	representationList, 
+export {
+	representationList,
 	avatarList,
 	EXPERIENCE_PER_ACTIVITY,
 	CURRENCY_PER_LEVEL,
