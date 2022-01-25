@@ -41,6 +41,24 @@ const Shop = () => {
 							<GardenChangePopup googleID={user.googleID} />
 						</Collapsible>
 					</div>
+					<br />
+					<br />
+					<br />
+					<br />
+					<br />
+					<br />
+					<br />
+					<br />
+					<br />
+					<br />
+					<br />
+					<br />
+					<br />
+					<br />
+					<br />
+					<br />
+					<br />
+					<br />
 				</div>
 
 			);

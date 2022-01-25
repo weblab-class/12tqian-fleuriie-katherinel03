@@ -8,6 +8,7 @@
   width: auto;
   height: 100%;
   font-family: "Mali", cursive;
+  overflow-y: scroll;
 }
 
 .Home-introduction {

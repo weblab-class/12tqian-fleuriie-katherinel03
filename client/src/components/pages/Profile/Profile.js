@@ -62,6 +62,8 @@ const Profile = (props) => {
           Your friend code: <h3>{code}</h3>
         </div>
       </div>
+      <br />
+      <br />  
     </div>
   );
 };
