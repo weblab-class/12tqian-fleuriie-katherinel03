@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import Avatar from "../Avatar/Avatar.js";
 import EditProfile from "./EditProfile.js";
 import UserStats from "./UserStats.js";
+import UserAchievement from "./UserAchievements.js";
 
 import "../../../utilities.css";
 import "./Profile.css";
@@ -72,7 +73,9 @@ const Profile = (props) => {
         <br />
       </div>
       <div className="Profile-rightColumn">
-
+        <div className="achievements-container">
+          <UserAchievement user={user} googleID={user.googleID} />
+        </div>
       </div>
     </div>
   );

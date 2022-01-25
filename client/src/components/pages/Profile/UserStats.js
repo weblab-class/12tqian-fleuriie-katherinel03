@@ -67,7 +67,7 @@ const UserStats = (props) => {
 		}).then((activities) => {
 			setTotalActivities(<SingleStat text={"Total activities: "} stat={activities.length} />);
 		});
-	};	
+	};
 
 	const resetPairProfileStats = () => {
 		get("/api/pairprofile", {
@@ -92,11 +92,29 @@ const UserStats = (props) => {
 
 	useEffect(() => {
 		resetUserProfileStats();
+	}, [props.googleID]);
+
+	useEffect(() => {
 		resetActivityStats();
+	}, [props.googleID]);
+
+	useEffect(() => {
 		resetPairProfileStats();
+	}, [props.googleID]);
+
+	useEffect(() => {
 		resetUserAvatarStats();
-		resetBackgroundStats();
+	}, [props.googleID]);
+
+	useEffect(() => {
 		resetAchievementStats();
+	}, [props.googleID]);
+
+	useEffect(() => {
+		resetBackgroundStats();
+	}, [props.googleID]);
+
+	useEffect(() => {
 		resetRepresentationStats();
 	}, [props.googleID]);
 
