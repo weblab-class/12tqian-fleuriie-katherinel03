@@ -30,9 +30,7 @@
 .submit-button4 {
     appearance: button;
     background-color: #E3FFF0;
-    border: solid transparent;
     border-radius: 16px;
-    border-width: 0 0 4px;
     box-sizing: border-box;
     color: #008040;
     cursor: pointer;
@@ -56,6 +54,9 @@
     vertical-align: middle;
     white-space: nowrap;
     width: 20%;
+    border-width: 4px;
+    border-style: solid;
+    border-color: #008040;  
   }  
 
 .submit-button4:hover {
@@ -66,9 +67,7 @@
 .submit-button5 {
     appearance: button;
     background-color: #E3FFF0;
-    border: solid transparent;
     border-radius: 16px;
-    border-width: 0 0 4px;
     box-sizing: border-box;
     color: #008040;
     cursor: pointer;
@@ -92,6 +91,9 @@
     vertical-align: middle;
     white-space: nowrap;
     width: 25%;
+    border-width: 4px;
+    border-style: solid;
+    border-color: #008040;  
   }  
 
 .submit-button5:hover {
