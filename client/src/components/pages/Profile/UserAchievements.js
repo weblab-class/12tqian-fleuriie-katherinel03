@@ -55,11 +55,9 @@ const UserAchievement = (props) => {
 				}
 			}
 		});
-		console.log("HI");
 		get("/api/userprofile", {
 			googleID: props.googleID,
 		}).then((profile) => {
-			console.log(achievementIDs);
 			if (!achievementIDs.includes(9)) {
 				if (props.user.name !== profile.userName) {
 					postAchievement(9);

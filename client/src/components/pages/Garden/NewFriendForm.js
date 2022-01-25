@@ -89,7 +89,6 @@ const NewFriendForm = (props) => {
 					userGoogleID: props.userGoogleID,
 					pairName: otherName,
 				}).then((pairProfiles) => {
-					console.log("WHAY");
 					if (pairProfiles.length !== 0) {
 						onShowErrorAlert("invalidSubmission", "You already have a friend with that name.\n");
 					} else {

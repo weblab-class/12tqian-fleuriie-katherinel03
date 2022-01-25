@@ -7,7 +7,6 @@ import "./DeleteFriend.css";
 
 const DeleteFriend = (props) => {
 	const deleteFriendAchievement = () => {
-		console.log("CHECKING");
 		get("/api/userachievement", {
 			googleID: props.userGoogleID,
 		}).then((achievements) => {

@@ -45,8 +45,6 @@ const Garden = (props) => {
 			}).then((profile) => {
 				setAvatar(<Avatar avatarID={profile.currentAvatarID} width="20%" />);
 				setCurrentGardenID(profile.currentGardenID);
-				console.log(gardenList);
-				console.log(gardenList[currentGardenID].image);
 			});
 		}
 	}, [user]);
@@ -69,7 +67,6 @@ const Garden = (props) => {
 				</span>
 			);
 		}
-		console.log(profileList);
 
 		// newCarouselItems.sort(function (a, b) {
 		// 	var nameA = a.name.toLowerCase(), nameB = b.name.toLowerCase();
@@ -158,7 +155,6 @@ const Garden = (props) => {
 
 
 	const generateCarousel = () => {
-		console.log("GENERATING");
 		let carousel;
 		if (carouselItems.length === 0) {
 			carousel =

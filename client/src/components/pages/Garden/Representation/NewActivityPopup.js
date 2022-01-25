@@ -95,7 +95,6 @@ const NewActivityPopup = (props) => {
 				activityName: activityName,
 				activityTime: activityTime,
 			}).then((data) => {
-				console.log(data);
 			});
 			get("/api/userprofile", {
 				googleID: props.userGoogleID,
