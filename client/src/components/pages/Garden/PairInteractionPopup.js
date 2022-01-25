@@ -13,6 +13,7 @@ import DeleteFriend from "./DeleteFriend.js";
 import ReactTable from "react-table-6";
 import "react-table-6/react-table.css"
 import Collapsible from 'react-collapsible';
+import HelpButton from '/client/src/components/modules/HelpButton.js';
 
 import RepresentationChangePopup from "./RepresentationChangePopup.js";
 
@@ -127,6 +128,10 @@ const PairInteractionPopup = (props) => {
 						</div>
 					</div>
 				</div>
+				<HelpButton 
+					helpHeader={'Logging activities'}
+					helpDescription={'Congrats on making a friend! As you log activities with them, the plant symbolizing your relationship will grow and level up, earning you money to buy customization options with. At levels 5 and 10, you will unlock a special new appearance for your plant! You can also switch to different plants by clicking the change plant button. If you want to delete this friend, scroll down to the bottom of the popup and click the Delete Friend button!'}
+					/>
 				<Collapsible trigger=
 					{<div className="shop-button">Change Plant</div>}>
 					<RepresentationChangePopup userGoogleID={props.userGoogleID} otherGoogleID={props.otherGoogleID} />

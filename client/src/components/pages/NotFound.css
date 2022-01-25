@@ -1,5 +1,9 @@
 .heading {
   margin: auto;
+  text-align: center;
+  padding-top: 10%;
+  font-size: 36px;
+  color: #008040;
 }
 
 .NotFound-container {
