@@ -26,7 +26,6 @@ const HelpButton = (props) => {
 			text: '',
 			show: false
 		});
-		window.location.reload(false);
 	}
 
 	function onShowSuccessAlert(type, text) {

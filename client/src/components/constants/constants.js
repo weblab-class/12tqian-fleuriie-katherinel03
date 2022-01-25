@@ -166,6 +166,93 @@ const avatarList = [
 	},
 ]
 
+import badge0 from "./Badges/Badge0.png";
+import badge1 from "./Badges/Badge1.png";
+import badge2 from "./Badges/Badge2.png";
+import badge3 from "./Badges/Badge3.png";
+import badge4 from "./Badges/Badge4.png";
+import badge9 from "./Badges/Badge9.png";
+import badge12 from "./Badges/Badge12.png";
+import badge13 from "./Badges/Badge13.png";
+import badge16 from "./Badges/Badge16.png";
+import badge17 from "./Badges/Badge17.png";
+import badge18 from "./Badges/Badge18.png";
+
+const badgeList = [
+	{
+		name: "Buddies",
+		description: "Added 5 friends",
+		image: badge0,
+		badgeID: 0,
+	},
+	{
+		name: "Social Butterfly",
+		description: "Added 10 friends",
+		image: badge1,
+		badgeID: 1,
+	},
+	{
+		name: "Wow So Popular",
+		description: "Added 29 friends",
+		image: badge2,
+		badgeID: 2,
+	},
+	{
+		name: "Green Thumb",
+		description: "Unlocked 2nd stage of a plant",
+		image: badge3,
+		badgeID: 3,
+	},
+	{
+		name: "Greener Thumb",
+		description: "Unlocked 3rd stage of a plant",
+		image: badge3,
+		badgeID: 3,
+	},
+	{
+		name: "Green Thumb",
+		description: "Unlocked second stage of a plant",
+		image: badge4,
+		badgeID: 4,
+	},
+	{
+		name: "New Identity",
+		description: "Edit your profile",
+		image: badge9,
+		badgeID: 9,
+	},
+	{
+		name: "Commited",
+		description: "Log activities for 7 days",
+		image: badge12,
+		badgeID: 12,
+	},
+	{
+		name: "Still Here?",
+		description: "Log activities for 30 days",
+		image: badge13,
+		badgeID: 13,
+	},
+	{
+		name: "Rich",
+		description: "Gained 10,000 in currency",
+		image: badge16,
+		badgeID: 16,
+	},
+	{
+		name: "Richer",
+		description: "Gained 20,000 in currency",
+		image: badge17,
+		badgeID: 17,
+	},
+	{
+		name: "Richest",
+		description: "Gained 50,000 in currency",
+		image: badge18,
+		badgeID: 18,
+	},
+];
+
 import garden0 from "./BackgroundImages/Garden0.png";
 import garden1 from "./BackgroundImages/Garden1.png";
 import garden2 from "./BackgroundImages/Garden2.png";
@@ -286,6 +373,7 @@ const MINUTES_IN_DAY = 1440;
 
 export {
 	representationList,
+	badgeList,
 	avatarList,
 	EXPERIENCE_PER_ACTIVITY,
 	CURRENCY_PER_LEVEL,
