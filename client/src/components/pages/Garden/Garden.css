@@ -9,6 +9,7 @@
   height: 100vh;
   background-repeat: repeat;
   background-attachment: fixed;
+  overflow-y: scroll;
 }
 .carouselDiv {
   width: 70%;

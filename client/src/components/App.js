@@ -53,24 +53,24 @@ const App = () => {
   };
 
   return (
-      <div className="App-container" role="group">
-        <NavBar
-          handleLogin={handleLogin}
-          handleLogout={handleLogout}
-          userId={userId}
-        />
-        <Router role="group" primary={false}>
-{/* setting role to group allows the css in app.css to force the div 
+    <div className="App-container" role="group">
+      <NavBar
+        handleLogin={handleLogin}
+        handleLogout={handleLogout}
+        userId={userId}
+      />
+      <Router role="group" primary={false}>
+        {/* setting role to group allows the css in app.css to force the div 
 created by router to be the whole screen */}
-          <ScrollToTop path="/">
+        <ScrollToTop path="/">
           <Home path="/" handleLogin={handleLogin} handleLogout={handleLogout} userId={userId} />
           <Profile path="/profile/" />
           <Garden path="/garden/" />
           <Shop path="/shop/" />
           <NotFound default />
-          </ScrollToTop>
-        </Router>
-      </div>
+        </ScrollToTop>
+      </Router>
+    </div>
   );
 }
 
