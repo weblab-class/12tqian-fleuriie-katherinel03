@@ -23,5 +23,7 @@
 	display: inline;
 	/* flex-grow: 1; */
 	width: calc(100% * (1/4));
-	height: 200px;
+	height: auto;
+	margin-top: 2%;
+	/* margin: 5%; */
 }
