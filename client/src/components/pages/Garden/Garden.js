@@ -159,9 +159,9 @@ const Garden = (props) => {
 					{
 						carouselItems.map(
 							(item, index) =>
-							<div key={index}>{item}</div>
-							)
-						}
+								<div key={index}>{item}</div>
+						)
+					}
 				</Slider>
 			);
 			// carousel = carouselItems.map(
@@ -194,6 +194,10 @@ const Garden = (props) => {
 		}}>
 			{generateCarousel()}
 			<div className="avatar-holder">{avatar}</div>
+			<br />
+			<br />
+			<br />
+			<br />
 		</div>
 	);
 };
