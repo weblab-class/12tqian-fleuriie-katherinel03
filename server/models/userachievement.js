@@ -2,7 +2,8 @@ const mongoose = require("mongoose");
 
 const UserAchievementSchema = new mongoose.Schema({
 	googleID: String,
-	achivementName: String,
+	achievementID: Number,
+	achievementDate: String,
 });
 
 // compile model from schema
