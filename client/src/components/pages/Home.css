@@ -36,3 +36,7 @@
 .Home-googleButton:hover {
   opacity: 0.8;
 }
+
+.alert-main {
+  border-radius: 20px;
+}
