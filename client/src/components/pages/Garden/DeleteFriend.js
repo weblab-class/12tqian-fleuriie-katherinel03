@@ -27,6 +27,7 @@ const DeleteFriend = (props) => {
 
 	const onSubmit = () => {
 		clearAPI();
+		window.location.reload(false);
 	};
 
 	return (

@@ -134,7 +134,7 @@ const NewActivityPopup = (props) => {
 
 					messages.push(<div>{"You have successfully added an activity!"}</div>);
 					messages.push(<div>{"Your plant gained " + String(experienceGained) + " experience!"}</div>);
-					messages.push(<div>{"You gained " + String(currencyGained) + " gold!"}</div>);
+					messages.push(<div>{"You gained " + String(currencyGained) + " currency!"}</div>);
 					if (getLevel(pairProfile.totalExperience) !== getLevel(pairProfile.totalExperience + experienceGained)) {
 						messages.push(<div>{"Your plant became level "
 							+ String(getLevel(pairProfile.totalExperience + experienceGained))
