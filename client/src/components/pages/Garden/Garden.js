@@ -142,34 +142,6 @@ const Garden = (props) => {
 		};
 	}, [user]);
 
-	const deleteFriendAchievement = () => {
-		get("/api/userachievement", {
-			googleID: user.googleID,
-		}).then((achievements) => {
-			let inside = 0;
-			for (const obj of achievements) {
-				if (obj.achievementID === 19) {
-					inside = 1;
-					break;
-				}
-			}
-			if (inside === 0) {
-				post("/api/userachievement", {
-					googleID: user.googleID,
-					achievementID: 19,
-					achievementDate: String(new Date()),
-				});
-			}
-		});
-	};
-
-	useEffect(() => {
-		socket.on("deletion", deleteFriendAchievement);
-		return () => {
-			socket.off("deletion", deleteFriendAchievement);
-		}
-	});
-
 	useEffect(() => {
 		socket.on("deletion", loadPairProfiles);
 		return () => {
