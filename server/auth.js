@@ -38,6 +38,8 @@ function getOrCreateUser(user) {
       currentGardenID: 0,
       currency: 0,
       userName: user.name,
+      dateCreated: String(new Date()),
+      totalCurrency: 0,
     });
     newUserProfile.save();
     const newUserAvatar = new UserAvatar({

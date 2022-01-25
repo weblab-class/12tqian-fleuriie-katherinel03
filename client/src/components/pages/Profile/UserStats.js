@@ -19,6 +19,7 @@ import SingleStat from "./SingleStat";
 const UserStats = (props) => {
 
 	const [dateCreated, setDateCreated] = useState(undefined); // reset with user api
+	const [totalCurrency, setTotalCurrency] = useState(undefined);
 	const [totalExperience, setTotalExperience] = useState(undefined); // reset with activities
 	const [totalFriends, setTotalFriends] = useState(undefined);
 	const [totalActivities, setTotalActivities] = useState(undefined); // reset with activities
@@ -26,6 +27,15 @@ const UserStats = (props) => {
 	const [totalAchievements, setTotalAchievements] = useState(undefined); // reset with achievements
 	const [totalBackgrounds, setTotalBackgrounds] = useState(undefined); // reset with garden
 	const [totalRepresentations, setTotalRepresentations] = useState(undefined); // reset with representation
+
+	const resetUserProfileStats = () => {
+		get("/api/userprofile", {
+			googleID: props.googleID,
+		}).then((profile) => {
+			setDateCreated(<SingleStat text={"Date created: "} stat={formatTime(new Date(profile.dateCreated))} />);
+			setTotalCurrency(<SingleStat text={"Total currency accumulated: "} stat={profile.totalCurrency} />);
+		});
+	};
 
 	const resetRepresentationStats = () => {
 		get("/api/pairrepresentationall", {
@@ -81,6 +91,7 @@ const UserStats = (props) => {
 	};
 
 	useEffect(() => {
+		resetUserProfileStats();
 		resetActivityStats();
 		resetPairProfileStats();
 		resetUserAvatarStats();
@@ -118,6 +129,13 @@ const UserStats = (props) => {
 	}, []);
 
 	useEffect(() => {
+		socket.on("newUserProfileUpdate", resetUserProfileStats);
+		return () => {
+			socket.off("newUserProfileUpdate", resetUserProfileStats);
+		};
+	}, []);
+
+	useEffect(() => {
 		socket.on("newUserAvatarUpdate", resetUserAvatarStats);
 		return () => {
 			socket.off("newUserAvatarUpdate", resetUserAvatarStats);
@@ -133,6 +151,8 @@ const UserStats = (props) => {
 
 	return (
 		<div>
+			{dateCreated}
+			{totalCurrency}
 			{totalFriends}
 			{totalActivities}
 			{totalExperience}

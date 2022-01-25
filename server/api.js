@@ -250,7 +250,9 @@ router.post("/userprofile", auth.ensureLoggedIn, (req, res) => {
     currentAvatarID: req.body.currentAvatarID,
     currentGardenID: req.body.currentGardenID,
     currency: req.body.currency,
-    userName: req.body.userName
+    userName: req.body.userName,
+    dateCreated: String(new Date()), // these are just gonna be hardcoded cause i'm lazy
+    totalCurrency: 0, // technical ftw
   });
   newUserProfile.save().then(data => res.send(data));
 });

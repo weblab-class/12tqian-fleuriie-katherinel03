@@ -128,6 +128,7 @@ const NewActivityPopup = (props) => {
 						},
 						update: {
 							currency: userProfile.currency + currencyGained,
+							totalCurrency: userProfile.totalExperience + currencyGained,
 						},
 					});
 					const messages = [];

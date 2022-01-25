@@ -6,6 +6,8 @@ const UserProfileSchema = new mongoose.Schema({
 	currentGardenID: Number,
 	currency: Number,
 	userName: String,
+	dateCreated: String,
+	totalCurrency: Number,
 });
 
 // compile model from schema
