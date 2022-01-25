@@ -36,7 +36,7 @@ const representationList = [
 	},
 	{
 		name: "Representation1",
-		cost: 10,
+		cost: 200,
 		representationID: 1,
 		images: [
 			representation1_1,
@@ -46,7 +46,7 @@ const representationList = [
 	},
 	{
 		name: "Representation2",
-		cost: 20,
+		cost: 200,
 		representationID: 2,
 		images: [
 			representation2_1,
@@ -56,7 +56,7 @@ const representationList = [
 	},
 	{
 		name: "Representation3",
-		cost: 30,
+		cost: 200,
 		representationID: 3,
 		images: [
 			representation3_1,
@@ -66,7 +66,7 @@ const representationList = [
 	},
 	{
 		name: "Representation4",
-		cost: 40,
+		cost: 300,
 		representationID: 4,
 		images: [
 			representation4_1,
@@ -76,7 +76,7 @@ const representationList = [
 	},
 	{
 		name: "Representation5",
-		cost: 50,
+		cost: 300,
 		representationID: 5,
 		images: [
 			representation5_1,
@@ -86,7 +86,7 @@ const representationList = [
 	},
 	{
 		name: "Representation6",
-		cost: 60,
+		cost: 300,
 		representationID: 6,
 		images: [
 			representation6_1,
@@ -96,7 +96,7 @@ const representationList = [
 	},
 	{
 		name: "Representation7",
-		cost: 70,
+		cost: 300,
 		representationID: 7,
 		images: [
 			representation7_1,
@@ -398,7 +398,7 @@ const formatTime = (date) => {
 	return shortMonth + " " + day + ", " + year;
 };
 
-const CONSTANT_A = 1000;
+const CONSTANT_A = 490;
 const CONSTANT_B = 100;
 
 const getTotalExperience = (level) => { // how much experience to be at level 
