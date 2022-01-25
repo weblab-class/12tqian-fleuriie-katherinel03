@@ -150,7 +150,7 @@ const UserStats = (props) => {
 	});
 
 	return (
-		<div>
+		<div className="stats">
 			{dateCreated}
 			{totalCurrency}
 			{totalFriends}

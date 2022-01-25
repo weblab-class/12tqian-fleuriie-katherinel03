@@ -53,7 +53,9 @@ const Profile = (props) => {
   return (
     <div className="Profile-container">
       <div className="Profile-leftColumn">
-        <UserStats googleID={user.googleID} />
+        <div className="activities">
+          <UserStats googleID={user.googleID} />
+        </div>
       </div>
       <div className="Profile-centerColumn">
         <div className="Profile-avatarContainer">

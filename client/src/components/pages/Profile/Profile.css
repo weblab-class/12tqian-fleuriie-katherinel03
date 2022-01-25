@@ -3,8 +3,8 @@
 }
 
 .Profile-leftColumn {
-  width: 30%;
-
+  width: 25%;
+  margin-left: 5%;
 }
 
 .Profile-rightColumn {
@@ -45,7 +45,7 @@
   border-radius: 10px;
   border: solid #008040 3px;
   color: #008040;
-  width: 20%;
+  width: 50%;
   margin: auto;
   background-color: #fff0e6;
   padding-top: 4px;
