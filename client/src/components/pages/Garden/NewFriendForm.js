@@ -45,7 +45,8 @@ const NewFriendForm = (props) => {
 			type: '',
 			text: '',
 			show: false
-		})
+		});
+		window.location.reload(false);
 	}
 
 	function onShowSuccessAlert(type, text) {
@@ -62,6 +63,10 @@ const NewFriendForm = (props) => {
 		} else {
 			return false;
 		}
+	};
+
+	const successFriend = () => {
+		onShowSuccessAlert("validSubmission", "You have succecssfully added a new friend!");
 	};
 
 	const onSubmit = (data, e) => {
@@ -109,7 +114,7 @@ const NewFriendForm = (props) => {
 										otherGoogleID: otherID,
 										representationID: 0,
 									});
-									onShowSuccessAlert("validSubmission", "You have succecssfully added a new friend!");
+									successFriend();
 								}
 							});
 						} else if (!isEmpty(otherName) && isEmpty(otherID)) {
@@ -138,7 +143,7 @@ const NewFriendForm = (props) => {
 								otherGoogleID: otherGoogleID,
 								representationID: 0,
 							});
-							onShowSuccessAlert("validSubmission", "You have succecssfully added a new friend!");
+							successFriend();
 						} else {
 							onShowErrorAlert("invalidSubmission", "You didn't add a name for your friend!\n");
 						}
