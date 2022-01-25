@@ -56,3 +56,13 @@
 .my-representation-container {
 	width: 40%;
 }
+
+.ant-btn {
+	background-color: #008040;
+	border-color: white;
+	margin-bottom: 12px;
+}
+
+.ant-btn:hover {
+	background-color: #acd4ad !important;
+}
