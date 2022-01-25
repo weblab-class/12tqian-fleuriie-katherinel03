@@ -48,7 +48,7 @@ const Profile = (props) => {
   }, [user]);
 
   if (!user) {
-    return (<div className="Profile-notLoggedIn"> Log in before you can view your profile! </div>)
+    return (<div className="Profile-notLoggedIn"> Please login to view profile. </div>)
   }
   return (
     <div className="Profile-container">
