@@ -153,14 +153,14 @@ const UserStats = (props) => {
 		<div>
 			<div className="stats-header"> STATS </div>
 			<div className="stats">
-				{dateCreated}
-				{totalCurrency}
-				{totalFriends}
-				{totalActivities}
-				{totalExperience}
-				{totalAvatars}
-				{totalBackgrounds}
-				{totalAchievements}
+				{dateCreated} ✦
+				{totalCurrency} ✦
+				{totalFriends} ✦
+				{totalActivities} ✦
+				{totalExperience} ✦
+				{totalAvatars} ✦
+				{totalBackgrounds} ✦
+				{totalAchievements} ✦
 				{totalRepresentations}
 			</div>
 		</div>
