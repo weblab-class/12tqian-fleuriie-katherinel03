@@ -6,7 +6,7 @@
   background-position: center center;
   background-size: cover;
   background-attachment: fixed;
-  background-repeat: repeat-x;
+  background-repeat: repeat;
   width: auto;
   background-image: url("/client/src/components/constants/BackgroundImages/shopbackground.jpg");
 }

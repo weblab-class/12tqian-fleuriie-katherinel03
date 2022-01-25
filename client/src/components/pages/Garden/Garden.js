@@ -42,21 +42,29 @@ const Garden = (props) => {
 
 	const [avatar, setAvatar] = useState(undefined);
 	useEffect(() => {
-	  if (user) {
-		get("/api/userprofile", {
-		  googleID: user.googleID,
-		}).then((profile) => {
-		  setAvatar(<Avatar avatarID={profile.currentAvatarID} width="20%" />);
-			setCurrentGardenID(profile.currentGardenID);
-			console.log(gardenList);
-			console.log(gardenList[currentGardenID].image);
-		});
-	  }
+		if (user) {
+			get("/api/userprofile", {
+				googleID: user.googleID,
+			}).then((profile) => {
+				setAvatar(<Avatar avatarID={profile.currentAvatarID} width="20%" />);
+				setCurrentGardenID(profile.currentGardenID);
+				console.log(gardenList);
+				console.log(gardenList[currentGardenID].image);
+			});
+		}
 	}, [user]);
 
 
 	const resetCarousel = (profileList) => {
 		const newCarouselItems = [];
+		profileList.sort(function (a, b) {
+			var nameA = a.pairName.toLowerCase(), nameB = b.pairName.toLowerCase();
+			if (nameA < nameB) //sort string ascending
+				return -1;
+			if (nameA > nameB)
+				return 1;
+			return 0; //default return value (no sorting)
+		});
 		for (const profile of profileList) {
 			newCarouselItems.push(
 				<span onDragStart={handleDragStart} role="presentation" className="carouselRepresentation">
@@ -64,6 +72,7 @@ const Garden = (props) => {
 				</span>
 			);
 		}
+		console.log(profileList);
 
 		// newCarouselItems.sort(function (a, b) {
 		// 	var nameA = a.name.toLowerCase(), nameB = b.name.toLowerCase();
@@ -121,6 +130,7 @@ const Garden = (props) => {
 
 
 	const generateCarousel = () => {
+		console.log("GENERATING");
 		let carousel;
 		if (carouselItems.length === 0) {
 			carousel =
@@ -140,7 +150,6 @@ const Garden = (props) => {
 			const settings = {
 				className: "center",
 				infinite: false,
-				// infinite: true,
 				centerPadding: "60px",
 				slidesToShow: 5,
 				swipeToSlide: true,
@@ -149,25 +158,25 @@ const Garden = (props) => {
 				beforeChange: (current, next) => setSlideIndex(next),
 			};
 
-			// carousel = carouselItems.map(
-			// 	(item, index) =>
-			// 		<div key={index}>{item}</div>
-			// );
 			carousel = (
 				<Slider ref={slider => (setSlider(slider))} {...settings}>
 					{
 						carouselItems.map(
 							(item, index) =>
-								<div key={index}>{item}</div>
-						)
-					}
+							<div key={index}>{item}</div>
+							)
+						}
 				</Slider>
 			);
+			// carousel = carouselItems.map(
+			// 	(item, index) =>
+			// 		<div key={index}>{item}</div>
+			// );
 		}
 		if (!user) {
 			return (
-				<div className="no-friends">
-					Please login.
+				<div className="notLoggedIn">
+					Please login to view your garden.
 				</div>
 			);
 		} else {
@@ -184,9 +193,9 @@ const Garden = (props) => {
 
 
 	return (
-		<div className="garden-holder" style={{ 
-      backgroundImage: `url(${gardenList[currentGardenID].image})`,
-    }}>
+		<div className="garden-holder" style={{
+			backgroundImage: `url(${gardenList[currentGardenID].image})`,
+		}}>
 			{generateCarousel()}
 			<div className="avatar-holder">{avatar}</div>
 		</div>
