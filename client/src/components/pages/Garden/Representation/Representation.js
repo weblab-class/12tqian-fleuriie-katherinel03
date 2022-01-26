@@ -23,8 +23,6 @@ const Representation = (props) => {
 		let timeElapsed = timeMilliseconds / 1000 / 60;
 		timeElapsed = Math.max(timeElapsed, 0);
 		const gap = MULT_FACTOR * goal;
-		console.log(timeElapsed);
-		console.log(gap);
 		return Math.max(0, (1 - timeElapsed / gap)) * 100;
 		// if (timeElapsed <= goal) {
 		// 	return 100;
