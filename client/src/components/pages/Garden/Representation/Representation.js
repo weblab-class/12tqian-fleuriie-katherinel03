@@ -20,8 +20,8 @@ const Representation = (props) => {
 
 	const getHealthBarPercentage = (goalFrequency, timeMilliseconds) => {
 		const goal = goalFrequency * MINUTES_IN_DAY;
-		const timeElapsed = timeMilliseconds / 1000 / 60;
-
+		let timeElapsed = timeMilliseconds / 1000 / 60;
+		timeElapsed = Math.max(timeElapsed, 0);
 		const gap = MULT_FACTOR * goal;
 		return Math.max(0, (1 - timeElapsed / gap)) * 100;
 		// if (timeElapsed <= goal) {
