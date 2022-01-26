@@ -29,7 +29,7 @@
     "antd": "^4.18.4",
     "connect-ensure-login": "^0.1.1",
     "core-js": "^3.8.1",
-    "dotenv": "^14.2.0",
+    "dotenv": "^14.3.2",
     "express": "^4.17.1",
     "express-session": "^1.17.1",
     "fireworks": "^2.2.7",
