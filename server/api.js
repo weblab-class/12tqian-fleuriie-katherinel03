@@ -94,19 +94,19 @@ router.get("/pairrepresentation", (req, res) => {
 
 router.get("/pairrepresentationall", (req, res) => {
   PairRepresentation.find({
-    googleID: req.query.googleID,
+    userGoogleID: req.query.googleID,
   }).then((pairRepresentation) => {
     res.send(pairRepresentation);
   });
 });
 
-router.get("/pairrepresentationall", (req, res) => {
-  PairRepresentation.find({
-    userGoogleID: req.query.userGoogleID,
-  }).then((pairRepresentation) => {
-    res.send(pairRepresentation);
-  });
-});
+// router.get("/pairrepresentationall", (req, res) => {
+//   PairRepresentation.find({
+//     userGoogleID: req.query.userGoogleID,
+//   }).then((pairRepresentation) => {
+//     res.send(pairRepresentation);
+//   });
+// });
 
 router.get("/userachievement", (req, res) => {
   UserAchievement.find({ googleID: req.query.googleID }).then((userAchievement) => {
@@ -163,7 +163,7 @@ router.get("/pairactivity", (req, res) => {
 
 router.get("/pairactivityall", (req, res) => {
   PairActivity.find({
-    googleID: req.query.googleID,
+    userGoogleID: req.query.googleID,
   }).then((pairActivity) => {
     res.send(pairActivity);
   });

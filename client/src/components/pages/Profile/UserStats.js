@@ -63,7 +63,7 @@ const UserStats = (props) => {
 
 	const resetActivityStats = () => {
 		get("/api/pairactivityall", {
-			googleID: props.googleID,
+			userGoogleID: props.googleID,
 		}).then((activities) => {
 			setTotalActivities(<SingleStat text={"Total activities: "} stat={activities.length} />);
 		});
