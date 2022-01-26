@@ -209,6 +209,12 @@ const Garden = (props) => {
 		} else {
 			return (
 				<div className="pair-popup-holder">
+					<div className="help-button-div2">
+						<HelpButton
+							helpHeader={'Garden'}
+							helpDescription={"Log your activities with your friends to prevent your plant's health from going to zero! A plant's health will steadily drop if you do not interact with your friend enough."}
+						/>
+					</div>
 					<NewPairPopup userGoogleID={user.googleID} />
 					<div className="carouselDiv">
 						{carousel}
