@@ -205,7 +205,7 @@ const Garden = (props) => {
 					<div className="help-button-div3">
 						<HelpButton
 							helpHeader={'Garden'}
-							helpDescription={"Log your activities with your friends to prevent your plant's health from going to zero! A plant's health will steadily drop if you do not interact with your friend enough."}
+							helpDescription={"Add your friends and log your activities with your them to prevent their health from going to zero! A plant's health will steadily drop if you do not interact with your friend enough."}
 						/>
 					</div>
 					<NewPairPopup userGoogleID={props.user.googleID} />
