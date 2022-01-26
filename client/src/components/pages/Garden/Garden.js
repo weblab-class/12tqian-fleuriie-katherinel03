@@ -26,30 +26,21 @@ import HelpButton from "../../modules/HelpButton";
 const handleDragStart = (e) => e.preventDefault();
 
 const Garden = (props) => {
-	const [user, setUser] = useState(undefined);
 	const [carouselItems, setCarouselItems] = useState([]);
 	const [currentGardenID, setCurrentGardenID] = useState(0);
-
-	useEffect(() => {
-		get("/api/whoami",).then((curUser) => {
-			if (curUser._id) {
-				setUser(curUser);
-			}
-		});
-	}, []);
 
 
 	const [avatar, setAvatar] = useState(undefined);
 	useEffect(() => {
-		if (user) {
+		if (props.user) {
 			get("/api/userprofile", {
-				googleID: user.googleID,
+				googleID: props.user.googleID,
 			}).then((profile) => {
 				setAvatar(<Avatar avatarID={profile.currentAvatarID} width="20%" />);
 				setCurrentGardenID(profile.currentGardenID);
 			});
 		}
-	}, [user]);
+	}, [props.user]);
 
 
 	const resetCarousel = (profileList) => {
@@ -87,12 +78,12 @@ const Garden = (props) => {
 	};
 
 	const loadPairProfiles = () => {
-		if (user) {
+		if (props.user) {
 			get("/api/pairprofile", {
-				userGoogleID: user.googleID,
+				userGoogleID: props.user.googleID,
 			}).then((profileList) => {
 				get("/api/userachievement", {
-					googleID: user.googleID,
+					googleID: props.user.googleID,
 				}).then((achievements) => {
 					if (!achievements.includes(20)) {
 						let kat = 0;
@@ -111,7 +102,7 @@ const Garden = (props) => {
 						}
 						if (kat + timmy + annie == 3) {
 							post("/api/userachievement", {
-								googleID: user.googleID,
+								googleID: props.user.googleID,
 								achievementID: 20,
 								achievementDate: String(new Date()),
 							});
@@ -125,35 +116,35 @@ const Garden = (props) => {
 
 	useEffect(() => {
 		loadPairProfiles();
-	}, [user]);
+	}, [props.user]);
 
 	useEffect(() => {
 		socket.on("newPairProfileUpdate", loadPairProfiles);
 		return () => {
 			socket.off("newPairProfileUpdate", loadPairProfiles);
 		};
-	}, [user]);
+	}, [props.user]);
 
 	useEffect(() => {
 		socket.on("newUserGarden", loadPairProfiles);
 		return () => {
 			socket.off("newUserGarden", loadPairProfiles);
 		};
-	}, [user]);
+	}, [props.user]);
 
 	useEffect(() => {
 		socket.on("deletion", loadPairProfiles);
 		return () => {
 			socket.off("deletion", loadPairProfiles);
 		};
-	}, [user]);
+	}, [props.user]);
 
 	useEffect(() => {
 		socket.on("newPairProfile", loadPairProfiles);
 		return () => {
 			socket.off("newPairProfile", loadPairProfiles);
 		};
-	}, [user]);
+	}, [props.user]);
 
 
 	const generateCarousel = () => {
@@ -198,7 +189,7 @@ const Garden = (props) => {
 			// 		<div key={index}>{item}</div>
 			// );
 		}
-		if (!user) {
+		if (!props.user) {
 			return (
 				<div className="notLoggedIn">
 					Please login to view your garden.
@@ -217,7 +208,7 @@ const Garden = (props) => {
 							helpDescription={"Log your activities with your friends to prevent your plant's health from going to zero! A plant's health will steadily drop if you do not interact with your friend enough."}
 						/>
 					</div>
-					<NewPairPopup userGoogleID={user.googleID} />
+					<NewPairPopup userGoogleID={props.user.googleID} />
 					<div className="carouselDiv">
 						{carousel}
 					</div>
@@ -228,7 +219,7 @@ const Garden = (props) => {
 
 
 	return (
-		<div className="garden-holder" style={!user ? {} : {
+		<div className="garden-holder" style={!props.user ? {} : {
 			backgroundImage: `url(${gardenList[currentGardenID].image})`,
 		}}>
 			{generateCarousel()}

@@ -10,29 +10,19 @@ import { get, post } from "../../../utilities.js";
 import { socket } from "../../../client-socket";
 
 const Profile = (props) => {
-  const [user, setUser] = useState(undefined);
   const [code, setCode] = useState(undefined);
   const [userName, setUserName] = useState(undefined);
-
-  useEffect(() => {
-    get("/api/whoami").then((user) => {
-      if (user._id) {
-        // they are registed in the database, and currently logged in.
-        setUser(user);
-      }
-    });
-  }, [])
 
   const [avatar, setAvatar] = useState(undefined);
 
   const resetUser = () => {
-    if (user) {
+    if (props.user) {
       get("/api/userprofile", {
-        googleID: user.googleID,
+        googleID: props.user.googleID,
       }).then((profile) => {
         setAvatar(<Avatar avatarID={profile.currentAvatarID} width="25%" />);
         setUserName(profile.userName);
-        setCode(user.googleID);
+        setCode(props.user.googleID);
       });
     }
   };
@@ -46,9 +36,9 @@ const Profile = (props) => {
 
   useEffect(() => {
     resetUser();
-  }, [user]);
+  }, [props.user]);
 
-  if (!user) {
+  if (!props.user) {
     return (<div className="Profile-notLoggedIn"> Please login to view your profile. </div>)
   }
   return (
@@ -56,7 +46,7 @@ const Profile = (props) => {
       <div className="Profile-inner-container">
         <div className="Profile-leftColumn">
           <div className="stats-container">
-            <UserStats googleID={user.googleID} />
+            <UserStats googleID={props.user.googleID} />
           </div>
         </div>
         <div className="Profile-centerColumn">
@@ -64,7 +54,7 @@ const Profile = (props) => {
             {avatar}
           </div>
           <h1 className="Profile-username">{userName}</h1>
-          <EditProfile googleID={user.googleID} />
+          <EditProfile googleID={props.user.googleID} />
           <div className="friend-box">
             <div className="friendCodeBox">
               Your friend code: <h3>{code}</h3>
@@ -73,7 +63,7 @@ const Profile = (props) => {
         </div>
         <div className="Profile-rightColumn">
           <div className="achievements-container">
-            <UserAchievement user={user} googleID={user.googleID} />
+            <UserAchievement user={props.user} googleID={props.user.googleID} />
           </div>
         </div>
       </div>

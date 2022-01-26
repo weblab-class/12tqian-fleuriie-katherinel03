@@ -23,12 +23,14 @@ import { get, post } from "../utilities";
 
 const App = () => {
   const [userId, setUserId] = useState(undefined);
+  const [user, setUser] = useState(undefined);
 
   useEffect(() => {
     get("/api/whoami").then((user) => {
       if (user._id) {
         // they are registed in the database, and currently logged in.
         setUserId(user._id);
+        setUser(user);  
       }
     });
   }, []);
@@ -62,9 +64,9 @@ const App = () => {
 created by router to be the whole screen */}
         <ScrollToTop path="/">
           <Home path="/" handleLogin={handleLogin} handleLogout={handleLogout} userId={userId} />
-          <Profile path="/profile/" />
-          <Garden path="/garden/" />
-          <Shop path="/shop/" />
+          <Profile path="/profile/" user={user}/>
+          <Garden path="/garden/" user={user} />
+          <Shop path="/shop/" user={user}/>
           <NotFound default />
         </ScrollToTop>
       </Router>

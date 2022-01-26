@@ -10,19 +10,10 @@ import GardenChangePopup from "./GardenChangePopup";
 import {get, post} from "../../../utilities";
 import HelpButton from "../../modules/HelpButton";
 
-const Shop = () => {
-	const [user, setUser] = useState(undefined);
-
-	useEffect(() => {
-		get("/api/whoami",).then((curUser) => {
-			if (curUser._id) {
-				setUser(curUser);
-			}
-		});
-	}, []);
+const Shop = (props) => {
 
 	const generateShop = () => {
-		if (!user) {
+		if (!props.user) {
 			return (
 				<div className="log-in">
 					Please login to view the shop.
@@ -40,12 +31,12 @@ const Shop = () => {
 					<div className="shop">
 						<Collapsible trigger=
 						{<div className="shop-button">Avatar Customization</div>}>
-							<AvatarChangePopup googleID={user.googleID} />
+							<AvatarChangePopup googleID={props.user.googleID} />
 						</Collapsible>
 						<div className="space"></div>
 						<Collapsible trigger=
 						{<div className="shop-button">Garden Customization</div>}>
-							<GardenChangePopup googleID={user.googleID} />
+							<GardenChangePopup googleID={props.user.googleID} />
 						</Collapsible>
 					</div>
 					<br />
