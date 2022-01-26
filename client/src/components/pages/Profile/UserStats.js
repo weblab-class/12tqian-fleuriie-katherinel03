@@ -65,8 +65,6 @@ const UserStats = (props) => {
 		get("/api/pairactivityall", {
 			googleID: props.googleID,
 		}).then((activities) => {
-			console.log(activities);
-			console.log("THE HECK");
 			setTotalActivities(<SingleStat text={"Total activities: "} stat={activities.length} />);
 		});
 	};

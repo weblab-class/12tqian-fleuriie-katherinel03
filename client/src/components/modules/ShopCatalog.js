@@ -16,7 +16,6 @@ const ShopCatalog = (props) => {
 	const [currency, setCurrency] = useState(0);
 
 	const resetCurrency = () => {
-		console.log("THE HELL");
 		get("/api/userprofile", {
 			googleID: props.googleID,
 		}).then((userProfile) => {

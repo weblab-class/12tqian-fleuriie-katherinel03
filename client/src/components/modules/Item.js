@@ -48,7 +48,6 @@ const Item = (props) => {
 			</div>
 		);
 	} else {
-		console.log("Incorrect item typing passed");
 	}
 
 	button = <Button type="primary" shape="round" onClick={() => { props.callback(props.itemID); }} size="small">
