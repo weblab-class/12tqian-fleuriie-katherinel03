@@ -66,7 +66,7 @@ const NewFriendForm = (props) => {
 	};
 
 	const successFriend = () => {
-		onShowSuccessAlert("validSubmission", "You have succecssfully added a new friend!");
+		onShowSuccessAlert("validSubmission", "You have successfully added a new friend!");
 	};
 
 	const onSubmit = (data, e) => {
