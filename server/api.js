@@ -199,22 +199,38 @@ router.post("/userachievement", auth.ensureLoggedIn, (req, res) => {
 });
 
 router.post("/usergarden", auth.ensureLoggedIn, (req, res) => {
-  const newUserGarden = UserGarden({
-    googleID: req.body.googleID,
-    gardenID: req.body.gardenID,
-  });
-  newUserGarden.save().then(data => {
+  UserGarden.replaceOne(
+    {
+      googleID: req.body.googleID,
+      gardenID: req.body.gardenID,
+    },
+    {
+      googleID: req.body.googleID,
+      gardenID: req.body.gardenID,
+    },
+    {
+      upsert: true,
+    }
+  ).then(data => {
     res.send(data);
     socketManager.getIo().emit("newUserGarden", {});
   })
 });
 
 router.post("/useravatar", auth.ensureLoggedIn, (req, res) => {
-  const newUserAvatar = UserAvatar({
-    googleID: req.body.googleID,
-    avatarID: req.body.avatarID,
-  });
-  newUserAvatar.save().then(data => {
+  UserAvatar.replaceOne(
+    {
+      googleID: req.body.googleID,
+      avatarID: req.body.avatarID,
+    },
+    {
+      googleID: req.body.googleID,
+      avatarID: req.body.avatarID,
+    },
+    {
+      upsert: true,
+    }
+  ).then(data => {
     res.send(data);
     socketManager.getIo().emit("newUserAvatarUpdate", {});
   })
