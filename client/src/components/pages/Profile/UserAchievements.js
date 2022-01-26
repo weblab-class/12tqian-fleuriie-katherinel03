@@ -167,13 +167,21 @@ const UserAchievement = (props) => {
 		get("/api/userachievement", {
 			googleID: props.googleID
 		}).then((achievementList) => {
-			setAchievements(achievementList.map((data, index) => {
-				return (
-					<div key={index} className="single-achievement">
-						<SingleAchievement badge={badgeList[data.achievementID]} achievementDate={data.achievementDate} />
+			if (achievementList.length === 0) {
+				setAchievements(
+					<div className="no-achievements">
+						No badges yet, use the website more to acquire badges!
 					</div>
 				);
-			}));
+			} else {
+				setAchievements(achievementList.map((data, index) => {
+					return (
+						<div key={index} className="single-achievement">
+							<SingleAchievement badge={badgeList[data.achievementID]} achievementDate={data.achievementDate} />
+						</div>
+					);
+				}));
+			}
 			const lst = [];
 			for (const obj of achievementList) {
 				lst.push(obj.achievementID);
