@@ -45,8 +45,6 @@ const Garden = (props) => {
 			}).then((profile) => {
 				setAvatar(<Avatar avatarID={profile.currentAvatarID} width="20%" />);
 				setCurrentGardenID(profile.currentGardenID);
-				console.log(gardenList);
-				console.log(gardenList[currentGardenID].image);
 			});
 		}
 	}, [user]);
@@ -69,7 +67,6 @@ const Garden = (props) => {
 				</span>
 			);
 		}
-		console.log(profileList);
 
 		// newCarouselItems.sort(function (a, b) {
 		// 	var nameA = a.name.toLowerCase(), nameB = b.name.toLowerCase();
@@ -83,11 +80,42 @@ const Garden = (props) => {
 		setCarouselItems(newCarouselItems);
 	};
 
+	const uniformName = (name) => {
+		return (name.trim()).toLowerCase();
+	};
+
 	const loadPairProfiles = () => {
 		if (user) {
 			get("/api/pairprofile", {
 				userGoogleID: user.googleID,
 			}).then((profileList) => {
+				get("/api/userachievement", {
+					googleID: user.googleID,
+				}).then((achievements) => {
+					if (!achievements.includes(20)) {
+						let kat = 0;
+						let timmy = 0;
+						let annie = 0;
+						for (const obj of profileList) {
+							if (uniformName(obj.pairName) === "kat") {
+								kat = 1;
+							}
+							if (uniformName(obj.pairName) === "annie") {
+								annie = 1;
+							}
+							if (uniformName(obj.pairName) === "timmy") {
+								timmy = 1;
+							}
+						}
+						if (kat + timmy + annie == 3) {
+							post("/api/userachievement", {
+								googleID: user.googleID,
+								achievementID: 20,
+								achievementDate: String(new Date()),
+							});
+						}
+					}
+				})
 				resetCarousel(profileList);
 			});
 		}
@@ -127,7 +155,6 @@ const Garden = (props) => {
 
 
 	const generateCarousel = () => {
-		console.log("GENERATING");
 		let carousel;
 		if (carouselItems.length === 0) {
 			carousel =
@@ -173,6 +200,10 @@ const Garden = (props) => {
 			return (
 				<div className="notLoggedIn">
 					Please login to view your garden.
+					<br />
+					<br />
+					<br />
+					<br />
 				</div>
 			);
 		} else {
@@ -189,7 +220,7 @@ const Garden = (props) => {
 
 
 	return (
-		<div className="garden-holder" style={{
+		<div className="garden-holder" style={!user ? {} : {
 			backgroundImage: `url(${gardenList[currentGardenID].image})`,
 		}}>
 			{generateCarousel()}

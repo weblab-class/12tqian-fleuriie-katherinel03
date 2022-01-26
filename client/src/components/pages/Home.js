@@ -8,6 +8,7 @@ import GoogleLogin, {
 
 import "../../utilities.css";
 import "./Home.css";
+import HelpButton from "../modules/HelpButton";
 import { RouteComponentProps } from "@reach/router";
 
 const GOOGLE_CLIENT_ID = "714676168299-nil4moo5m1o2q1v79lq9rnloep1jn5uh.apps.googleusercontent.com";
@@ -15,10 +16,20 @@ const Home = ({ userId, handleLogin, handleLogout }) => {
 	return (
 		// we should get rid of navbar on homepage
 		<div className="Home-background">
-			<h1 className="Home-introduction">
-				welcome to flowerfriends, a tool built to help you build and maintain relationships! 
-				add your friends as flowers and watch your relationship grow as you log time spent with them :)
-			</h1>
+			<div>
+
+				<h1 className="Home-introduction">
+					welcome to flowerfriends, a tool built to help you build and maintain relationships!
+					add your friends as flowers and watch your relationship grow as you log time spent with them :)
+				</h1>
+			</div>
+
+			<div className="intro-to-help">
+				Click help buttons like <span><HelpButton
+							helpHeader={'Help Buttons'}
+							helpDescription={'These help buttons will be filled with instructions to help you make use of the most of flowerfriends!'}
+						/></span> for instruction on how to use the website!
+			</div>
 			<div>
 				{userId ? (
 					<GoogleLogout
@@ -27,11 +38,11 @@ const Home = ({ userId, handleLogin, handleLogout }) => {
 						onLogoutSuccess={handleLogout}
 						onFailure={(err) => console.log(err)}
 						render={(renderProps) => {
-							return(
+							return (
 								<button
 									onClick={renderProps.onClick}
-									className = "Home-googleButton">
-								logout
+									className="Home-googleButton">
+									logout
 								</button>
 							)
 						}}
@@ -46,11 +57,11 @@ const Home = ({ userId, handleLogin, handleLogout }) => {
 						isSignedIn={true}
 						className="Home-googleButton"
 						render={(renderProps) => {
-							return(
+							return (
 								<button
 									onClick={renderProps.onClick}
-									className = "Home-googleButton">
-								log in with google
+									className="Home-googleButton">
+									log in with google
 								</button>
 							)
 						}}

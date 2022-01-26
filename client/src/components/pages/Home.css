@@ -5,8 +5,8 @@
   background-attachment: fixed;
   background-repeat: repeat-x;
   text-align: center;
+  height: 100vh;
   width: auto;
-  height: 100%;
   font-family: "Mali", cursive;
   overflow-y: scroll;
 }
@@ -34,13 +34,17 @@
   font-size: 3vmin;
 }
 
+.intro-to-help {
+  margin-bottom: 1%;
+}
+
 .Home-googleButton:hover {
   opacity: 0.8;
 }
 
 .alert-main {
   border-radius: 20px;
-  background-color: #acd4ad;
+  background-color: #e6ffe6;
   padding: 10px;
   color: #008440 !important;
 }

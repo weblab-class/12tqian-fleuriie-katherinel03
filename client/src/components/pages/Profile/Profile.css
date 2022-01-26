@@ -8,7 +8,8 @@
 }
 
 .Profile-rightColumn {
-  width: 30%;
+  width: 25%;
+  margin-right: 5%;
 }
 
 .Profile-centerColumn {
@@ -16,15 +17,18 @@
 }
 
 .Profile-container {
-  border: none;
-  text-align: center;
   background-image: url("/client/src/components/constants/BackgroundImages/ProfileBackground.png");
   height: 100vh;
   width: auto;
+  border: none;
+  text-align: center;
   background-position: center;
   background-attachment: fixed;
   background-size: cover;
-  overflow-y: scroll;
+  /* overflow-y: scroll; */
+}
+
+.Profile-inner-container {
   display: flex;
   flex-direction: row;
 }

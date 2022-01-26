@@ -135,8 +135,6 @@ const RepresentationChangePopup = (props) => {
 				}
 			);
 		}
-		console.log(itemList);
-		console.log("OLD ITEM LIST");
 		setShopCatalog(
 			<ShopCatalog 
 				itemList={itemList}

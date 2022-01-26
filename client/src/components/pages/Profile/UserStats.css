@@ -19,4 +19,7 @@
   border-color: #008040;
   border-radius: 16px;
   margin-top: 12px;
+  margin-left: auto;
+	margin-right: auto;
+  height: 500px;
 }

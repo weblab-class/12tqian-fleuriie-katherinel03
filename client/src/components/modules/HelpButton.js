@@ -5,6 +5,8 @@ import Alert from 'react-popup-alert';
 import { useForm, Controller } from "react-hook-form";
 
 import { Button, Radio } from 'antd';
+
+import "./HelpButton.css";
 import { DownloadOutlined } from '@ant-design/icons';
 
 // helpHeader - header at top
@@ -41,7 +43,7 @@ const HelpButton = (props) => {
 	};
 
 	return (
-		<div>
+		<div className="help-button-wrapper">
 			<Button type="primary" shape="round" onClick={() => { successFriend(); }} size="small">
 				?
 				{/* {props.buttonText} */}

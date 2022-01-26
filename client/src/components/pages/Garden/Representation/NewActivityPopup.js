@@ -95,7 +95,6 @@ const NewActivityPopup = (props) => {
 				activityName: activityName,
 				activityTime: activityTime,
 			}).then((data) => {
-				console.log(data);
 			});
 			get("/api/userprofile", {
 				googleID: props.userGoogleID,
@@ -128,7 +127,7 @@ const NewActivityPopup = (props) => {
 						},
 						update: {
 							currency: userProfile.currency + currencyGained,
-							totalCurrency: userProfile.totalExperience + currencyGained,
+							totalCurrency: userProfile.totalCurrency + currencyGained,
 						},
 					});
 					const messages = [];
