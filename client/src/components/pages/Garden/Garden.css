@@ -49,3 +49,8 @@
   margin-right: auto;
   margin-top: 20px;
 }
+
+.slick-arrow:hover {
+  background-color: transparent !important;
+  color: #E3FFF0 !important;
+}
