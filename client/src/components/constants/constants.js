@@ -245,7 +245,7 @@ const badgeList = [
 	},
 	{
 		name: "New Identity",
-		description: "Edit your profile",
+		description: "Edited your profile",
 		image: badge9,
 		badgeID: 9,
 	},
@@ -269,7 +269,7 @@ const badgeList = [
 	},
 	{
 		name: "Still Here?",
-		description: "Log activities for 30 days",
+		description: "Logged activities for 30 days",
 		image: badge13,
 		badgeID: 13,
 	},
