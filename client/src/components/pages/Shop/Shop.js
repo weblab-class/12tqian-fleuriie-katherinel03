@@ -8,6 +8,7 @@ import Collapsible from 'react-collapsible';
 import AvatarChangePopup from "./AvatarChangePopup";
 import GardenChangePopup from "./GardenChangePopup";
 import {get, post} from "../../../utilities";
+import HelpButton from "../../modules/HelpButton";
 
 const Shop = () => {
 	const [user, setUser] = useState(undefined);
@@ -30,6 +31,12 @@ const Shop = () => {
 		} else {
 			return (
 				<div className="Shop-background">
+						<div className="help-button-div">
+							<HelpButton
+								helpHeader={'Shop'}
+								helpDescription={'The shop is where you purchase avatars for your profile and backgrounds for your garden! To earn more currency, add friends and start adding activities!'}
+							/>
+						</div>
 					<div className="shop">
 						<Collapsible trigger=
 						{<div className="shop-button">Avatar Customization</div>}>
