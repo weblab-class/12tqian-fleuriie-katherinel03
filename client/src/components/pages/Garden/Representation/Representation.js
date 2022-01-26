@@ -90,6 +90,13 @@ const Representation = (props) => {
 			socket.off("newPairProfileUpdate", setRepresentation);
 		};
 	}, []);
+	
+	useEffect(() => {
+		socket.on("newPairActivity", setRepresentation);
+		return () => {
+			socket.off("newPairActivity", setRepresentation);
+		};
+	}, []);
 
 	return (
 		<div className="representation-container">
