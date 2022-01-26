@@ -151,6 +151,13 @@ const RepresentationChangePopup = (props) => {
 	}, []);
 
 	useEffect(() => {
+		socket.on("newPairActivity", setItemList);
+		return () => {
+			socket.off("newPairActivity", setItemList);
+		};
+	}, []);
+
+	useEffect(() => {
 		setItemList();
 	}, [timesBought, currency, currentRepresentationID, representations]);
 

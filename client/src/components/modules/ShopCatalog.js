@@ -6,12 +6,31 @@ import Item from "./Item";
 
 import { get, post } from "../../utilities";
 
+import { socket } from "../../client-socket";
+
 // passes in a list of props
 
 const ShopCatalog = (props) => {
 
 	const [displayItems, setDisplayItems] = useState([]);
 	const [currency, setCurrency] = useState(0);
+
+	const resetCurrency = () => {
+		console.log("THE HELL");
+		get("/api/userprofile", {
+			googleID: props.googleID,
+		}).then((userProfile) => {
+			setCurrency(userProfile.currency);
+		});
+	};
+
+	useEffect(() => {
+		socket.on("newPairActivity", resetCurrency);
+		return () => {
+			socket.off("newPairActivity", resetCurrency);
+		};
+	}, []);
+
 	useEffect(() => {
 		setDisplayItems(
 			props.itemList.map((item) => {
@@ -29,11 +48,7 @@ const ShopCatalog = (props) => {
 				);
 			})
 		);
-		get("/api/userprofile", {
-			googleID: props.googleID,
-		}).then((userProfile) => {
-			setCurrency(userProfile.currency);
-		});
+		resetCurrency();
 	}, [props.itemList]);
 
 	return (
