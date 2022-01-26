@@ -170,7 +170,7 @@ const UserAchievement = (props) => {
 			if (achievementList.length === 0) {
 				setAchievements(
 					<div className="no-achievements">
-						No badges yet, use the website more to acquire badges!
+						No badges yet, explore the website more to acquire badges! (Hint: an example of how you can get a badge is by adding 5 friends!)
 					</div>
 				);
 			} else {
