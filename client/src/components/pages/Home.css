@@ -34,6 +34,10 @@
   font-size: 3vmin;
 }
 
+.intro-to-help {
+  margin-bottom: 1%;
+}
+
 .Home-googleButton:hover {
   opacity: 0.8;
 }

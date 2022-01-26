@@ -13,11 +13,11 @@ const SingleAchievement = (props) => {
 	return (
 		<div>
 			<div>
-				<img src={props.badge.image} data-tip data-for={badgeIdentifier} width="60%"/>
+				<img src={props.badge.image} data-tip data-for={badgeIdentifier} width="60%" />
 				<ReactTooltip id={badgeIdentifier} aria-haspopup='true' place="top" type="light" effect="float">
 					<div>
 						<div>
-							{props.badge.name}
+							<h2>{props.badge.name}</h2>
 						</div>
 						<div>
 							{props.badge.description}
