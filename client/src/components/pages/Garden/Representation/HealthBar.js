@@ -11,7 +11,7 @@ const HealthBar = (props) => {
 
 	useEffect(() => {
 		setHealth(props.health);
-	}, []);
+	}, [props.health]);
 
 	const getHealthBarWidth = () => {
 		return health / 100 * HEALTH_BAR_WIDTH * (0.818);
