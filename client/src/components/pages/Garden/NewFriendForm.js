@@ -186,7 +186,7 @@ const NewFriendForm = (props) => {
 					)}
 				/>
 				<div className="new-text">
-					You want at most this many days between interactions with your friend:
+					This is how often you want to interact with friend in days (ex: interact every 3 days)
 				</div>
 				<Controller
 					control={control}
