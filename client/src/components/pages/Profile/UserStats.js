@@ -39,7 +39,7 @@ const UserStats = (props) => {
 
 	const resetRepresentationStats = () => {
 		get("/api/pairrepresentationall", {
-			userGoogleID: props.googleID,
+			googleID: props.googleID,
 		}).then((representations) => {
 			setTotalRepresentations(<SingleStat text={"Plants owned: "} stat={representations.length} />);
 		});
